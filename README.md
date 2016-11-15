@@ -1,4 +1,7 @@
-# Ember-macro-helpers
+# ember-macro-helpers
+
+[![npm version](https://badge.fury.io/js/ember-macro-helpers.svg)](https://badge.fury.io/js/ember-macro-helpers)
+[![Build Status](https://travis-ci.org/kellyselden/ember-macro-helpers.svg?branch=master)](https://travis-ci.org/kellyselden/ember-macro-helpers)
 
 This README outlines the details of collaborating on this Ember addon.
 
