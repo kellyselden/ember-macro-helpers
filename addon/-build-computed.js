@@ -1,0 +1,43 @@
+import computed from 'ember-computed';
+import collapseKeys from './collapse-keys';
+import flattenKeys from './flatten-keys';
+
+function parseComputedArgs(args) {
+  return {
+    keys: args.slice(0, -1),
+    callback: args[args.length - 1]
+  };
+}
+
+function buildCallback(keys, incomingCallback, getValue) {
+  let collapsedKeys = collapseKeys(keys);
+
+  let newCallback;
+  if (typeof incomingCallback === 'function') {
+    newCallback = function() {
+      let values = collapsedKeys.map(key => getValue(this, key));
+      return incomingCallback.apply(this, values);
+    };
+  } else {
+    newCallback = {};
+    if (incomingCallback.get) {
+      newCallback.get = function() {
+        let values = collapsedKeys.map(key => getValue(this, key));
+        return incomingCallback.get.apply(this, values);
+      };
+    }
+    if (incomingCallback.set) {
+      newCallback.set = incomingCallback.set;
+    }
+  }
+
+  return newCallback;
+}
+
+export default function(args, getValue) {
+  let { keys, callback: incomingCallback } = parseComputedArgs(args);
+
+  let newCallback = buildCallback(keys, incomingCallback, getValue);
+
+  return computed(...flattenKeys(keys), newCallback);
+}
