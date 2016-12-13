@@ -1,5 +1,6 @@
 import reads from 'ember-macro-helpers/reads';
 import raw from 'ember-macro-helpers/raw';
+import computed from 'ember-macro-helpers/computed';
 import { module, test } from 'qunit';
 import sinon from 'sinon';
 import compute from 'ember-macro-test-helpers/compute';
@@ -15,6 +16,10 @@ module('Integration | Macro | reads', {
     setCallback = sinon.stub().returns(setReturnValue);
   }
 });
+
+function alias(key) {
+  return computed(key, val => val);
+}
 
 test('without setter: passes through the getter', function(assert) {
   compute({
@@ -88,14 +93,17 @@ test('with function setter: `this` is object context', function(assert) {
   assert.strictEqual(setCallback.thisValues[0], subject);
 });
 
-test('with function setter: passes the key, value, and previous value when setting', function(assert) {
+test('with function setter: passes the value when setting', function(assert) {
   let { subject } = compute({
-    computed: reads(raw(getReturnValue), setCallback)
+    computed: reads(alias('key'), setCallback),
+    properties: {
+      key: '123'
+    }
   });
 
   subject.set('computed', newValue);
 
-  assert.deepEqual(setCallback.args, [['computed', newValue, getReturnValue]]);
+  assert.deepEqual(setCallback.args, [[newValue, '123']]);
 });
 
 test('with function setter: setter return value is new value', function(assert) {
@@ -157,16 +165,19 @@ test('with object setter: `this` is object context', function(assert) {
   assert.strictEqual(setCallback.thisValues[0], subject);
 });
 
-test('with object setter: passes the key, value, and previous value when setting', function(assert) {
+test('with object setter: passes the value when setting', function(assert) {
   let { subject } = compute({
-    computed: reads(raw(getReturnValue), {
+    computed: reads(alias('key'), {
       set: setCallback
-    })
+    }),
+    properties: {
+      key: '123'
+    }
   });
 
   subject.set('computed', newValue);
 
-  assert.deepEqual(setCallback.args, [['computed', newValue, getReturnValue]]);
+  assert.deepEqual(setCallback.args, [[newValue, '123']]);
 });
 
 test('with object setter: setter return value is new value', function(assert) {

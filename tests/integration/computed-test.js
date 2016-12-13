@@ -142,17 +142,21 @@ function alias(key) {
     assert.strictEqual(setCallback.thisValues[0], subject);
   });
 
-  test('object syntax: passes the key, value, and previous value when setting', function(assert) {
+  test('object syntax: passes the values when setting', function(assert) {
     let { subject } = compute({
-      computed: computed({
+      computed: computed('key1', alias('key2'), {
         get: getCallback,
         set: setCallback
-      })
+      }),
+      properties: {
+        key1: '123',
+        key2: '456'
+      }
     });
 
     subject.set('computed', newValue);
 
-    assert.deepEqual(setCallback.args, [['computed', newValue, getReturnValue]]);
+    assert.deepEqual(setCallback.args, [[newValue, '123', '456']]);
   });
 
   test('object syntax: preserves set value', function(assert) {
