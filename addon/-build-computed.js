@@ -9,20 +9,24 @@ function parseComputedArgs(args) {
   };
 }
 
+function mapKeysToValues(keys, getValue, context) {
+  return keys.map(key => getValue(context, key));
+}
+
 function buildCallback(keys, incomingCallback, getValue) {
   let collapsedKeys = collapseKeys(keys);
 
   let newCallback;
   if (typeof incomingCallback === 'function') {
     newCallback = function() {
-      let values = collapsedKeys.map(key => getValue(this, key));
+      let values = mapKeysToValues(collapsedKeys, getValue, this);
       return incomingCallback.apply(this, values);
     };
   } else {
     newCallback = {};
     if (incomingCallback.get) {
       newCallback.get = function() {
-        let values = collapsedKeys.map(key => getValue(this, key));
+        let values = mapKeysToValues(collapsedKeys, getValue, this);
         return incomingCallback.get.apply(this, values);
       };
     }
