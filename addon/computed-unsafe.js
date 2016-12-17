@@ -1,6 +1,6 @@
 import buildComputed from './-build-computed';
-import getValueUnsafe from './get-value-unsafe';
+import getValue from './get-value-unsafe';
 
 export default function(...args) {
-  return buildComputed(args, getValueUnsafe);
+  return buildComputed(args, getValue);
 }
