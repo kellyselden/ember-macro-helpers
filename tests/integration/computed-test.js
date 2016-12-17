@@ -80,40 +80,6 @@ function alias(key) {
     assert.deepEqual(getCallback.args[1], ['123', '456']);
   });
 
-  test('function syntax: resolves array [] keys', function(assert) {
-    compute({
-      computed: computed('key1.[]', getCallback),
-      properties: {
-        key1: '123'
-      }
-    });
-
-    assert.deepEqual(getCallback.args[1], ['123']);
-  });
-
-  test('function syntax: resolves array @each keys', function(assert) {
-    compute({
-      computed: computed('key1.@each.key2', getCallback),
-      properties: {
-        key1: '123'
-      }
-    });
-
-    assert.deepEqual(getCallback.args[1], ['123']);
-  });
-
-  test('function syntax: expands properties', function(assert) {
-    compute({
-      computed: computed('{key1,key2}', getCallback),
-      properties: {
-        key1: '123',
-        key2: '456'
-      }
-    });
-
-    assert.deepEqual(getCallback.args[1], ['123', '456']);
-  });
-
   test('function syntax: doesn\'t call when setting', function(assert) {
     let { obj } = compute({
       computed: computed(getCallback)
@@ -187,46 +153,40 @@ function alias(key) {
 
     assert.deepEqual(setCallback.args, [['computed', newValue, returnValue]]);
   });
+});
 
-  test('object syntax: resolves array [] keys', function(assert) {
-    compute({
-      computed: computed('key1.[]', {
-        get: getCallback
-      }),
-      properties: {
-        key1: '123'
-      }
-    });
-
-    assert.deepEqual(getCallback.args[1], ['123']);
+namedTest('computed', 'function syntax: resolves array [] keys', function(assert) {
+  compute({
+    computed: computed('key1.[]', getCallback),
+    properties: {
+      key1: '123'
+    }
   });
 
-  test('object syntax: resolves array @each keys', function(assert) {
-    compute({
-      computed: computed('key1.@each.key2', {
-        get: getCallback
-      }),
-      properties: {
-        key1: '123'
-      }
-    });
+  assert.deepEqual(getCallback.args[1], ['123']);
+});
 
-    assert.deepEqual(getCallback.args[1], ['123']);
+namedTest('computed', 'function syntax: resolves array @each keys', function(assert) {
+  compute({
+    computed: computed('key1.@each.key2', getCallback),
+    properties: {
+      key1: '123'
+    }
   });
 
-  test('object syntax: expands properties', function(assert) {
-    compute({
-      computed: computed('{key1,key2}', {
-        get: getCallback
-      }),
-      properties: {
-        key1: '123',
-        key2: '456'
-      }
-    });
+  assert.deepEqual(getCallback.args[1], ['123']);
+});
 
-    assert.deepEqual(getCallback.args[1], ['123', '456']);
+namedTest('computed', 'function syntax: expands properties', function(assert) {
+  compute({
+    computed: computed('{key1,key2}', getCallback),
+    properties: {
+      key1: '123',
+      key2: '456'
+    }
   });
+
+  assert.deepEqual(getCallback.args[1], ['123', '456']);
 });
 
 namedTest('computed', 'function syntax: passes undefined if property doesn\'t exist', function(assert) {
@@ -235,6 +195,46 @@ namedTest('computed', 'function syntax: passes undefined if property doesn\'t ex
   });
 
   assert.deepEqual(getCallback.args, [[undefined]]);
+});
+
+namedTest('computed', 'object syntax: resolves array [] keys', function(assert) {
+  compute({
+    computed: computed('key1.[]', {
+      get: getCallback
+    }),
+    properties: {
+      key1: '123'
+    }
+  });
+
+  assert.deepEqual(getCallback.args[1], ['123']);
+});
+
+namedTest('computed', 'object syntax: resolves array @each keys', function(assert) {
+  compute({
+    computed: computed('key1.@each.key2', {
+      get: getCallback
+    }),
+    properties: {
+      key1: '123'
+    }
+  });
+
+  assert.deepEqual(getCallback.args[1], ['123']);
+});
+
+namedTest('computed', 'object syntax: expands properties', function(assert) {
+  compute({
+    computed: computed('{key1,key2}', {
+      get: getCallback
+    }),
+    properties: {
+      key1: '123',
+      key2: '456'
+    }
+  });
+
+  assert.deepEqual(getCallback.args[1], ['123', '456']);
 });
 
 namedTest('computed', 'object syntax: passes undefined if property doesn\'t exist', function(assert) {

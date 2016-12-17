@@ -1,6 +1,4 @@
 import computed from 'ember-computed';
-import collapseKeys from './collapse-keys';
-import flattenKeys from './flatten-keys';
 
 function parseComputedArgs(args) {
   return {
@@ -36,7 +34,7 @@ function buildCallback(collapsedKeys, incomingCallback, getValue) {
   return newCallback;
 }
 
-export default function(args, getValue) {
+export default function(args, collapseKeys, getValue, flattenKeys) {
   let { keys, callback: incomingCallback } = parseComputedArgs(args);
 
   let collapsedKeys = collapseKeys(keys);
