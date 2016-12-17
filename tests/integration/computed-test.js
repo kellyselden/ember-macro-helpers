@@ -249,18 +249,18 @@ namedTest('computed', 'object syntax: passes undefined if property doesn\'t exis
 
 namedTest('computedUnsafe', 'function syntax: passes literal if property doesn\'t exist', function(assert) {
   compute({
-    computed: computedUnsafe('key1', getCallback)
+    computed: computedUnsafe('literal with spaces', getCallback)
   });
 
-  assert.deepEqual(getCallback.args, [['key1']]);
+  assert.deepEqual(getCallback.args, [['literal with spaces']]);
 });
 
 namedTest('computedUnsafe', 'object syntax: passes literal if property doesn\'t exist', function(assert) {
   compute({
-    computed: computedUnsafe('key1', {
+    computed: computedUnsafe('literal with spaces', {
       get: getCallback
     })
   });
 
-  assert.deepEqual(getCallback.args, [['key1']]);
+  assert.deepEqual(getCallback.args, [['literal with spaces']]);
 });
