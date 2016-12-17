@@ -13,9 +13,7 @@ function mapKeysToValues(keys, getValue, context) {
   return keys.map(key => getValue(context, key));
 }
 
-function buildCallback(keys, incomingCallback, getValue) {
-  let collapsedKeys = collapseKeys(keys);
-
+function buildCallback(collapsedKeys, incomingCallback, getValue) {
   let newCallback;
   if (typeof incomingCallback === 'function') {
     newCallback = function() {
@@ -41,7 +39,9 @@ function buildCallback(keys, incomingCallback, getValue) {
 export default function(args, getValue) {
   let { keys, callback: incomingCallback } = parseComputedArgs(args);
 
-  let newCallback = buildCallback(keys, incomingCallback, getValue);
+  let collapsedKeys = collapseKeys(keys);
+
+  let newCallback = buildCallback(collapsedKeys, incomingCallback, getValue);
 
   return computed(...flattenKeys(keys), newCallback);
 }
