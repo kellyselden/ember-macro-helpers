@@ -61,11 +61,11 @@ function alias(key) {
   });
 
   test('function syntax: uses the right context when getting', function(assert) {
-    let { obj } = compute({
+    let { subject } = compute({
       computed: computed(getCallback)
     });
 
-    assert.strictEqual(getCallback.thisValues[0], obj);
+    assert.strictEqual(getCallback.thisValues[0], subject);
   });
 
   test('function syntax: passes the values when getting', function(assert) {
@@ -81,37 +81,37 @@ function alias(key) {
   });
 
   test('function syntax: doesn\'t call when setting', function(assert) {
-    let { obj } = compute({
+    let { subject } = compute({
       computed: computed(getCallback)
     });
 
     getCallback.reset();
 
-    obj.set('computed', newValue);
+    subject.set('computed', newValue);
 
     assert.notOk(getCallback.called);
   });
 
   test('function syntax: preserves set value', function(assert) {
-    let { obj } = compute({
+    let { subject } = compute({
       computed: computed(getCallback)
     });
 
     getCallback.reset();
 
-    obj.set('computed', newValue);
+    subject.set('computed', newValue);
 
-    assert.strictEqual(obj.get('computed'), newValue);
+    assert.strictEqual(subject.get('computed'), newValue);
   });
 
   test('object syntax: uses the right context when getting', function(assert) {
-    let { obj } = compute({
+    let { subject } = compute({
       computed: computed({
         get: getCallback
       })
     });
 
-    assert.strictEqual(getCallback.thisValues[0], obj);
+    assert.strictEqual(getCallback.thisValues[0], subject);
   });
 
   test('object syntax: passes the values when getting', function(assert) {
@@ -129,27 +129,27 @@ function alias(key) {
   });
 
   test('object syntax: uses the right context when setting', function(assert) {
-    let { obj } = compute({
+    let { subject } = compute({
       computed: computed({
         get: getCallback,
         set: setCallback
       })
     });
 
-    obj.set('computed', newValue);
+    subject.set('computed', newValue);
 
-    assert.strictEqual(setCallback.thisValues[0], obj);
+    assert.strictEqual(setCallback.thisValues[0], subject);
   });
 
   test('object syntax: passes the key, value, and previous value when setting', function(assert) {
-    let { obj } = compute({
+    let { subject } = compute({
       computed: computed({
         get: getCallback,
         set: setCallback
       })
     });
 
-    obj.set('computed', newValue);
+    subject.set('computed', newValue);
 
     assert.deepEqual(setCallback.args, [['computed', newValue, returnValue]]);
   });
