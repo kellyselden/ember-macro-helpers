@@ -85,26 +85,6 @@ export default Ember.Component.extend({
 });
 ```
 
-It respects enumerable helpers:
-
-```js
-import Ember from 'ember';
-import computed from 'ember-macro-helpers/computed';
-
-export default Ember.Component.extend({
-  key1: [{ key2: 1 }, { key2: 2 }],
-
-  computed1: computed('key1.[]', value => {
-    console.log(value); // [{ key2: 1 }, { key2: 2 }]
-    // do something else
-  }),
-  computed2: computed('key1.@each.key2', value => {
-    console.log(value); // [{ key2: 1 }, { key2: 2 }]
-    // do something else
-  }),
-});
-```
-
 It resolves property expansion for you:
 
 ```js
