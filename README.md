@@ -18,7 +18,7 @@ It will pass you resolved values:
 import Ember from 'ember';
 import computed from 'ember-macro-helpers/computed';
 
-export default Ember.computed.extend({
+export default Ember.Component.extend({
   key: 'my value',
 
   computed: computed('key', value => {
@@ -34,7 +34,7 @@ You can compose using any of Ember's built-in macros:
 import Ember from 'ember';
 import computed from 'ember-macro-helpers/computed';
 
-export default Ember.computed.extend({
+export default Ember.Component.extend({
   key1: false,
   key2: true,
 
@@ -54,7 +54,7 @@ import conditional from 'ember-awesome-macros/conditional';
 import sum from 'ember-awesome-macros/sum';
 import difference from 'ember-awesome-macros/difference';
 
-export default Ember.computed.extend({
+export default Ember.Component.extend({
   key1: 345678,
   key2: 785572,
 
@@ -71,7 +71,7 @@ It respects enumerable helpers:
 import Ember from 'ember';
 import computed from 'ember-macro-helpers/computed';
 
-export default Ember.computed.extend({
+export default Ember.Component.extend({
   key1: [{ key2: 1 }, { key2: 2 }],
 
   computed1: computed('key1.[]', value => {
@@ -91,7 +91,7 @@ It respects enumerable helpers:
 import Ember from 'ember';
 import computed from 'ember-macro-helpers/computed';
 
-export default Ember.computed.extend({
+export default Ember.Component.extend({
   key1: [{ key2: 1 }, { key2: 2 }],
 
   computed1: computed('key1.[]', value => {
@@ -111,7 +111,7 @@ It resolves property expansion for you:
 import Ember from 'ember';
 import computed from 'ember-macro-helpers/computed';
 
-export default Ember.computed.extend({
+export default Ember.Component.extend({
   key1: { key2: 1, key3: 2 },
 
   computed: computed('key1.{key2,key3}', (value1, value2) => {
