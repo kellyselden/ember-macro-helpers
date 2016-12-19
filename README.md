@@ -8,6 +8,8 @@ Ember macro helpers for making your own fancy macros!
 ### API
 
 * [`computed`](#computed)
+* [`reads`](#reads)
+* [`writable`](#writable)
 
 ##### `computed`
 `computed` behaves like [`Ember.computed`](http://emberjs.com/api/classes/Ember.computed.html) with some extra benefits.
@@ -118,3 +120,63 @@ export default function(key1, key2) {
   });
 }
 ```
+
+##### `reads`
+alias for [`writable`](#writable)
+
+##### `writable`
+This is a setting API for read-only macros.
+
+Given the following read-only macro called `sum`:
+
+```js
+import computed from 'ember-macro-helpers/computed';
+
+export default function(key1, key2) {
+  return computed(key1, key2, (value1, value2) => {
+    return value1 + value2;
+  }).readOnly();
+}
+```
+
+and its usage:
+
+```js
+key1: 1,
+key2: 2,
+result: sum('key1', 'key2')
+```
+
+If you try and set `result`, you will get a read-only exception. If you want to bring back the setting functionality, you can wrap it in the `writable` macro:
+
+```js
+key1: 1,
+key2: 2,
+result: writable(sum('key1', 'key2'))
+```
+
+Now, setting `result` will remove the macro and replace it with your value. If you want to do something unique when setting, you can provide a set callback:
+
+```js
+key1: 1,
+key2: 2,
+result: writable(sum('key1', 'key2'), {
+  set() {
+    // do something
+    return 'new value';
+  }
+}), // setting this will not overwrite your macro
+```
+
+or:
+
+```js
+key1: 1,
+key2: 2,
+result: writable(sum('key1', 'key2'), function() {
+  // do something
+  return 'new value';
+}) // same as above, but shorthand
+```
+
+Setting `result` here will not remove your macro, but will update `result` with the return value.
