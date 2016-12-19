@@ -121,3 +121,20 @@ export default Ember.Component.extend({
   })
 });
 ```
+
+This is also your best friend if you want to make your own macros that support composing out-of-the-box. For example, here is an implementation of a macro that adds two numbers together:
+
+```js
+import computed from 'ember-macro-helpers/computed';
+
+export default function(key1, key2) {
+  // The incoming keys can be key strings, raw values, or other macros.
+  // It makes no difference to you.
+  // `computed` will resolve them for you.
+  return computed(key1, key2, (value1, value2) => {
+    // At this point, the keys no long matter.
+    // You are provided the resolved values for you to perform your operation.
+    return value1 + value2;
+  });
+}
+```
