@@ -78,16 +78,6 @@ test('with function setter: allows computed keys', function(assert) {
   });
 });
 
-test('with function setter: setter return value is new value', function(assert) {
-  let { subject } = compute({
-    computed: reads(raw(getReturnValue), setCallback)
-  });
-
-  subject.set('computed', newValue);
-
-  assert.strictEqual(subject.get('computed'), setReturnValue);
-});
-
 test('with function setter: `this` is object context', function(assert) {
   let { subject } = compute({
     computed: reads(raw(getReturnValue), setCallback)
@@ -96,6 +86,26 @@ test('with function setter: `this` is object context', function(assert) {
   subject.set('computed', newValue);
 
   assert.strictEqual(setCallback.thisValues[0], subject);
+});
+
+test('with function setter: passes the key, value, and previous value when setting', function(assert) {
+  let { subject } = compute({
+    computed: reads(raw(getReturnValue), setCallback)
+  });
+
+  subject.set('computed', newValue);
+
+  assert.deepEqual(setCallback.args, [['computed', newValue, getReturnValue]]);
+});
+
+test('with function setter: setter return value is new value', function(assert) {
+  let { subject } = compute({
+    computed: reads(raw(getReturnValue), setCallback)
+  });
+
+  subject.set('computed', newValue);
+
+  assert.strictEqual(subject.get('computed'), setReturnValue);
 });
 
 test('with function setter: is still a computed', function(assert) {
@@ -135,18 +145,6 @@ test('with object setter: allows computed keys', function(assert) {
   });
 });
 
-test('with object setter: setter return value is new value', function(assert) {
-  let { subject } = compute({
-    computed: reads(raw(getReturnValue), {
-      set: setCallback
-    })
-  });
-
-  subject.set('computed', newValue);
-
-  assert.strictEqual(subject.get('computed'), setReturnValue);
-});
-
 test('with object setter: `this` is object context', function(assert) {
   let { subject } = compute({
     computed: reads(raw(getReturnValue), {
@@ -157,6 +155,30 @@ test('with object setter: `this` is object context', function(assert) {
   subject.set('computed', newValue);
 
   assert.strictEqual(setCallback.thisValues[0], subject);
+});
+
+test('with object setter: passes the key, value, and previous value when setting', function(assert) {
+  let { subject } = compute({
+    computed: reads(raw(getReturnValue), {
+      set: setCallback
+    })
+  });
+
+  subject.set('computed', newValue);
+
+  assert.deepEqual(setCallback.args, [['computed', newValue, getReturnValue]]);
+});
+
+test('with object setter: setter return value is new value', function(assert) {
+  let { subject } = compute({
+    computed: reads(raw(getReturnValue), {
+      set: setCallback
+    })
+  });
+
+  subject.set('computed', newValue);
+
+  assert.strictEqual(subject.get('computed'), setReturnValue);
 });
 
 test('with object setter: is still a computed', function(assert) {
