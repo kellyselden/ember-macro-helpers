@@ -8,6 +8,8 @@ Ember macro helpers for making your own fancy macros!
 ### API
 
 * [`computed`](#computed)
+* [`literal`](#literal)
+* [`raw`](#raw)
 * [`reads`](#reads)
 * [`writable`](#writable)
 
@@ -23,7 +25,7 @@ import computed from 'ember-macro-helpers/computed';
 export default Ember.Component.extend({
   key: 'my value',
 
-  computed: computed('key', value => {
+  result: computed('key', value => {
     console.log(value); // 'my value'
     // do something else
   })
@@ -40,14 +42,14 @@ export default Ember.Component.extend({
   key1: false,
   key2: true,
 
-  computed: computed(Ember.computed.or('key1', 'key2'), value => {
+  result: computed(Ember.computed.or('key1', 'key2'), value => {
     console.log(value); // true
     // do something else
   })
 });
 ```
 
-or you can compose using a macro library like [`ember-awesome-macros`](https://github.com/kellyselden/ember-awesome-macros)
+or you can compose using a macro library like [`ember-awesome-macros`](https://github.com/kellyselden/ember-awesome-macros):
 
 ```js
 import Ember from 'ember';
@@ -60,7 +62,7 @@ export default Ember.Component.extend({
   key1: 345678,
   key2: 785572,
 
-  computed: computed(conditional(gt('key1', 'key2'), sum('key1', 'key2'), difference('key1', 'key2')), value => {
+  result: computed(conditional(gt('key1', 'key2'), sum('key1', 'key2'), difference('key1', 'key2')), value => {
     console.log(value); // -439894
     // do something else
   })
@@ -96,7 +98,7 @@ import computed from 'ember-macro-helpers/computed';
 export default Ember.Component.extend({
   key1: { key2: 1, key3: 2 },
 
-  computed: computed('key1.{key2,key3}', (value1, value2) => {
+  result: computed('key1.{key2,key3}', (value1, value2) => {
     console.log(value1); // 1
     console.log(value2); // 2
     // do something else
@@ -104,7 +106,9 @@ export default Ember.Component.extend({
 });
 ```
 
-This is also your best friend if you want to make your own macros that support composing out-of-the-box. For example, here is an implementation of a macro that adds two numbers together:
+This is also your best friend if you want to make your own macros that support composing out-of-the-box.
+
+For example, here is an implementation of a macro that adds two numbers together:
 
 ```js
 import computed from 'ember-macro-helpers/computed';
@@ -119,6 +123,62 @@ export default function(key1, key2) {
     return value1 + value2;
   });
 }
+```
+
+##### `literal`
+alias for [`raw`](#raw)
+
+##### `raw`
+This allows you to escape string literals to be used in macros.
+
+Normally, a string means it will look up the property on the object context:
+
+```js
+import Ember from 'ember';
+import computed from 'ember-macro-helpers/computed';
+
+export default Ember.Component.extend({
+  key: 'value',
+
+  result: computed('key', value => {
+    console.log(value); // 'value'
+    // do something else
+  })
+});
+```
+
+But if you just want to use the value without making an object property, you can use the `raw` macro:
+
+```js
+import Ember from 'ember';
+import computed from 'ember-macro-helpers/computed';
+import raw from 'ember-macro-helpers/raw';
+
+export default Ember.Component.extend({
+  key: 'value',
+
+  // Even though we are using a string that is the same name as a property on the object,
+  // the `raw` macro will ignore the object property and treat the string as a literal.
+  result: computed(raw('key'), value => {
+    console.log(value); // 'key'
+    // do something else
+  })
+});
+```
+
+The usefulness is more apparent when using complex macros, for example, when using the string `split` macro from [`ember-awesome-macros`](https://github.com/kellyselden/ember-awesome-macros):
+
+```js
+import Ember from 'ember';
+import computed from 'ember-macro-helpers/computed';
+import raw from 'ember-macro-helpers/raw';
+import split from 'ember-awesome-macros/array/split';
+
+export default Ember.Component.extend({
+  key: '1, 2, 3',
+
+  result: split('key', raw(', ')) // [1, 2, 3]
+});
 ```
 
 ##### `reads`
@@ -147,7 +207,9 @@ key2: 2,
 result: sum('key1', 'key2')
 ```
 
-If you try and set `result`, you will get a read-only exception. If you want to bring back the setting functionality, you can wrap it in the `writable` macro:
+If you try and set `result`, you will get a read-only exception.
+
+If you want to bring back the setting functionality, you can wrap it in the `writable` macro:
 
 ```js
 key1: 1,
@@ -155,7 +217,9 @@ key2: 2,
 result: writable(sum('key1', 'key2'))
 ```
 
-Now, setting `result` will remove the macro and replace it with your value. If you want to do something unique when setting, you can provide a set callback:
+Now, setting `result` will remove the macro and replace it with your value.
+
+If you want to do something unique when setting, you can provide a set callback:
 
 ```js
 key1: 1,
