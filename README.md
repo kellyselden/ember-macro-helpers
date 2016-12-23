@@ -172,11 +172,10 @@ export default Ember.Component.extend({
 });
 ```
 
-The usefulness is more apparent when using complex macros, for example, when using the string `split` macro from [`ember-awesome-macros`](https://github.com/kellyselden/ember-awesome-macros):
+The usefulness is more apparent when using complex macros, for example, when using the string [`split`](https://github.com/kellyselden/ember-awesome-macros#stringsplit) macro from `ember-awesome-macros`:
 
 ```js
 import Ember from 'ember';
-import computed from 'ember-macro-helpers/computed';
 import raw from 'ember-macro-helpers/raw';
 import split from 'ember-awesome-macros/array/split';
 
