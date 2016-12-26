@@ -5,7 +5,8 @@ import sinon from 'sinon';
 import compute from 'ember-macro-test-helpers/compute';
 import namedTest from '../helpers/named-test';
 
-const returnValue = 'return value test';
+const getReturnValue = 'get return value test';
+const setReturnValue = 'set return value test';
 const newValue = 'new value test';
 
 let getCallback;
@@ -13,8 +14,8 @@ let setCallback;
 
 module('Integration | Utility | computed', {
   beforeEach() {
-    getCallback = sinon.stub().returns(returnValue);
-    setCallback = sinon.stub();
+    getCallback = sinon.stub().returns(getReturnValue);
+    setCallback = sinon.stub().returns(setReturnValue);
   }
 });
 
@@ -40,7 +41,7 @@ function alias(key) {
     compute({
       assert,
       computed: computed(getCallback),
-      strictEqual: returnValue
+      strictEqual: getReturnValue
     });
   });
 
@@ -48,7 +49,7 @@ function alias(key) {
     compute({
       assert,
       computed: computed('key1', getCallback),
-      strictEqual: returnValue
+      strictEqual: getReturnValue
     });
   });
 
@@ -151,7 +152,22 @@ function alias(key) {
 
     subject.set('computed', newValue);
 
-    assert.deepEqual(setCallback.args, [['computed', newValue, returnValue]]);
+    assert.deepEqual(setCallback.args, [['computed', newValue, getReturnValue]]);
+  });
+
+  test('object syntax: preserves set value', function(assert) {
+    let { subject } = compute({
+      computed: computed({
+        get: getCallback,
+        set: setCallback
+      })
+    });
+
+    getCallback.reset();
+
+    subject.set('computed', newValue);
+
+    assert.strictEqual(subject.get('computed'), setReturnValue);
   });
 });
 
