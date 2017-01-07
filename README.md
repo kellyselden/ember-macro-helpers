@@ -31,10 +31,23 @@ import computed from 'ember-macro-helpers/computed';
 export default Ember.Component.extend({
   key: 'my value',
 
-  result: computed('key', value => {
-    console.log(value); // 'my value'
-    // do something else
-  })
+  result: computed('key', {
+    get(value) {
+      console.log(value); // 'my value'
+      // do something else
+    },
+    set(newValue, value) {
+      console.log(newValue); // 'new value'
+      console.log(value); // 'my value'
+      return newValue;
+    }
+  }),
+
+  actions {
+    doSomething() {
+      this.set('result', 'new value');
+    }
+  }
 });
 ```
 
