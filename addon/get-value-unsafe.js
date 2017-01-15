@@ -2,7 +2,7 @@ import getValue from './get-value';
 
 export default function(context, key) {
   let value = getValue(context, key);
-  if (value) {
+  if (value !== undefined) {
     return value;
   }
 

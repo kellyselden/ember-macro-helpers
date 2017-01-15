@@ -41,6 +41,16 @@ module('Unit | Utility | get value');
     assert.strictEqual(callback.thisValues[0], context);
     assert.strictEqual(value, 'test value');
   });
+
+  test('calulates false value consistently', function(assert) {
+    let context = {
+      testKey: false
+    };
+
+    let value = getValue(context, 'testKey');
+
+    assert.strictEqual(value, false);
+  });
 });
 
 namedTest('getValue', 'returns undefined if property doesn\'t exist', function(assert) {
