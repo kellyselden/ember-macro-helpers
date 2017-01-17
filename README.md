@@ -131,6 +131,7 @@ This is also your best friend if you want to make your own macros that support c
 For example, here is an implementation of a macro that adds two numbers together:
 
 ```js
+// app/macros/add.js
 import computed from 'ember-macro-helpers/computed';
 
 export default function(key1, key2) {
@@ -143,6 +144,21 @@ export default function(key1, key2) {
     return value1 + value2;
   });
 }
+```
+
+Then you can use it like this:
+
+```js
+import Ember from 'ember';
+import add from 'my-app/macros/add';
+
+export default Ember.Component.extend({
+  key1: 12,
+  key2: 34,
+  key3: 56,
+
+  result: add(add('key1', 'key2'), add('key3', 78)) // 180
+});
 ```
 
 ##### `literal`
