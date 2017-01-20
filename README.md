@@ -11,6 +11,7 @@ Check out the following projects to see this addon in use:
 * https://github.com/kellyselden/ember-awesome-macros
 * https://github.com/rwjblue/ember-computed-decorators
 * https://github.com/stefanpenner/ember-moment
+* https://github.com/cibernox/ember-cpm
 
 ### API
 
