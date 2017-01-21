@@ -1,0 +1,15 @@
+import computed from 'ember-macro-helpers/computed';
+
+export default function(...keys) {
+  // This is where you can inspect the incoming keys for errors.
+  // For example:
+  if (keys.length < 2) {
+    throw new Error('This macro needs two or more arguments.');
+  }
+
+  return computed(...keys, (...values) => {
+    // This is where your normal computed code will go.
+    // For example:
+    return values.reduce((total, val) => total + val);
+  }).readOnly();
+}
