@@ -1,7 +1,7 @@
 import expandProperty from 'ember-macro-helpers/expand-property';
 import { module, test } from 'qunit';
 
-module('Unit | Utility | expand property');
+module('Unit | expand property');
 
 test('it passes through a key', function(assert) {
   let result = expandProperty('key');

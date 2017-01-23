@@ -12,7 +12,7 @@ const newValue = 'new value test';
 let getCallback;
 let setCallback;
 
-module('Integration | Utility | computed', {
+module('Integration | computed', {
   beforeEach() {
     getCallback = sinon.stub().returns(getReturnValue);
     setCallback = sinon.stub().returns(setReturnValue);

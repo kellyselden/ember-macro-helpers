@@ -2,7 +2,7 @@ import computed from 'ember-computed';
 import isComputed from 'ember-macro-helpers/is-computed';
 import { module, test } from 'qunit';
 
-module('Unit | Utility | is computed');
+module('Unit | is computed');
 
 test('it returns true for computed', function(assert) {
   let result = isComputed(computed(() => {}));

@@ -11,7 +11,7 @@ const newValue = 'new value test';
 
 let setCallback;
 
-module('Integration | Macro | reads', {
+module('Integration | reads', {
   beforeEach() {
     setCallback = sinon.stub().returns(setReturnValue);
   }

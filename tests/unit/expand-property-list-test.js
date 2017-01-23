@@ -1,7 +1,7 @@
 import expandPropertyList from 'ember-macro-helpers/expand-property-list';
 import { module, test } from 'qunit';
 
-module('Unit | Utility | expand property list');
+module('Unit | expand property list');
 
 test('it passes through a key', function(assert) {
   let result = expandPropertyList(['key']);
