@@ -1,7 +1,7 @@
 import normalizeArrayKey from 'ember-macro-helpers/normalize-array-key';
 import { module, test } from 'qunit';
 
-module('Unit | Utility | normalize array key');
+module('Unit | normalize array key');
 
 test('it wraps array if string', function(assert) {
   let result = normalizeArrayKey('array');

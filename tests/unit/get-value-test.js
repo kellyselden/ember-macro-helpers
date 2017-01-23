@@ -5,7 +5,7 @@ import { module } from 'qunit';
 import sinon from 'sinon';
 import namedTest from '../helpers/named-test';
 
-module('Unit | Utility | get value');
+module('Unit | get value');
 
 [
   {

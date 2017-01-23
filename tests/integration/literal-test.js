@@ -2,7 +2,7 @@ import literal from 'ember-macro-helpers/literal';
 import { module, test } from 'qunit';
 import compute from 'ember-macro-test-helpers/compute';
 
-module('Integration | Macro | literal');
+module('Integration | literal');
 
 test('it returns value verbatim', function(assert) {
   compute({

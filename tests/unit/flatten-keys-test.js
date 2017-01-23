@@ -4,7 +4,7 @@ import { module } from 'qunit';
 import computed from 'ember-macro-helpers/computed';
 import namedTest from '../helpers/named-test';
 
-module('Unit | Utility | flatten keys');
+module('Unit | flatten keys');
 
 function dummyMacro(...args) {
   args.push(() => {});
