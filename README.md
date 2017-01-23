@@ -16,6 +16,7 @@ Check out the following projects to see this addon in use:
 ### API
 
 * [`computed`](#computed)
+* [`curriedComputed`](#curriedcomputed)
 * [`literal`](#literal)
 * [`raw`](#raw)
 * [`reads`](#reads)
@@ -160,6 +161,20 @@ export default Ember.Component.extend({
 
   result: add(add('key1', 'key2'), add('key3', 78)) // 180
 });
+```
+
+##### `curriedComputed`
+This is a shorthand version of [`computed`](#computed). It allows you to create macros like this:
+
+```js
+// app/macros/add.js
+import curriedComputed from 'ember-macro-helpers/curried-computed';
+
+export default function(value1, value2) {
+  // At this point, the keys no long matter.
+  // You are provided the resolved values for you to perform your operation.
+  return value1 + value2;
+}
 ```
 
 ##### `literal`
