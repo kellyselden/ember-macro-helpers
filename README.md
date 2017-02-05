@@ -170,11 +170,11 @@ This is a shorthand version of [`computed`](#computed). It allows you to create 
 // app/macros/add.js
 import curriedComputed from 'ember-macro-helpers/curried-computed';
 
-export default function(value1, value2) {
+export default curriedComputed(function(value1, value2) {
   // At this point, the keys no long matter.
   // You are provided the resolved values for you to perform your operation.
   return value1 + value2;
-}
+})
 ```
 
 ##### `literal`
