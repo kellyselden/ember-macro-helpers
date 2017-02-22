@@ -13,11 +13,6 @@ module.exports = {
   },
 
   afterInstall: function() {
-    // https://github.com/ember-cli/ember-cli-internal-test-helpers/issues/22
-    if (process.env.SKIP_DEP_INSTALL) {
-      return;
-    }
-
     // >= 2.11
     // return this.addAddonToProject('ember-macro-test-helpers');
     // https://github.com/ember-cli/ember-cli/issues/6318
