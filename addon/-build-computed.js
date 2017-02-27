@@ -7,7 +7,7 @@ function parseComputedArgs(args) {
   };
 }
 
-function mapKeysToValues(keys, getValue, context) {
+export function mapKeysToValues(keys, getValue, context) {
   return keys.map(key => getValue(context, key));
 }
 
