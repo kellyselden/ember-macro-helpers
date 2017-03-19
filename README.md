@@ -16,6 +16,7 @@ Check out the following projects to see this addon in use:
 ### API
 
 * [`computed`](#computed)
+* [`createClassComputed`](#createclasscomputed)
 * [`curriedComputed`](#curriedcomputed)
 * [`literal`](#literal)
 * [`raw`](#raw)
@@ -160,6 +161,58 @@ export default Ember.Component.extend({
   key3: 56,
 
   result: add(add('key1', 'key2'), add('key3', 78)) // 180
+});
+```
+
+##### `createClassComputed`
+This creates a class-based computed. This is useful when not the value, but the key being watched is variable. It rewrites your computed property when needed.
+
+See [ember-classy-computed](https://github.com/simplabs/ember-classy-computed) for the inspiration source.
+
+If you want an array macro that will respond when someone changes the array property they want to watch:
+
+```js
+// app/macros/filter-by.js
+import createClassComputed from 'ember-macro-helpers/create-class-computed';
+import computed from 'ember-macro-helpers/computed';
+
+export default createClassComputed(
+  // the first param is the key map
+  // you give an internal name to the keys coming in from your macro
+  // the bool is whether a value change should recreate the macro
+  {
+    array: false,
+    key: true,
+    value: false
+  },
+  // the second param is the callback function where you create your computed property
+  // it is passed in the values of the properties you marked true above
+  key => {
+    // when `key` changes, we need to watch a new property on the array
+    // since our computed property is now invalid, we need to create a new one
+    return computed(`array.@each.${key}`, 'value', (array, value) => {
+      return array.filterBy(key, value);
+    });
+  }
+);
+```
+
+And then we consume this macro like normal:
+
+```js
+import Ember from 'ember';
+import filterBy from 'my-app/macros/filter-by';
+
+export default Ember.Component.extend({
+  myArray: Ember.A([
+    Ember.Object.create({ myProp: 0 }),
+    Ember.Object.create({ myProp: 1 })
+  ]),
+
+  // this could change at any time and our macro would pick it up
+  myKey: 'myProp',
+
+  result: filterBy('myArray', 'myKey', 1)
 });
 ```
 
