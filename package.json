@@ -35,7 +35,7 @@
     "ember-cli-qunit": "^3.0.1",
     "ember-cli-release": "^0.2.9",
     "ember-cli-shims": "^1.0.2",
-    "ember-cli-test-loader": "^1.1.0",
+    "ember-cli-test-loader": "^2.0.0",
     "ember-disable-prototype-extensions": "^1.1.0",
     "ember-macro-test-helpers": "^2.0.0",
     "ember-resolver": "^4.0.0",
