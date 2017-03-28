@@ -6,7 +6,7 @@ export default function(getter, setterCallback) {
   };
 
   if (setterCallback) {
-    if (setterCallback.set) {
+    if (typeof setterCallback === 'object' && setterCallback.set) {
       newCallback.set = setterCallback.set;
     } else {
       newCallback.set = function() {
