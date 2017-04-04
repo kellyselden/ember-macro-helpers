@@ -7,7 +7,7 @@
     "macros"
   ],
   "license": "MIT",
-  "author": "Kelly Selden, Robert Jackson, and contributors",
+  "author": "Kelly Selden, Robert Jackson, Marco Otte-Witte, and contributors",
   "directories": {
     "doc": "doc",
     "test": "tests"
