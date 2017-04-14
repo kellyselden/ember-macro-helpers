@@ -71,7 +71,7 @@ function createComputed(classKeysObj, ObserverClass) {
   return function(...keys) {
     let collapsedKeys = collapseKeys(keys);
 
-    return computed(...flattenKeys(collapsedKeys), function(key) {
+    return computed(...flattenKeys(keys), function(key) {
       let propertyInstance = findOrCreatePropertyInstance(this, ObserverClass, key);
 
       let properties = collapsedKeys.reduce((properties, key, i) => {
