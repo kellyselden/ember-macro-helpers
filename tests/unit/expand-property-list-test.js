@@ -15,26 +15,26 @@ test('it retains any dots', function(assert) {
   assert.deepEqual(result, ['key1.key2']);
 });
 
-test('it strips array []', function(assert) {
+test('it retains array []', function(assert) {
   let result = expandPropertyList(['key1.key2.[]']);
 
-  assert.deepEqual(result, ['key1.key2']);
+  assert.deepEqual(result, ['key1.key2.[]']);
 });
 
-test('it strips array @each', function(assert) {
+test('it retains array @each', function(assert) {
   let result = expandPropertyList(['key1.@each.key2']);
 
-  assert.deepEqual(result, ['key1']);
-});
-
-test('it doesn\'t expand if there\'s an @each', function(assert) {
-  let result = expandPropertyList(['key1.@each.{key2,key3}']);
-
-  assert.deepEqual(result, ['key1']);
+  assert.deepEqual(result, ['key1.@each.key2']);
 });
 
 test('it expands properties', function(assert) {
   let result = expandPropertyList(['key1.{key2,key3}']);
 
   assert.deepEqual(result, ['key1.key2', 'key1.key3']);
+});
+
+test('it expands array properties', function(assert) {
+  let result = expandPropertyList(['key1.@each.{key2,key3}']);
+
+  assert.deepEqual(result, ['key1.@each.key2', 'key1.@each.key3']);
 });

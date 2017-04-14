@@ -1,12 +1,19 @@
-import expandProperty from './expand-property';
+import collapseKey from './collapse-key';
+
+export function collapseKeysWithMap(keys) {
+  let collapsedKeys = [];
+
+  keys.forEach(key => {
+    let array = collapseKey(key);
+
+    collapsedKeys = collapsedKeys.concat(array);
+  });
+
+  return {
+    collapsedKeys
+  }
+}
 
 export default function(keys) {
-  return keys.reduce((newKeys, key) => {
-    if (typeof key === 'string') {
-      newKeys = newKeys.concat(expandProperty(key));
-    } else {
-      newKeys.push(key);
-    }
-    return newKeys;
-  }, []);
+  return collapseKeysWithMap(keys).collapsedKeys;
 }
