@@ -8,9 +8,8 @@ import { isNone } from 'ember-utils';
 import get from 'ember-metal/get';
 import { setProperties } from 'ember-metal/set';
 import WeakMap from 'ember-weakmap';
-import { mapKeysToValues } from './-build-computed';
 import getValue from './get-value';
-import collapseKeys from './collapse-keys';
+import { collapseKeysWithMap } from './collapse-keys';
 import flattenKeys from './flatten-keys';
 
 const { defineProperty } = Ember;
@@ -31,8 +30,9 @@ function findOrCreatePropertyInstance(context, propertyClass, key) {
 
   // let owner = getOwner(context);
   property = propertyClass.create(/*owner.ownerInjection(), */{
-    _key: key,
-    _context: context
+    key,
+    context,
+    nonStrings: EmberObject.create()
   });
 
   propertiesForContext[key] = property;
@@ -40,54 +40,81 @@ function findOrCreatePropertyInstance(context, propertyClass, key) {
 }
 
 const BaseClass = EmberObject.extend({
-  _computedDidChange: observer('_computed', function() {
-    this._context.notifyPropertyChange(this._key);
+  computedDidChange: observer('computed', function() {
+    this.context.notifyPropertyChange(this.key);
   })
 });
 
-function createObserverClass(classKeysObj, macroGenerator) {
-  let classKeys = Object.keys(classKeysObj);
-  let observers = classKeys.filter(key => classKeysObj[key]);
-
-  function rewriteComputed() {
-    let values = mapKeysToValues(observers, getValue, this);
-    let cp = macroGenerator(...values);
-    defineProperty(this, '_computed', cp);
+function resolveMappedLocation(key, i) {
+  if (typeof key === 'string') {
+    return `context.${key}`;
+  } else {
+    return `nonStrings.${i}`;
   }
-
-  let classProperties = observers.reduce((properties, key) => {
-    properties[`${key}DidChange`] = observer(key, rewriteComputed);
-    return properties;
-  }, {});
-
-  return BaseClass.extend(classProperties, {
-    _onInit: on('init', rewriteComputed)
-  });
 }
 
-function createComputed(classKeysObj, ObserverClass) {
-  let classKeys = Object.keys(classKeysObj);
-
+export default function(observerBools, macroGenerator) {
   return function(...keys) {
-    let collapsedKeys = collapseKeys(keys);
+    let { collapsedKeys, keyMap } = collapseKeysWithMap(keys);
+
+    function getOriginalArrayDecorator(key, i) {
+      if (typeof key === 'string') {
+        let originalKey = keys[keyMap[i]];
+        if (originalKey.indexOf('.[]') !== -1 || originalKey.indexOf('.@each') !== -1) {
+          return originalKey;
+        }
+      }
+      return key;
+    }
+
+    let mappedKeys = [];
+
+    function rewriteComputed() {
+      let mappedWithResolvedOberverKeys = mappedKeys.map((key, i) => {
+        let shouldObserve = observerBools[i];
+        if (shouldObserve) {
+          key = getValue(this, key);
+        }
+        return key;
+      });
+
+      let cp = macroGenerator.apply(this, mappedWithResolvedOberverKeys);
+      defineProperty(this, 'computed', cp);
+    }
+
+    let classProperties = {};
+
+    collapsedKeys.forEach((key, i) => {
+      let shouldObserve = observerBools[i];
+      if (!shouldObserve) {
+        key = getOriginalArrayDecorator(key, i);
+      }
+
+      key = resolveMappedLocation(key, i);
+
+      mappedKeys.push(key);
+      if (shouldObserve) {
+        classProperties[`key${i}DidChange`] = observer(key, rewriteComputed);
+      }
+    });
+
+    let ObserverClass = BaseClass.extend(classProperties, {
+      onInit: on('init', rewriteComputed)
+    });
 
     return computed(...flattenKeys(keys), function(key) {
       let propertyInstance = findOrCreatePropertyInstance(this, ObserverClass, key);
 
       let properties = collapsedKeys.reduce((properties, key, i) => {
-        properties[classKeys[i]] = getValue(this, key);
+        if (typeof key !== 'string') {
+          properties[i.toString()] = getValue(this, key);
+        }
         return properties;
       }, {});
 
-      setProperties(propertyInstance, properties);
+      setProperties(propertyInstance.nonStrings, properties);
 
-      return get(propertyInstance, '_computed');
+      return get(propertyInstance, 'computed');
     }).readOnly();
   };
-}
-
-export default function(classKeysObj, macroGenerator) {
-  let ObserverClass = createObserverClass(classKeysObj, macroGenerator);
-
-  return createComputed(classKeysObj, ObserverClass);
 }
