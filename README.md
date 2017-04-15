@@ -178,14 +178,19 @@ import createClassComputed from 'ember-macro-helpers/create-class-computed';
 import computed from 'ember-macro-helpers/computed';
 
 export default createClassComputed(
-  // the first param is the key map
-  // you give an internal name to the keys coming in from your macro
+  // the first param is the observer list
+  // it refers to incoming keys
   // the bool is whether a value change should recreate the macro
-  {
-    array: false,
-    key: true,
-    value: false
-  },
+  [
+    // the array key
+    false,
+
+    // the array property is dynamic, and is responsible for the macro being rewritten
+    true,
+    
+    // 
+    false
+  ],
   // the second param is the callback function where you create your computed property
   // it is passed in the values of the properties you marked true above
   key => {
