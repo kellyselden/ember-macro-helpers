@@ -15,6 +15,12 @@ test('it wraps array if string and empty keys', function(assert) {
   assert.strictEqual(result, 'foo.bar.[]');
 });
 
+test('it ignores undefined keys', function(assert) {
+  let result = normalizeArrayKey('foo.bar', [undefined]);
+
+  assert.strictEqual(result, 'foo.bar.[]');
+});
+
 test('it does nothing for non-string', function(assert) {
   let obj = {};
 

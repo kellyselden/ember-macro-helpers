@@ -1,4 +1,6 @@
 export default function(array, keys = []) {
+  // this macro support should be extracted out
+  // we should only deal with string keys in here
   if (typeof array !== 'string') {
     return array;
   }
@@ -24,6 +26,11 @@ export default function(array, keys = []) {
   }
 
   keys.forEach(key => {
+    // key could be a promise proxy and not resolved yet
+    if (key === undefined) {
+      return;
+    }
+
     if (props.indexOf(key) === -1) {
       props.push(key);
     }
