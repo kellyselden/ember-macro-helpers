@@ -36,6 +36,15 @@ function findOrCreatePropertyInstance(context, propertyClass, key) {
   });
 
   propertiesForContext[key] = property;
+
+  context.one('willDestroyElement', () => {
+    property.destroy();
+    delete propertiesForContext[key];
+    if (!Object.getOwnPropertyNames(propertiesForContext).length) {
+        PROPERTIES.delete(context);
+    }
+  });
+
   return property;
 }
 

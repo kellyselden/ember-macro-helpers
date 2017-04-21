@@ -5,6 +5,7 @@ import EmberObject from 'ember-object';
 import { A as emberA } from 'ember-array/utils';
 import sinon from 'sinon';
 import compute from 'ember-macro-test-helpers/compute';
+import destroy from '../helpers/destroy';
 
 let callback;
 
@@ -126,4 +127,29 @@ test('it rewrites when observer changes', function(assert) {
   subject.get('computed');
 
   assert.equal(callback.callCount, 4);
+});
+
+test('it cleans up after destroy', function(assert) {
+  let array = emberA([
+    EmberObject.create({ test2: 1 }),
+    EmberObject.create({ test2: 1 })
+  ]);
+
+  let macro = createClassComputed(
+    [false],
+    test1 => computed(`${test1}.@each.test2`, callback)
+  );
+
+  let { subject } = compute({
+    computed: macro('test3'),
+    properties: {
+      test3: array
+    }
+  });
+
+  destroy(subject, () => {
+    array.set('1.test2', 2);
+
+    assert.equal(callback.callCount, 2);
+  })
 });
