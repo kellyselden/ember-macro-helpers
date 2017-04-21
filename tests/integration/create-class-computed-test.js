@@ -7,6 +7,7 @@ import EmberObject from 'ember-object';
 import { A as emberA } from 'ember-array/utils';
 import compute from 'ember-macro-test-helpers/compute';
 import WeakMap from 'ember-weakmap';
+import destroy from '../helpers/destroy';
 
 let PROPERTIES;
 let filterBy;
@@ -183,4 +184,26 @@ test('it responds to property value changes', function(assert) {
   subject.set('value', 'val1');
 
   assert.equal(subject.get('computed.length'), 2);
+});
+
+test('it cleans up after destroy', function(assert) {
+  let array = emberA([
+    EmberObject.create({ test: 'val1' }),
+    EmberObject.create({ test: 'val2' })
+  ]);
+
+  let { subject } = compute({
+    computed: filterBy('array', 'key', 'value'),
+    properties: {
+      array,
+      key: 'test',
+      value: 'val1'
+    }
+  });
+
+  destroy(subject, () => {
+    array.pushObject(EmberObject.create({ test: 'val1' }));
+
+    assert.ok(true);
+  });
 });
