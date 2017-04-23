@@ -19,6 +19,8 @@ Check out the following projects to see this addon in use:
 * [`computed`](#computed)
 * [`createClassComputed`](#createclasscomputed)
 * [`curriedComputed`](#curriedcomputed)
+* [`lazyComputed`](#lazycomputed)
+* [`lazyCurriedComputed`](#lazycurriedcomputed)
 * [`literal`](#literal)
 * [`raw`](#raw)
 * [`reads`](#reads)
@@ -235,6 +237,27 @@ export default curriedComputed(function(value1, value2) {
   return value1 + value2;
 });
 ```
+
+##### `lazyComputed`
+This is the lazy resolving version of [`computed`](#computed). The difference is instead of being provided the resolved values, you are provided the unresolved keys and a resolving function. This is useful if you want to optimize your macros and have early returns without calculating every key eagerly.
+
+The API differs only slightly from [`computed`](#computed):
+
+```js
+// app/macros/and.js
+import lazyComputed from 'ember-macro-helpers/lazy-computed';
+
+export default function(key1, key2) {
+  return lazyComputed(key1, key2, (get, key1, key2) => {
+    // Where normally you get the values, now you have to calculate yourself.
+    // The second key won't calculate if the first resolved value is falsy.
+    return get(key1) && get(key2);
+  });
+}
+```
+
+##### `lazyCurriedComputed`
+This is the combination of [`lazyComputed`](#lazycomputed) and [`curriedComputed`](#curriedcomputed).
 
 ##### `literal`
 alias for [`raw`](#raw)

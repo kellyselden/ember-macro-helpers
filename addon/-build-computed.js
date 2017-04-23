@@ -31,7 +31,7 @@ function buildCallback({ incomingCallback, createArgs }) {
   return newCallback;
 }
 
-export default function({ collapseKeys, getValue, flattenKeys }) {
+export default function({ collapseKeys, getValue, flattenKeys, isLazy }) {
   return function(...args) {
     let { keys, callback: incomingCallback } = parseComputedArgs(args);
 
@@ -39,7 +39,14 @@ export default function({ collapseKeys, getValue, flattenKeys }) {
 
     function createArgs(context) {
       let bundledKeys = collapsedKeys.map(key => ({ context, key }));
-      return bundledKeys.map(getValue);
+      let values;
+      if (isLazy) {
+        values = bundledKeys.slice();
+        values.splice(0, 0, getValue);
+      } else {
+        values = bundledKeys.map(getValue);
+      }
+      return values;
     }
 
     let newCallback = buildCallback({ incomingCallback, createArgs });
