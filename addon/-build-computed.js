@@ -13,23 +13,25 @@ function mapKeysToValues(keys, getValue, context) {
 
 function buildCallback(collapsedKeys, incomingCallback, getValue) {
   let newCallback;
+
+  function createArgs(context) {
+    return mapKeysToValues(collapsedKeys, getValue, context);
+  }
+
   if (typeof incomingCallback === 'function') {
     newCallback = function() {
-      let values = mapKeysToValues(collapsedKeys, getValue, this);
-      return incomingCallback.apply(this, values);
+      return incomingCallback.apply(this, createArgs(this));
     };
   } else {
     newCallback = {};
     if (incomingCallback.get) {
       newCallback.get = function() {
-        let values = mapKeysToValues(collapsedKeys, getValue, this);
-        return incomingCallback.get.apply(this, values);
+        return incomingCallback.get.apply(this, createArgs(this));
       };
     }
     if (incomingCallback.set) {
       newCallback.set = function(key, value) {
-        let values = mapKeysToValues(collapsedKeys, getValue, this);
-        return incomingCallback.set.call(this, value, ...values);
+        return incomingCallback.set.call(this, value, ...createArgs(this));
       };
     }
   }
