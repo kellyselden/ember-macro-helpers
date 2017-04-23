@@ -82,7 +82,7 @@ export default function(observerBools, macroGenerator) {
       let mappedWithResolvedOberverKeys = mappedKeys.map((key, i) => {
         let shouldObserve = observerBools[i];
         if (shouldObserve) {
-          key = getValue(this, key);
+          key = getValue({ context: this, key });
         }
         return key;
       });
@@ -116,7 +116,7 @@ export default function(observerBools, macroGenerator) {
 
       let properties = collapsedKeys.reduce((properties, key, i) => {
         if (typeof key !== 'string') {
-          properties[i.toString()] = getValue(this, key);
+          properties[i.toString()] = getValue({ context: this, key });
         }
         return properties;
       }, {});
