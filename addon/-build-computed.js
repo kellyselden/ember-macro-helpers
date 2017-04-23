@@ -7,15 +7,12 @@ function parseComputedArgs(args) {
   };
 }
 
-function mapKeysToValues(keys, getValue, context) {
-  return keys.map(key => getValue(context, key));
-}
-
 function buildCallback(collapsedKeys, incomingCallback, getValue) {
   let newCallback;
 
   function createArgs(context) {
-    return mapKeysToValues(collapsedKeys, getValue, context);
+    let bundledKeys = collapsedKeys.map(key => ({ context, key }));
+    return bundledKeys.map(getValue);
   }
 
   if (typeof incomingCallback === 'function') {

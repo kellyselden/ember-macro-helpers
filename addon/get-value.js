@@ -1,7 +1,7 @@
 import get from 'ember-metal/get';
 import isComputed from './is-computed';
 
-export default function(context, key) {
+export default function({ context, key }) {
   if (isComputed(key)) {
     return key._getter.call(context);
   }
