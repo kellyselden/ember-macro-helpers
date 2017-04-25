@@ -7,7 +7,7 @@ function parseComputedArgs(args) {
   };
 }
 
-function buildCallback(collapsedKeys, incomingCallback, getValue) {
+function buildCallback({ collapsedKeys, incomingCallback, getValue }) {
   let newCallback;
 
   function createArgs(context) {
@@ -36,12 +36,12 @@ function buildCallback(collapsedKeys, incomingCallback, getValue) {
   return newCallback;
 }
 
-export default function(args, collapseKeys, getValue, flattenKeys) {
+export default function({ args, collapseKeys, getValue, flattenKeys }) {
   let { keys, callback: incomingCallback } = parseComputedArgs(args);
 
   let collapsedKeys = collapseKeys(keys);
 
-  let newCallback = buildCallback(collapsedKeys, incomingCallback, getValue);
+  let newCallback = buildCallback({ collapsedKeys, incomingCallback, getValue });
 
   return computed(...flattenKeys(keys), newCallback);
 }

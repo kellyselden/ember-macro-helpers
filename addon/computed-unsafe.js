@@ -5,5 +5,5 @@ import flattenKeys from './flatten-keys-unsafe';
 const collapseKeys = keys => keys;
 
 export default function(...args) {
-  return buildComputed(args, collapseKeys, getValue, flattenKeys);
+  return buildComputed({ args, collapseKeys, getValue, flattenKeys });
 }
