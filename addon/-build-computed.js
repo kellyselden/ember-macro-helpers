@@ -7,13 +7,8 @@ function parseComputedArgs(args) {
   };
 }
 
-function buildCallback({ collapsedKeys, incomingCallback, getValue }) {
+function buildCallback({ incomingCallback, createArgs }) {
   let newCallback;
-
-  function createArgs(context) {
-    let bundledKeys = collapsedKeys.map(key => ({ context, key }));
-    return bundledKeys.map(getValue);
-  }
 
   if (typeof incomingCallback === 'function') {
     newCallback = function() {
@@ -41,7 +36,12 @@ export default function({ args, collapseKeys, getValue, flattenKeys }) {
 
   let collapsedKeys = collapseKeys(keys);
 
-  let newCallback = buildCallback({ collapsedKeys, incomingCallback, getValue });
+  function createArgs(context) {
+    let bundledKeys = collapsedKeys.map(key => ({ context, key }));
+    return bundledKeys.map(getValue);
+  }
+
+  let newCallback = buildCallback({ incomingCallback, createArgs });
 
   return computed(...flattenKeys(keys), newCallback);
 }
