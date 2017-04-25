@@ -39,6 +39,9 @@ export default function({ collapseKeys, getValue, flattenKeys }) {
 
     function createArgs(context) {
       let bundledKeys = collapsedKeys.map(key => ({ context, key }));
+      if (!getValue) {
+        return bundledKeys;
+      }
       return bundledKeys.map(getValue);
     }
 
