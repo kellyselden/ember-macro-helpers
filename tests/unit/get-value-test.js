@@ -21,6 +21,24 @@ module('Unit | get value');
     namedTest(name, title, callback);
   }
 
+  test('it returns undefined if no params', function(assert) {
+    let value = getValue();
+
+    assert.strictEqual(value, undefined);
+  });
+
+  test('it returns undefined if undefined', function(assert) {
+    let value = getValue(undefined);
+
+    assert.strictEqual(value, undefined);
+  });
+
+  test('it returns undefined if empty object', function(assert) {
+    let value = getValue({});
+
+    assert.strictEqual(value, undefined);
+  });
+
   test('it evaluates regular properties', function(assert) {
     let context = {
       testKey: 'test value'
