@@ -31,17 +31,27 @@ function buildCallback({ incomingCallback, createArgs }) {
   return newCallback;
 }
 
-export default function({ args, collapseKeys, getValue, flattenKeys }) {
-  let { keys, callback: incomingCallback } = parseComputedArgs(args);
+export default function({ collapseKeys, getValue, flattenKeys }) {
+  return function(...args) {
+    let { keys, callback: incomingCallback } = parseComputedArgs(args);
 
-  let collapsedKeys = collapseKeys(keys);
+    let collapsedKeys = collapseKeys(keys);
 
-  function createArgs(context) {
-    let bundledKeys = collapsedKeys.map(key => ({ context, key }));
-    return bundledKeys.map(getValue);
+    function createArgs(context) {
+      let bundledKeys = collapsedKeys.map(key => ({ context, key }));
+      return bundledKeys.map(getValue);
+    }
+
+    let newCallback = buildCallback({ incomingCallback, createArgs });
+
+    return computed(...flattenKeys(keys), newCallback);
   }
+}
 
-  let newCallback = buildCallback({ incomingCallback, createArgs });
-
-  return computed(...flattenKeys(keys), newCallback);
+export function buildCurriedComputed(computed) {
+  return function(callback) {
+    return function() {
+      return computed(...arguments, callback).readOnly();
+    };
+  };
 }

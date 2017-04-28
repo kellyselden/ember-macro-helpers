@@ -1,7 +1,4 @@
+import { buildCurriedComputed } from './-build-computed';
 import computed from './computed';
 
-export default function(callback) {
-  return function() {
-    return computed(...arguments, callback).readOnly();
-  };
-}
+export default buildCurriedComputed(computed);
