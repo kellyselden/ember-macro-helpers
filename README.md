@@ -193,10 +193,10 @@ export default createClassComputed(
   ],
   // the second param is the callback function where you create your computed property
   // it is passed in the values of the properties you marked true above
-  key => {
+  (array, key, value) => {
     // when `key` changes, we need to watch a new property on the array
     // since our computed property is now invalid, we need to create a new one
-    return computed(`array.@each.${key}`, 'value', (array, value) => {
+    return computed(`${array}.@each.${key}`, value, (array, value) => {
       return array.filterBy(key, value);
     });
   }
