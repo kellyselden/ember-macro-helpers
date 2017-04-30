@@ -1,12 +1,14 @@
 import createClassComputed from 'ember-macro-helpers/create-class-computed';
 import normalizeArrayKey from 'ember-macro-helpers/normalize-array-key';
-import computed from 'ember-macro-helpers/computed';
+import lazyComputed from 'ember-macro-helpers/lazy-computed';
 import raw from 'ember-macro-helpers/raw';
 import { module, test } from 'qunit';
 import EmberObject from 'ember-object';
 import { A as emberA } from 'ember-array/utils';
+import computed from 'ember-computed';
 import compute from 'ember-macro-test-helpers/compute';
 import WeakMap from 'ember-weakmap';
+import sinon from 'sinon';
 import destroy from '../helpers/destroy';
 
 let PROPERTIES;
@@ -19,12 +21,13 @@ module('Integration | create class computed', {
     filterBy = createClassComputed(
       [false, true, false],
       function(array, key, value) {
-        if (!key) {
+        if (!key && typeof array === 'string') {
           PROPERTIES.set(this, array.split('.').reverse()[0]);
         }
-        return computed(normalizeArrayKey(array, [key]), value, function(array, value) {
+        return lazyComputed(normalizeArrayKey(array, [key]), value, function(get, array, value) {
+          array = get(array);
           if (array) {
-            return array.filterBy(key || PROPERTIES.get(this), value);
+            return array.filterBy(key || PROPERTIES.get(this), get(value));
           }
         });
       }
@@ -206,4 +209,18 @@ test('it cleans up after destroy', function(assert) {
 
     assert.ok(true);
   });
+});
+
+test('it doesn\'t calculate when unnecessary', function(assert) {
+  let callback = sinon.spy();
+
+  compute({
+    computed: filterBy(
+      undefined,
+      undefined,
+      computed(callback)
+    )
+  });
+
+  assert.notOk(callback.called);
 });

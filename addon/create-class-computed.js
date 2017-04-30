@@ -9,7 +9,7 @@ import get from 'ember-metal/get';
 import { setProperties } from 'ember-metal/set';
 import WeakMap from 'ember-weakmap';
 import getValue from './get-value';
-import { collapseKeysWithMap } from './collapse-keys';
+import collapseKeys from './collapse-keys';
 import flattenKeys from './flatten-keys';
 
 const { defineProperty } = Ember;
@@ -64,17 +64,7 @@ function resolveMappedLocation(key, i) {
 
 export default function(observerBools, macroGenerator) {
   return function(...keys) {
-    let { collapsedKeys, keyMap } = collapseKeysWithMap(keys);
-
-    function getOriginalArrayDecorator(key, i) {
-      if (typeof key === 'string') {
-        let originalKey = keys[keyMap[i]];
-        if (originalKey.indexOf('.[]') !== -1 || originalKey.indexOf('.@each') !== -1) {
-          return originalKey;
-        }
-      }
-      return key;
-    }
+    let collapsedKeys = collapseKeys(keys);
 
     let mappedKeys = [];
 
@@ -95,16 +85,12 @@ export default function(observerBools, macroGenerator) {
 
     collapsedKeys.forEach((key, i) => {
       let shouldObserve = observerBools[i];
-      if (!shouldObserve) {
-        key = getOriginalArrayDecorator(key, i);
-      }
-
-      key = resolveMappedLocation(key, i);
-
-      mappedKeys.push(key);
       if (shouldObserve) {
+        key = resolveMappedLocation(key, i);
         classProperties[`key${i}DidChange`] = observer(key, rewriteComputed);
       }
+
+      mappedKeys.push(key);
     });
 
     let ObserverClass = BaseClass.extend(classProperties, {
@@ -115,7 +101,8 @@ export default function(observerBools, macroGenerator) {
       let propertyInstance = findOrCreatePropertyInstance(this, ObserverClass, key);
 
       let properties = collapsedKeys.reduce((properties, key, i) => {
-        if (typeof key !== 'string') {
+        let shouldObserve = observerBools[i];
+        if (shouldObserve) {
           properties[i.toString()] = getValue({ context: this, key });
         }
         return properties;
