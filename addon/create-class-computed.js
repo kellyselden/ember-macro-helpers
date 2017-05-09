@@ -1,5 +1,6 @@
 import Ember from 'ember';
 import EmberObject from 'ember-object';
+import Component from 'ember-component';
 import computed from 'ember-computed';
 import on from 'ember-evented/on';
 import observer from 'ember-metal/observer';
@@ -37,13 +38,15 @@ function findOrCreatePropertyInstance(context, propertyClass, key) {
 
   propertiesForContext[key] = property;
 
-  context.one('willDestroyElement', () => {
-    property.destroy();
-    delete propertiesForContext[key];
-    if (!Object.getOwnPropertyNames(propertiesForContext).length) {
-      PROPERTIES.delete(context);
-    }
-  });
+  if (context instanceof Component) {
+    context.one('willDestroyElement', () => {
+      property.destroy();
+      delete propertiesForContext[key];
+      if (!Object.getOwnPropertyNames(propertiesForContext).length) {
+        PROPERTIES.delete(context);
+      }
+    });
+  }
 
   return property;
 }
