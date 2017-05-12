@@ -2,10 +2,23 @@
 
 ## [Unreleased](https://github.com/kellyselden/ember-macro-helpers/tree/HEAD)
 
-[Full Changelog](https://github.com/kellyselden/ember-macro-helpers/compare/v0.14.0...HEAD)
+[Full Changelog](https://github.com/kellyselden/ember-macro-helpers/compare/v0.14.1...HEAD)
 
 **Merged pull requests:**
 
+- chore\(package\): update ember-cli-htmlbars to version 2.0.1 [\#95](https://github.com/kellyselden/ember-macro-helpers/pull/95) ([kellyselden](https://github.com/kellyselden))
+
+## [v0.14.1](https://github.com/kellyselden/ember-macro-helpers/tree/v0.14.1) (2017-05-11)
+[Full Changelog](https://github.com/kellyselden/ember-macro-helpers/compare/v0.14.0...v0.14.1)
+
+**Closed issues:**
+
+- Changelog please [\#92](https://github.com/kellyselden/ember-macro-helpers/issues/92)
+
+**Merged pull requests:**
+
+- Update ember-macro-test-helpers to the latest version 🚀 [\#93](https://github.com/kellyselden/ember-macro-helpers/pull/93) ([greenkeeper[bot]](https://github.com/integration/greenkeeper))
+- only bind to `willDestroyElement` for components [\#91](https://github.com/kellyselden/ember-macro-helpers/pull/91) ([kellyselden](https://github.com/kellyselden))
 - Update ember-cli to the latest version 🚀 [\#90](https://github.com/kellyselden/ember-macro-helpers/pull/90) ([greenkeeper[bot]](https://github.com/integration/greenkeeper))
 
 ## [v0.14.0](https://github.com/kellyselden/ember-macro-helpers/tree/v0.14.0) (2017-04-30)
