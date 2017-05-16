@@ -11,19 +11,19 @@ function buildCallback({ incomingCallback, createArgs }) {
   let newCallback;
 
   if (typeof incomingCallback === 'function') {
-    newCallback = function() {
-      return incomingCallback.apply(this, createArgs(this));
+    newCallback = function(key) {
+      return incomingCallback.apply(this, createArgs(this, key));
     };
   } else {
     newCallback = {};
     if (incomingCallback.get) {
-      newCallback.get = function() {
-        return incomingCallback.get.apply(this, createArgs(this));
+      newCallback.get = function(key) {
+        return incomingCallback.get.apply(this, createArgs(this, key));
       };
     }
     if (incomingCallback.set) {
       newCallback.set = function(key, value) {
-        return incomingCallback.set.call(this, value, ...createArgs(this));
+        return incomingCallback.set.call(this, value, ...createArgs(this, key));
       };
     }
   }
@@ -37,8 +37,8 @@ export default function({ collapseKeys, getValue, flattenKeys, isLazy }) {
 
     let collapsedKeys = collapseKeys(keys);
 
-    function createArgs(context) {
-      let bundledKeys = collapsedKeys.map(macro => ({ context, macro }));
+    function createArgs(context, key) {
+      let bundledKeys = collapsedKeys.map(macro => ({ context, macro, key }));
       let values;
       if (isLazy) {
         values = bundledKeys.slice();

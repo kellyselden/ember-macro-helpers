@@ -330,6 +330,10 @@ test('composing: both macros are class computed', function(assert) {
   subject.set('value2', 'val2');
 
   assert.deepEqual(subject.get('computed').mapBy('id'), [3]);
+
+  array.pushObject(EmberObject.create({ id: 4, test1: 'val2', test2: 'val2' }));
+
+  assert.deepEqual(subject.get('computed').mapBy('id'), [3, 4]);
 });
 
 test('it cleans up after destroy', function(assert) {
