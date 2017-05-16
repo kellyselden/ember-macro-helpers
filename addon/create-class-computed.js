@@ -17,12 +17,12 @@ const { defineProperty } = Ember;
 
 const PROPERTIES = new WeakMap();
 
-function findOrCreatePropertyInstance(context, propertyClass, key) {
+function findOrCreatePropertyInstance(context, propertyClass, key, cp) {
   let isComponent = context instanceof Component;
 
   let propertiesForContext = PROPERTIES.get(context);
   if (isNone(propertiesForContext)) {
-    propertiesForContext = {};
+    propertiesForContext = new WeakMap();
     PROPERTIES.set(context, propertiesForContext);
 
     if (isComponent) {
@@ -32,7 +32,7 @@ function findOrCreatePropertyInstance(context, propertyClass, key) {
     }
   }
 
-  let property = propertiesForContext[key];
+  let property = propertiesForContext.get(cp);
   if (property) {
     return property;
   }
@@ -44,12 +44,12 @@ function findOrCreatePropertyInstance(context, propertyClass, key) {
     nonStrings: EmberObject.create()
   });
 
-  propertiesForContext[key] = property;
+  propertiesForContext.set(cp, property);
 
   if (isComponent) {
     context.one('willDestroyElement', () => {
       property.destroy();
-      delete propertiesForContext[key];
+      propertiesForContext.delete(cp);
     });
   }
 
@@ -86,11 +86,11 @@ export default function(observerBools, macroGenerator) {
 
     let mappedKeys = [];
 
-    function rewriteComputed() {
+    function rewriteComputed(obj, key) {
       let mappedWithResolvedOberverKeys = mappedKeys.map((macro, i) => {
         let shouldObserve = observerBools[i];
         if (shouldObserve) {
-          macro = getValue({ context: this, macro });
+          macro = getValue({ context: this, macro, key });
         }
         return macro;
       });
@@ -121,12 +121,12 @@ export default function(observerBools, macroGenerator) {
       onInit: on('init', function() { rewriteComputed.call(this); })
     });
 
-    return computed(...flattenKeys(keys), function(key) {
-      let propertyInstance = findOrCreatePropertyInstance(this, ObserverClass, key);
+    let cp = computed(...flattenKeys(keys), function(key) {
+      let propertyInstance = findOrCreatePropertyInstance(this, ObserverClass, key, cp);
 
       let properties = collapsedKeys.reduce((properties, macro, i) => {
         if (typeof macro !== 'string') {
-          properties[i.toString()] = getValue({ context: this, macro });
+          properties[i.toString()] = getValue({ context: this, macro, key });
         }
         return properties;
       }, {});
@@ -135,5 +135,7 @@ export default function(observerBools, macroGenerator) {
 
       return get(propertyInstance, 'computed');
     }).readOnly();
+
+    return cp;
   };
 }
