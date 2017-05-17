@@ -62,8 +62,8 @@ test('function syntax: passes the keys when getting', function(assert) {
 
   assert.deepEqual(getCallback.args[0], [
     getValue,
-    { context: subject, key: 'key1' },
-    { context: subject, key: alias('key2') }
+    { context: subject, macro: 'key1' },
+    { context: subject, macro: alias('key2') }
   ]);
 });
 
@@ -110,8 +110,8 @@ test('object syntax: passes the keys when getting', function(assert) {
 
   assert.deepEqual(getCallback.args[0], [
     getValue,
-    { context: subject, key: 'key1' },
-    { context: subject, key: alias('key2') }
+    { context: subject, macro: 'key1' },
+    { context: subject, macro: alias('key2') }
   ]);
 });
 
@@ -141,8 +141,8 @@ test('object syntax: passes the keys when setting', function(assert) {
   assert.deepEqual(setCallback.args, [[
     newValue,
     getValue,
-    { context: subject, key: 'key1' },
-    { context: subject, key: alias('key2') }
+    { context: subject, macro: 'key1' },
+    { context: subject, macro: alias('key2') }
   ]]);
 });
 
@@ -168,7 +168,7 @@ test('function syntax: resolves array [] keys', function(assert) {
 
   assert.deepEqual(getCallback.args[0], [
     getValue,
-    { context: subject, key: 'key1' }
+    { context: subject, macro: 'key1' }
   ]);
 });
 
@@ -179,7 +179,7 @@ test('function syntax: resolves array @each keys', function(assert) {
 
   assert.deepEqual(getCallback.args[0], [
     getValue,
-    { context: subject, key: 'key1' }
+    { context: subject, macro: 'key1' }
   ]);
 });
 
@@ -190,8 +190,8 @@ test('function syntax: expands properties', function(assert) {
 
   assert.deepEqual(getCallback.args[0], [
     getValue,
-    { context: subject, key: 'key1' },
-    { context: subject, key: 'key2' }
+    { context: subject, macro: 'key1' },
+    { context: subject, macro: 'key2' }
   ]);
 });
 
@@ -204,7 +204,7 @@ test('object syntax: resolves array [] keys', function(assert) {
 
   assert.deepEqual(getCallback.args[0], [
     getValue,
-    { context: subject, key: 'key1' }
+    { context: subject, macro: 'key1' }
   ]);
 });
 
@@ -217,7 +217,7 @@ test('object syntax: resolves array @each keys', function(assert) {
 
   assert.deepEqual(getCallback.args[0], [
     getValue,
-    { context: subject, key: 'key1' }
+    { context: subject, macro: 'key1' }
   ]);
 });
 
@@ -230,7 +230,7 @@ test('object syntax: expands properties', function(assert) {
 
   assert.deepEqual(getCallback.args[0], [
     getValue,
-    { context: subject, key: 'key1' },
-    { context: subject, key: 'key2' }
+    { context: subject, macro: 'key1' },
+    { context: subject, macro: 'key2' }
   ]);
 });

@@ -87,12 +87,12 @@ export default function(observerBools, macroGenerator) {
     let mappedKeys = [];
 
     function rewriteComputed() {
-      let mappedWithResolvedOberverKeys = mappedKeys.map((key, i) => {
+      let mappedWithResolvedOberverKeys = mappedKeys.map((macro, i) => {
         let shouldObserve = observerBools[i];
         if (shouldObserve) {
-          key = getValue({ context: this, key });
+          macro = getValue({ context: this, macro });
         }
-        return key;
+        return macro;
       });
 
       let cp = macroGenerator.apply(this, mappedWithResolvedOberverKeys);
@@ -124,9 +124,9 @@ export default function(observerBools, macroGenerator) {
     return computed(...flattenKeys(keys), function(key) {
       let propertyInstance = findOrCreatePropertyInstance(this, ObserverClass, key);
 
-      let properties = collapsedKeys.reduce((properties, key, i) => {
-        if (typeof key !== 'string') {
-          properties[i.toString()] = getValue({ context: this, key });
+      let properties = collapsedKeys.reduce((properties, macro, i) => {
+        if (typeof macro !== 'string') {
+          properties[i.toString()] = getValue({ context: this, macro });
         }
         return properties;
       }, {});

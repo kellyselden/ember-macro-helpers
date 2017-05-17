@@ -6,5 +6,5 @@ export default function(options = {}) {
     return value;
   }
 
-  return options.key;
+  return options.macro;
 }
