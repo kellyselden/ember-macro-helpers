@@ -18,10 +18,18 @@ const { defineProperty } = Ember;
 const PROPERTIES = new WeakMap();
 
 function findOrCreatePropertyInstance(context, propertyClass, key) {
+  let isComponent = context instanceof Component;
+
   let propertiesForContext = PROPERTIES.get(context);
   if (isNone(propertiesForContext)) {
     propertiesForContext = {};
     PROPERTIES.set(context, propertiesForContext);
+
+    if (isComponent) {
+      context.one('willDestroyElement', () => {
+        PROPERTIES.delete(context);
+      });
+    }
   }
 
   let property = propertiesForContext[key];
@@ -38,13 +46,10 @@ function findOrCreatePropertyInstance(context, propertyClass, key) {
 
   propertiesForContext[key] = property;
 
-  if (context instanceof Component) {
+  if (isComponent) {
     context.one('willDestroyElement', () => {
       property.destroy();
       delete propertiesForContext[key];
-      if (!Object.getOwnPropertyNames(propertiesForContext).length) {
-        PROPERTIES.delete(context);
-      }
     });
   }
 
