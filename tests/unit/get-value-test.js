@@ -44,7 +44,7 @@ module('Unit | get value');
       testKey: 'test value'
     };
 
-    let value = getValue({ context, key: 'testKey' });
+    let value = getValue({ context, macro: 'testKey' });
 
     assert.strictEqual(value, 'test value');
   });
@@ -52,9 +52,9 @@ module('Unit | get value');
   test('it evaluates computed properties', function(assert) {
     let context = {};
     let callback = sinon.stub().returns('test value');
-    let key = computed(callback);
+    let macro = computed(callback);
 
-    let value = getValue({ context, key });
+    let value = getValue({ context, macro });
 
     assert.strictEqual(callback.thisValues[0], context);
     assert.strictEqual(value, 'test value');
@@ -65,7 +65,7 @@ module('Unit | get value');
       testKey: false
     };
 
-    let value = getValue({ context, key: 'testKey' });
+    let value = getValue({ context, macro: 'testKey' });
 
     assert.strictEqual(value, false);
   });
@@ -74,7 +74,7 @@ module('Unit | get value');
 namedTest('getValue', 'returns undefined if property doesn\'t exist', function(assert) {
   let context = {};
 
-  let value = getValue({ context, key: 'testKey' });
+  let value = getValue({ context, macro: 'testKey' });
 
   assert.strictEqual(value, undefined);
 });
@@ -82,7 +82,7 @@ namedTest('getValue', 'returns undefined if property doesn\'t exist', function(a
 namedTest('getValueUnsafe', 'returns literal if property doesn\'t exist', function(assert) {
   let context = {};
 
-  let value = getValueUnsafe({ context, key: 'testKey' });
+  let value = getValueUnsafe({ context, macro: 'testKey' });
 
   assert.strictEqual(value, 'testKey');
 });

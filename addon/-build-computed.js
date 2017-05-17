@@ -38,7 +38,7 @@ export default function({ collapseKeys, getValue, flattenKeys, isLazy }) {
     let collapsedKeys = collapseKeys(keys);
 
     function createArgs(context) {
-      let bundledKeys = collapsedKeys.map(key => ({ context, key }));
+      let bundledKeys = collapsedKeys.map(macro => ({ context, macro }));
       let values;
       if (isLazy) {
         values = bundledKeys.slice();

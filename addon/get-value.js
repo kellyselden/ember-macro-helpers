@@ -1,14 +1,14 @@
 import get from 'ember-metal/get';
 import isComputed from './is-computed';
 
-export default function({ context, key } = {}) {
-  if (isComputed(key)) {
-    return key._getter.call(context);
+export default function({ context, macro } = {}) {
+  if (isComputed(macro)) {
+    return macro._getter.call(context);
   }
 
-  if (typeof key !== 'string') {
-    return key;
+  if (typeof macro !== 'string') {
+    return macro;
   }
 
-  return get(context, key);
+  return get(context, macro);
 }
