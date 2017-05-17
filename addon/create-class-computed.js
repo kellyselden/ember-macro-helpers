@@ -111,7 +111,9 @@ export default function(observerBools, macroGenerator) {
     });
 
     let ObserverClass = BaseClass.extend(classProperties, {
-      onInit: on('init', rewriteComputed)
+      // can't use rewriteComputed directly, maybe a bug
+      // https://github.com/emberjs/ember.js/issues/15246
+      onInit: on('init', function() { rewriteComputed.call(this); })
     });
 
     return computed(...flattenKeys(keys), function(key) {
