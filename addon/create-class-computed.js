@@ -102,11 +102,11 @@ export default function(observerBools, macroGenerator) {
         key = getOriginalArrayDecorator(key, i);
       }
 
-      key = resolveMappedLocation(key, i);
+      let mappedKey = resolveMappedLocation(key, i);
 
-      mappedKeys.push(key);
+      mappedKeys.push(mappedKey);
       if (shouldObserve) {
-        classProperties[`key${i}DidChange`] = observer(key, rewriteComputed);
+        classProperties[`key${i}DidChange`] = observer(mappedKey, rewriteComputed);
       }
     });
 
