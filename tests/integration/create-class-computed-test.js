@@ -307,8 +307,7 @@ test('composing: both macros are class computed', function(assert) {
   let array = emberA([
     EmberObject.create({ id: 1, test1: 'val1', test2: 'val1' }),
     EmberObject.create({ id: 2, test1: 'val2', test2: 'val1' }),
-    EmberObject.create({ id: 3, test1: 'val2', test2: 'val2' }),
-    EmberObject.create({ id: 3, test1: 'val1', test2: 'val2' })
+    EmberObject.create({ id: 3, test1: 'val2', test2: 'val2' })
   ]);
 
   let { subject } = compute({
@@ -323,6 +322,14 @@ test('composing: both macros are class computed', function(assert) {
   });
 
   assert.deepEqual(subject.get('computed').mapBy('id'), [1]);
+
+  subject.set('value1', 'val2');
+
+  assert.deepEqual(subject.get('computed').mapBy('id'), [2]);
+
+  subject.set('value2', 'val2');
+
+  assert.deepEqual(subject.get('computed').mapBy('id'), [3]);
 });
 
 test('it cleans up after destroy', function(assert) {
