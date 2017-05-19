@@ -1,11 +1,43 @@
 # Change Log
 
-## [Unreleased](https://github.com/kellyselden/ember-macro-helpers/tree/HEAD)
+## [v0.15.0](https://github.com/kellyselden/ember-macro-helpers/tree/v0.15.0) (2017-05-19)
+[Full Changelog](https://github.com/kellyselden/ember-macro-helpers/compare/v0.14.5...v0.15.0)
 
-[Full Changelog](https://github.com/kellyselden/ember-macro-helpers/compare/v0.14.1...HEAD)
+## [v0.14.5](https://github.com/kellyselden/ember-macro-helpers/tree/v0.14.5) (2017-05-19)
+[Full Changelog](https://github.com/kellyselden/ember-macro-helpers/compare/v0.14.4...v0.14.5)
 
 **Merged pull requests:**
 
+- add key invalidation support to getValue [\#107](https://github.com/kellyselden/ember-macro-helpers/pull/107) ([kellyselden](https://github.com/kellyselden))
+- Update ember-cli to the latest version 🚀 [\#106](https://github.com/kellyselden/ember-macro-helpers/pull/106) ([greenkeeper[bot]](https://github.com/integration/greenkeeper))
+- fix test [\#105](https://github.com/kellyselden/ember-macro-helpers/pull/105) ([kellyselden](https://github.com/kellyselden))
+- add class computed composing tests [\#103](https://github.com/kellyselden/ember-macro-helpers/pull/103) ([kellyselden](https://github.com/kellyselden))
+
+## [v0.14.4](https://github.com/kellyselden/ember-macro-helpers/tree/v0.14.4) (2017-05-17)
+[Full Changelog](https://github.com/kellyselden/ember-macro-helpers/compare/v0.14.3...v0.14.4)
+
+**Merged pull requests:**
+
+- use macro instead of key in getValue for future use of `key` [\#102](https://github.com/kellyselden/ember-macro-helpers/pull/102) ([kellyselden](https://github.com/kellyselden))
+- no need to deconstruct options here [\#101](https://github.com/kellyselden/ember-macro-helpers/pull/101) ([kellyselden](https://github.com/kellyselden))
+
+## [v0.14.3](https://github.com/kellyselden/ember-macro-helpers/tree/v0.14.3) (2017-05-17)
+[Full Changelog](https://github.com/kellyselden/ember-macro-helpers/compare/v0.14.2...v0.14.3)
+
+**Merged pull requests:**
+
+- separate willDestroyElement logic [\#100](https://github.com/kellyselden/ember-macro-helpers/pull/100) ([kellyselden](https://github.com/kellyselden))
+
+## [v0.14.2](https://github.com/kellyselden/ember-macro-helpers/tree/v0.14.2) (2017-05-17)
+[Full Changelog](https://github.com/kellyselden/ember-macro-helpers/compare/v0.14.1...v0.14.2)
+
+**Merged pull requests:**
+
+- fix composed class computed [\#108](https://github.com/kellyselden/ember-macro-helpers/pull/108) ([kellyselden](https://github.com/kellyselden))
+- rename mappedKey to better understand [\#99](https://github.com/kellyselden/ember-macro-helpers/pull/99) ([kellyselden](https://github.com/kellyselden))
+- eliminate rewriteComputed redundant calls [\#98](https://github.com/kellyselden/ember-macro-helpers/pull/98) ([kellyselden](https://github.com/kellyselden))
+- further assertions for create-class-computed [\#97](https://github.com/kellyselden/ember-macro-helpers/pull/97) ([kellyselden](https://github.com/kellyselden))
+- Update ember-cli-dependency-checker to the latest version 🚀 [\#96](https://github.com/kellyselden/ember-macro-helpers/pull/96) ([greenkeeper[bot]](https://github.com/integration/greenkeeper))
 - chore\(package\): update ember-cli-htmlbars to version 2.0.1 [\#95](https://github.com/kellyselden/ember-macro-helpers/pull/95) ([kellyselden](https://github.com/kellyselden))
 
 ## [v0.14.1](https://github.com/kellyselden/ember-macro-helpers/tree/v0.14.1) (2017-05-11)
