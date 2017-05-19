@@ -53,10 +53,12 @@ module('Unit | get value');
     let context = {};
     let callback = sinon.stub().returns('test value');
     let macro = computed(callback);
+    let key = 'computedName';
 
-    let value = getValue({ context, macro });
+    let value = getValue({ context, macro, key });
 
     assert.strictEqual(callback.thisValues[0], context);
+    assert.deepEqual(callback.args[0], [key]);
     assert.strictEqual(value, 'test value');
   });
 
