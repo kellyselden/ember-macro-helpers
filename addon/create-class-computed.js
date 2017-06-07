@@ -48,7 +48,16 @@ function findOrCreatePropertyInstance(context, propertyClass, key, cp) {
 
 const BaseClass = EmberObject.extend({
   computedDidChange: observer('computed', function() {
-    this.context.notifyPropertyChange(this.key);
+    let { context, key } = this;
+
+    if (context.isDestroying) {
+      // controllers can get into this state
+      this.destroy();
+
+      return;
+    }
+
+    context.notifyPropertyChange(key);
   })
 });
 
