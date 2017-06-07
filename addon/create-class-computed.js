@@ -4,7 +4,6 @@ import Component from 'ember-component';
 import computed from 'ember-computed';
 import on from 'ember-evented/on';
 import observer from 'ember-metal/observer';
-import { isNone } from 'ember-utils';
 // import getOwner from 'ember-owner/get';
 import get from 'ember-metal/get';
 import { setProperties } from 'ember-metal/set';
@@ -21,7 +20,7 @@ function findOrCreatePropertyInstance(context, propertyClass, key, cp) {
   let isComponent = context instanceof Component;
 
   let propertiesForContext = PROPERTIES.get(context);
-  if (isNone(propertiesForContext)) {
+  if (!propertiesForContext) {
     propertiesForContext = new WeakMap();
     PROPERTIES.set(context, propertiesForContext);
 
