@@ -4,6 +4,8 @@ import { module } from 'qunit';
 import sinon from 'sinon';
 import compute from 'ember-macro-test-helpers/compute';
 import namedTest from '../helpers/named-test';
+import ArrayProxy from '@ember/array/proxy';
+import { A as emberA } from '@ember/array';
 
 const getReturnValue = 'get return value test';
 const setReturnValue = 'set return value test';
@@ -186,6 +188,18 @@ namedTest('computed', 'function syntax: resolves array [] keys', function(assert
   assert.deepEqual(getCallback.args[1], ['123']);
 });
 
+namedTest('computed', 'function syntax: resolves ArrayProxy []', function(assert) {
+  compute({
+    baseClass: ArrayProxy,
+    computed: computed('[]', getCallback),
+    properties: {
+      content: emberA(['123'])
+    }
+  });
+
+  assert.deepEqual(getCallback.args[1][0].toArray(), ['123']);
+});
+
 namedTest('computed', 'function syntax: resolves array @each keys', function(assert) {
   compute({
     computed: computed('key1.@each.key2', getCallback),
@@ -195,6 +209,18 @@ namedTest('computed', 'function syntax: resolves array @each keys', function(ass
   });
 
   assert.deepEqual(getCallback.args[1], ['123']);
+});
+
+namedTest('computed', 'function syntax: resolves ArrayProxy @each', function(assert) {
+  compute({
+    baseClass: ArrayProxy,
+    computed: computed('@each.key1', getCallback),
+    properties: {
+      content: emberA([{ key1: '123' }])
+    }
+  });
+
+  assert.deepEqual(getCallback.args[1][0].toArray(), [{ key1: '123' }]);
 });
 
 namedTest('computed', 'function syntax: expands properties', function(assert) {

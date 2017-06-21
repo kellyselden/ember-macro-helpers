@@ -17,6 +17,13 @@ test('it collapses array.[]', function(assert) {
   );
 });
 
+test('it collapses []', function(assert) {
+  assert.deepEqual(
+    collapseKey('[]'),
+    ['']
+  );
+});
+
 test('it collapses array.@each', function(assert) {
   assert.deepEqual(
     collapseKey('foo.@each.bar'),
@@ -24,10 +31,24 @@ test('it collapses array.@each', function(assert) {
   );
 });
 
+test('it collapses @each', function(assert) {
+  assert.deepEqual(
+    collapseKey('@each.bar'),
+    ['']
+  );
+});
+
 test('it collapses array.@each with brace expansion', function(assert) {
   assert.deepEqual(
     collapseKey('foo.@each.{bar,baz}'),
     ['foo']
+  );
+});
+
+test('it collapses @each with brace expansion', function(assert) {
+  assert.deepEqual(
+    collapseKey('@each.{bar,baz}'),
+    ['']
   );
 });
 

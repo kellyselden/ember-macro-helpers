@@ -57,6 +57,18 @@ test('it does not alter array.[] with empty keys', function(assert) {
   assert.strictEqual(result, 'foo.bar.[]');
 });
 
+test('it does not alter []', function(assert) {
+  let result = normalizeArrayKey('[]');
+
+  assert.strictEqual(result, '[]');
+});
+
+test('it does not alter [] with empty keys', function(assert) {
+  let result = normalizeArrayKey('[]', []);
+
+  assert.strictEqual(result, '[]');
+});
+
 test('it does not alter array.@each.prop', function(assert) {
   let result = normalizeArrayKey('foo.bar.@each.prop');
 
@@ -67,6 +79,18 @@ test('it does not alter array.@each.prop with empty keys', function(assert) {
   let result = normalizeArrayKey('foo.bar.@each.prop', []);
 
   assert.strictEqual(result, 'foo.bar.@each.prop');
+});
+
+test('it does not alter @each.prop', function(assert) {
+  let result = normalizeArrayKey('@each.prop');
+
+  assert.strictEqual(result, '@each.prop');
+});
+
+test('it does not alter @each.prop with empty keys', function(assert) {
+  let result = normalizeArrayKey('@each.prop', []);
+
+  assert.strictEqual(result, '@each.prop');
 });
 
 test('it watches array prop when raw array', function(assert) {
