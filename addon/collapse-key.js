@@ -1,13 +1,17 @@
 import expandProperty from './expand-property';
+import {
+  ARRAY_EACH,
+  ARRAY_LENGTH
+} from './-constants';
 
 export default function(property) {
   if (typeof property !== 'string') {
     return [property];
   }
 
-  let arrayIndex = property.indexOf('@each.');
+  let arrayIndex = property.indexOf(ARRAY_EACH);
   if (arrayIndex === -1) {
-    arrayIndex = property.indexOf('[]');
+    arrayIndex = property.indexOf(ARRAY_LENGTH);
   }
 
   if (arrayIndex === 0) {

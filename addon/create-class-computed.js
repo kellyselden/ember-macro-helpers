@@ -7,6 +7,10 @@ import WeakMap from 'ember-weakmap';
 import getValue from './get-value';
 import { collapseKeysWithMap } from './collapse-keys';
 import flattenKeys from './flatten-keys';
+import {
+  ARRAY_EACH,
+  ARRAY_LENGTH
+} from './-constants';
 
 const { defineProperty } = Ember;
 
@@ -72,7 +76,7 @@ export default function(observerBools, macroGenerator) {
     function getOriginalArrayDecorator(key, i) {
       if (typeof key === 'string') {
         let originalKey = keys[keyMap[i]];
-        if (originalKey.indexOf('[]') !== -1 || originalKey.indexOf('@each.') !== -1) {
+        if (originalKey.indexOf(ARRAY_EACH) !== -1 || originalKey.indexOf(ARRAY_LENGTH) !== -1) {
           return originalKey;
         }
       }
