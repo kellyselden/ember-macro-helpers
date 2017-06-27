@@ -20,13 +20,13 @@
     "nodetest": "mocha node-tests --recursive"
   },
   "dependencies": {
-    "ember-cli-babel": "^6.0.0",
+    "ember-cli-babel": "^6.3.0",
     "ember-cli-string-utils": "^1.1.0",
     "ember-cli-test-info": "^1.0.0",
     "ember-weakmap": "^2.0.0"
   },
   "devDependencies": {
-    "ember-cli": "2.13.2",
+    "ember-cli": "2.13.3",
     "ember-cli-blueprint-test-helpers": "^0.17.0",
     "ember-cli-dependency-checker": "^2.0.0",
     "ember-cli-eslint": "^4.0.0",
@@ -34,17 +34,17 @@
     "ember-cli-inject-live-reload": "^1.4.1",
     "ember-cli-qunit": "^4.0.0",
     "ember-cli-shims": "^1.1.0",
-    "ember-data": "^2.13.1",
-    "ember-disable-prototype-extensions": "^1.1.0",
+    "ember-data": "^2.13.2",
+    "ember-disable-prototype-extensions": "^1.1.2",
     "ember-macro-test-helpers": "^3.0.0",
     "ember-resolver": "^4.0.0",
     "ember-sinon": "0.7.0",
-    "ember-source": "~2.13.0",
+    "ember-source": "~2.13.3",
     "loader.js": "^4.2.3",
     "mocha": "^3.0.0"
   },
   "engines": {
-    "node": ">= 4"
+    "node": "^4.5 || 6.* || >= 7.*"
   },
   "ember-addon": {
     "configPath": "tests/dummy/config"
