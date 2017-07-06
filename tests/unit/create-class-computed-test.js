@@ -1,8 +1,8 @@
 import createClassComputed from 'ember-macro-helpers/create-class-computed';
 import computed from 'ember-macro-helpers/computed';
 import { module, test } from 'qunit';
-import EmberObject from 'ember-object';
-import { A as emberA } from 'ember-array/utils';
+import EmberObject from '@ember/object';
+import { A as emberA } from '@ember/array';
 import sinon from 'sinon';
 import compute from 'ember-macro-test-helpers/compute';
 import destroy from '../helpers/destroy';

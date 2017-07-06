@@ -1,4 +1,4 @@
-import Ember from 'ember';
+import { run } from '@ember/runloop';
 import { moduleFor, test } from 'ember-qunit';
 
 let store;
@@ -12,7 +12,7 @@ moduleFor('controller:dummy', 'Unit | Controller | dummy', {
 });
 
 test('it doesn\'t have detroyed errors when working with controllers + async model relationships', function(assert) {
-  let model = Ember.run(() => {
+  let model = run(() => {
     return store.createRecord('parent', {
       children: [
         store.createRecord('child', { name: 'foo' }),

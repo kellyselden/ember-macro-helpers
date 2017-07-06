@@ -1,4 +1,4 @@
-import run, { scheduleOnce } from 'ember-runloop';
+import { run, scheduleOnce } from '@ember/runloop';
 
 export default function(subject, callback) {
   run(() => {

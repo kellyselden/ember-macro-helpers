@@ -1,4 +1,4 @@
-import computed from 'ember-computed';
+import { computed } from '@ember/object';
 
 function parseComputedArgs(args) {
   return {

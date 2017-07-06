@@ -1,4 +1,4 @@
-import get from 'ember-metal/get';
+import { get } from '@ember/object';
 import isComputed from './is-computed';
 
 export default function({ context, macro, key } = {}) {

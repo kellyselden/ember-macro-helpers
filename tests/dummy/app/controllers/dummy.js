@@ -1,7 +1,7 @@
-import Ember from 'ember';
+import Controller from '@ember/controller';
 import raw from 'ember-macro-helpers/raw';
 import mapBy from 'dummy/macros/map-by';
 
-export default Ember.Controller.extend({
+export default Controller.extend({
   childNames: mapBy('model.children', raw('name'))
 });
