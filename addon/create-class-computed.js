@@ -1,12 +1,8 @@
 import Ember from 'ember';
-import EmberObject from 'ember-object';
-import Component from 'ember-component';
-import computed from 'ember-computed';
-import on from 'ember-evented/on';
-import observer from 'ember-metal/observer';
-// import getOwner from 'ember-owner/get';
-import get from 'ember-metal/get';
-import { setProperties } from 'ember-metal/set';
+import EmberObject, { computed, observer, get, setProperties } from '@ember/object';
+import Component from '@ember/component';
+import { on } from '@ember/object/evented'
+// import { getOwner } from '@ember/application';
 import WeakMap from 'ember-weakmap';
 import getValue from './get-value';
 import { collapseKeysWithMap } from './collapse-keys';

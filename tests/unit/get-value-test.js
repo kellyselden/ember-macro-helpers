@@ -1,4 +1,4 @@
-import computed from 'ember-computed';
+import { computed } from '@ember/object';
 import getValue from 'ember-macro-helpers/get-value';
 import getValueUnsafe from 'ember-macro-helpers/get-value-unsafe';
 import { module } from 'qunit';
