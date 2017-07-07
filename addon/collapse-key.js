@@ -5,15 +5,15 @@ export default function(property) {
     return [property];
   }
 
-  let atEachIndex = property.indexOf('@each.');
-  if (atEachIndex === -1) {
-    atEachIndex = property.indexOf('[]');
+  let arrayIndex = property.indexOf('@each.');
+  if (arrayIndex === -1) {
+    arrayIndex = property.indexOf('[]');
   }
 
-  if (atEachIndex === 0) {
+  if (arrayIndex === 0) {
     return [''];
-  } else if (atEachIndex > 0) {
-    return [property.slice(0, atEachIndex - 1)];
+  } else if (arrayIndex > 0) {
+    return [property.slice(0, arrayIndex - 1)];
   }
 
   return expandProperty(property);
