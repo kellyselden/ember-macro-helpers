@@ -72,7 +72,7 @@ export default function(observerBools, macroGenerator) {
     function getOriginalArrayDecorator(key, i) {
       if (typeof key === 'string') {
         let originalKey = keys[keyMap[i]];
-        if (originalKey.indexOf('.[]') !== -1 || originalKey.indexOf('.@each') !== -1) {
+        if (originalKey.indexOf('[]') !== -1 || originalKey.indexOf('@each.') !== -1) {
           return originalKey;
         }
       }

@@ -5,11 +5,15 @@ export default function(property) {
     return [property];
   }
 
-  let atEachIndex = property.indexOf('.@each');
-  if (atEachIndex !== -1) {
-    return [property.slice(0, atEachIndex)];
-  } else if (property.slice(-2) === '[]') {
-    return [property.slice(0, -3)];
+  let atEachIndex = property.indexOf('@each.');
+  if (atEachIndex === -1) {
+    atEachIndex = property.indexOf('[]');
+  }
+
+  if (atEachIndex === 0) {
+    return [''];
+  } else if (atEachIndex > 0) {
+    return [property.slice(0, atEachIndex - 1)];
   }
 
   return expandProperty(property);

@@ -71,6 +71,16 @@ module('Unit | get value');
 
     assert.strictEqual(value, false);
   });
+
+  test('returns the context if the macro is blank', function(assert) {
+    let context = {
+      testKey: 'test value'
+    };
+
+    let value = getValue({ context, macro: '' });
+
+    assert.strictEqual(value, context);
+  });
 });
 
 namedTest('getValue', 'returns undefined if property doesn\'t exist', function(assert) {

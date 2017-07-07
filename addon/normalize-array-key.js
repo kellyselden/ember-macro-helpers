@@ -1,3 +1,5 @@
+import { isBlank } from '@ember/utils';
+
 export default function(array, keys = []) {
   // this macro support should be extracted out
   // we should only deal with string keys in here
@@ -7,7 +9,7 @@ export default function(array, keys = []) {
 
   let props;
 
-  let i = array.indexOf('.@each');
+  let i = array.indexOf('@each.');
   if (i !== -1) {
     let chain = array.split('.');
     let end = chain[chain.length - 1];
@@ -17,12 +19,14 @@ export default function(array, keys = []) {
       props = [end];
     }
   } else {
-    i = array.indexOf('.[]');
+    i = array.indexOf('[]');
     props = [];
   }
 
-  if (i !== -1) {
-    array = array.substr(0, i);
+  if (i === 0) {
+    array = ''
+  } else if (i > 0) {
+    array = array.slice(0, i - 1);
   }
 
   keys.forEach(key => {
@@ -48,5 +52,5 @@ export default function(array, keys = []) {
     }
   }
 
-  return `${array}.${suffix}`;
+  return isBlank(array) ? suffix : `${array}.${suffix}`;
 }
