@@ -1,5 +1,33 @@
 # Change Log
 
+## [v0.16.0](https://github.com/kellyselden/ember-macro-helpers/tree/v0.16.0) (2017-07-07)
+[Full Changelog](https://github.com/kellyselden/ember-macro-helpers/compare/v0.15.1...v0.16.0)
+
+**Closed issues:**
+
+- Unexpected behavior with Ember.ArrayProxy [\#109](https://github.com/kellyselden/ember-macro-helpers/issues/109)
+
+**Merged pull requests:**
+
+- create constants file for special array strings [\#124](https://github.com/kellyselden/ember-macro-helpers/pull/124) ([kellyselden](https://github.com/kellyselden))
+- add empty string comment [\#123](https://github.com/kellyselden/ember-macro-helpers/pull/123) ([kellyselden](https://github.com/kellyselden))
+- use a more generic var name for array keys [\#122](https://github.com/kellyselden/ember-macro-helpers/pull/122) ([kellyselden](https://github.com/kellyselden))
+- add eslint-config-sane [\#121](https://github.com/kellyselden/ember-macro-helpers/pull/121) ([kellyselden](https://github.com/kellyselden))
+- Use new module imports [\#120](https://github.com/kellyselden/ember-macro-helpers/pull/120) ([Turbo87](https://github.com/Turbo87))
+- Update ember-source to the latest version 🚀 [\#118](https://github.com/kellyselden/ember-macro-helpers/pull/118) ([greenkeeper[bot]](https://github.com/apps/greenkeeper))
+- "ember-cli": "2.13.3" [\#117](https://github.com/kellyselden/ember-macro-helpers/pull/117) ([kellyselden](https://github.com/kellyselden))
+- Update ember-cli-eslint to the latest version 🚀 [\#115](https://github.com/kellyselden/ember-macro-helpers/pull/115) ([greenkeeper[bot]](https://github.com/apps/greenkeeper))
+- Improve compatibility with Ember.ArrayProxy. Fixes \#109 [\#110](https://github.com/kellyselden/ember-macro-helpers/pull/110) ([mwpastore](https://github.com/mwpastore))
+
+## [v0.15.1](https://github.com/kellyselden/ember-macro-helpers/tree/v0.15.1) (2017-06-07)
+[Full Changelog](https://github.com/kellyselden/ember-macro-helpers/compare/v0.15.0...v0.15.1)
+
+**Merged pull requests:**
+
+- fix controllers + async model relationships [\#114](https://github.com/kellyselden/ember-macro-helpers/pull/114) ([kellyselden](https://github.com/kellyselden))
+- rely on WeakMap instead of deleting [\#113](https://github.com/kellyselden/ember-macro-helpers/pull/113) ([kellyselden](https://github.com/kellyselden))
+- isNone is not needed for WeakMaps [\#112](https://github.com/kellyselden/ember-macro-helpers/pull/112) ([kellyselden](https://github.com/kellyselden))
+
 ## [v0.15.0](https://github.com/kellyselden/ember-macro-helpers/tree/v0.15.0) (2017-05-19)
 [Full Changelog](https://github.com/kellyselden/ember-macro-helpers/compare/v0.14.5...v0.15.0)
 
@@ -9,7 +37,7 @@
 **Merged pull requests:**
 
 - add key invalidation support to getValue [\#107](https://github.com/kellyselden/ember-macro-helpers/pull/107) ([kellyselden](https://github.com/kellyselden))
-- Update ember-cli to the latest version 🚀 [\#106](https://github.com/kellyselden/ember-macro-helpers/pull/106) ([greenkeeper[bot]](https://github.com/integration/greenkeeper))
+- Update ember-cli to the latest version 🚀 [\#106](https://github.com/kellyselden/ember-macro-helpers/pull/106) ([greenkeeper[bot]](https://github.com/apps/greenkeeper))
 - fix test [\#105](https://github.com/kellyselden/ember-macro-helpers/pull/105) ([kellyselden](https://github.com/kellyselden))
 - add class computed composing tests [\#103](https://github.com/kellyselden/ember-macro-helpers/pull/103) ([kellyselden](https://github.com/kellyselden))
 
@@ -37,7 +65,7 @@
 - rename mappedKey to better understand [\#99](https://github.com/kellyselden/ember-macro-helpers/pull/99) ([kellyselden](https://github.com/kellyselden))
 - eliminate rewriteComputed redundant calls [\#98](https://github.com/kellyselden/ember-macro-helpers/pull/98) ([kellyselden](https://github.com/kellyselden))
 - further assertions for create-class-computed [\#97](https://github.com/kellyselden/ember-macro-helpers/pull/97) ([kellyselden](https://github.com/kellyselden))
-- Update ember-cli-dependency-checker to the latest version 🚀 [\#96](https://github.com/kellyselden/ember-macro-helpers/pull/96) ([greenkeeper[bot]](https://github.com/integration/greenkeeper))
+- Update ember-cli-dependency-checker to the latest version 🚀 [\#96](https://github.com/kellyselden/ember-macro-helpers/pull/96) ([greenkeeper[bot]](https://github.com/apps/greenkeeper))
 - chore\(package\): update ember-cli-htmlbars to version 2.0.1 [\#95](https://github.com/kellyselden/ember-macro-helpers/pull/95) ([kellyselden](https://github.com/kellyselden))
 
 ## [v0.14.1](https://github.com/kellyselden/ember-macro-helpers/tree/v0.14.1) (2017-05-11)
@@ -49,9 +77,9 @@
 
 **Merged pull requests:**
 
-- Update ember-macro-test-helpers to the latest version 🚀 [\#93](https://github.com/kellyselden/ember-macro-helpers/pull/93) ([greenkeeper[bot]](https://github.com/integration/greenkeeper))
+- Update ember-macro-test-helpers to the latest version 🚀 [\#93](https://github.com/kellyselden/ember-macro-helpers/pull/93) ([greenkeeper[bot]](https://github.com/apps/greenkeeper))
 - only bind to `willDestroyElement` for components [\#91](https://github.com/kellyselden/ember-macro-helpers/pull/91) ([kellyselden](https://github.com/kellyselden))
-- Update ember-cli to the latest version 🚀 [\#90](https://github.com/kellyselden/ember-macro-helpers/pull/90) ([greenkeeper[bot]](https://github.com/integration/greenkeeper))
+- Update ember-cli to the latest version 🚀 [\#90](https://github.com/kellyselden/ember-macro-helpers/pull/90) ([greenkeeper[bot]](https://github.com/apps/greenkeeper))
 
 ## [v0.14.0](https://github.com/kellyselden/ember-macro-helpers/tree/v0.14.0) (2017-04-30)
 [Full Changelog](https://github.com/kellyselden/ember-macro-helpers/compare/v0.13.1...v0.14.0)
@@ -71,7 +99,7 @@
 
 - chore\(package\): update ember-cli to version 2.13.0 [\#89](https://github.com/kellyselden/ember-macro-helpers/pull/89) ([kellyselden](https://github.com/kellyselden))
 - fix createClassComputed docs [\#86](https://github.com/kellyselden/ember-macro-helpers/pull/86) ([kellyselden](https://github.com/kellyselden))
-- Update ember-source to the latest version 🚀 [\#83](https://github.com/kellyselden/ember-macro-helpers/pull/83) ([greenkeeper[bot]](https://github.com/integration/greenkeeper))
+- Update ember-source to the latest version 🚀 [\#83](https://github.com/kellyselden/ember-macro-helpers/pull/83) ([greenkeeper[bot]](https://github.com/apps/greenkeeper))
 - use currying in build-computed [\#82](https://github.com/kellyselden/ember-macro-helpers/pull/82) ([kellyselden](https://github.com/kellyselden))
 
 ## [v0.13.0](https://github.com/kellyselden/ember-macro-helpers/tree/v0.13.0) (2017-04-28)
@@ -89,8 +117,8 @@
 - use optional params system for buildComputed [\#79](https://github.com/kellyselden/ember-macro-helpers/pull/79) ([kellyselden](https://github.com/kellyselden))
 - getValue refactor breaking change for people explicitly using it [\#78](https://github.com/kellyselden/ember-macro-helpers/pull/78) ([kellyselden](https://github.com/kellyselden))
 - refactor buildCallback [\#77](https://github.com/kellyselden/ember-macro-helpers/pull/77) ([kellyselden](https://github.com/kellyselden))
-- Update ember-cli to the latest version 🚀 [\#75](https://github.com/kellyselden/ember-macro-helpers/pull/75) ([greenkeeper[bot]](https://github.com/integration/greenkeeper))
-- Update ember-cli-babel to the latest version 🚀 [\#74](https://github.com/kellyselden/ember-macro-helpers/pull/74) ([greenkeeper[bot]](https://github.com/integration/greenkeeper))
+- Update ember-cli to the latest version 🚀 [\#75](https://github.com/kellyselden/ember-macro-helpers/pull/75) ([greenkeeper[bot]](https://github.com/apps/greenkeeper))
+- Update ember-cli-babel to the latest version 🚀 [\#74](https://github.com/kellyselden/ember-macro-helpers/pull/74) ([greenkeeper[bot]](https://github.com/apps/greenkeeper))
 
 ## [v0.12.2](https://github.com/kellyselden/ember-macro-helpers/tree/v0.12.2) (2017-04-21)
 [Full Changelog](https://github.com/kellyselden/ember-macro-helpers/compare/v0.12.1...v0.12.2)
@@ -137,9 +165,9 @@
 
 - add Marco to contributors [\#62](https://github.com/kellyselden/ember-macro-helpers/pull/62) ([kellyselden](https://github.com/kellyselden))
 - chore\(package\): update ember-cli to version 2.12.1 [\#61](https://github.com/kellyselden/ember-macro-helpers/pull/61) ([kellyselden](https://github.com/kellyselden))
-- Update ember-sinon to the latest version 🚀 [\#60](https://github.com/kellyselden/ember-macro-helpers/pull/60) ([greenkeeper[bot]](https://github.com/integration/greenkeeper))
-- Update ember-cli-test-loader to the latest version 🚀 [\#59](https://github.com/kellyselden/ember-macro-helpers/pull/59) ([greenkeeper[bot]](https://github.com/integration/greenkeeper))
-- Update ember-resolver to the latest version 🚀 [\#58](https://github.com/kellyselden/ember-macro-helpers/pull/58) ([greenkeeper[bot]](https://github.com/integration/greenkeeper))
+- Update ember-sinon to the latest version 🚀 [\#60](https://github.com/kellyselden/ember-macro-helpers/pull/60) ([greenkeeper[bot]](https://github.com/apps/greenkeeper))
+- Update ember-cli-test-loader to the latest version 🚀 [\#59](https://github.com/kellyselden/ember-macro-helpers/pull/59) ([greenkeeper[bot]](https://github.com/apps/greenkeeper))
+- Update ember-resolver to the latest version 🚀 [\#58](https://github.com/kellyselden/ember-macro-helpers/pull/58) ([greenkeeper[bot]](https://github.com/apps/greenkeeper))
 
 ## [v0.10.0](https://github.com/kellyselden/ember-macro-helpers/tree/v0.10.0) (2017-03-19)
 [Full Changelog](https://github.com/kellyselden/ember-macro-helpers/compare/v0.9.2...v0.10.0)
@@ -147,13 +175,13 @@
 **Merged pull requests:**
 
 - document createClassComputed [\#57](https://github.com/kellyselden/ember-macro-helpers/pull/57) ([kellyselden](https://github.com/kellyselden))
-- Update ember-source to the latest version 🚀 [\#54](https://github.com/kellyselden/ember-macro-helpers/pull/54) ([greenkeeper[bot]](https://github.com/integration/greenkeeper))
-- Update ember-resolver to the latest version 🚀 [\#53](https://github.com/kellyselden/ember-macro-helpers/pull/53) ([greenkeeper[bot]](https://github.com/integration/greenkeeper))
+- Update ember-source to the latest version 🚀 [\#54](https://github.com/kellyselden/ember-macro-helpers/pull/54) ([greenkeeper[bot]](https://github.com/apps/greenkeeper))
+- Update ember-resolver to the latest version 🚀 [\#53](https://github.com/kellyselden/ember-macro-helpers/pull/53) ([greenkeeper[bot]](https://github.com/apps/greenkeeper))
 - add create-class-computed ability [\#51](https://github.com/kellyselden/ember-macro-helpers/pull/51) ([kellyselden](https://github.com/kellyselden))
-- Update ember-cli-blueprint-test-helpers to the latest version 🚀 [\#50](https://github.com/kellyselden/ember-macro-helpers/pull/50) ([greenkeeper[bot]](https://github.com/integration/greenkeeper))
-- Update ember-cli-blueprint-test-helpers to the latest version 🚀 [\#49](https://github.com/kellyselden/ember-macro-helpers/pull/49) ([greenkeeper[bot]](https://github.com/integration/greenkeeper))
+- Update ember-cli-blueprint-test-helpers to the latest version 🚀 [\#50](https://github.com/kellyselden/ember-macro-helpers/pull/50) ([greenkeeper[bot]](https://github.com/apps/greenkeeper))
+- Update ember-cli-blueprint-test-helpers to the latest version 🚀 [\#49](https://github.com/kellyselden/ember-macro-helpers/pull/49) ([greenkeeper[bot]](https://github.com/apps/greenkeeper))
 - remove SKIP\_DEP\_INSTALL workaround [\#48](https://github.com/kellyselden/ember-macro-helpers/pull/48) ([kellyselden](https://github.com/kellyselden))
-- Update ember-cli-blueprint-test-helpers to the latest version 🚀 [\#47](https://github.com/kellyselden/ember-macro-helpers/pull/47) ([greenkeeper[bot]](https://github.com/integration/greenkeeper))
+- Update ember-cli-blueprint-test-helpers to the latest version 🚀 [\#47](https://github.com/kellyselden/ember-macro-helpers/pull/47) ([greenkeeper[bot]](https://github.com/apps/greenkeeper))
 
 ## [v0.9.2](https://github.com/kellyselden/ember-macro-helpers/tree/v0.9.2) (2017-02-12)
 [Full Changelog](https://github.com/kellyselden/ember-macro-helpers/compare/v0.9.1...v0.9.2)
@@ -168,7 +196,7 @@
 - remove broccoli-asset-rev [\#41](https://github.com/kellyselden/ember-macro-helpers/pull/41) ([kellyselden](https://github.com/kellyselden))
 - remove ember-cli-app-version [\#40](https://github.com/kellyselden/ember-macro-helpers/pull/40) ([kellyselden](https://github.com/kellyselden))
 - remove ember-export-application-global [\#39](https://github.com/kellyselden/ember-macro-helpers/pull/39) ([kellyselden](https://github.com/kellyselden))
-- Update ember-cli to the latest version 🚀 [\#38](https://github.com/kellyselden/ember-macro-helpers/pull/38) ([greenkeeper[bot]](https://github.com/integration/greenkeeper))
+- Update ember-cli to the latest version 🚀 [\#38](https://github.com/kellyselden/ember-macro-helpers/pull/38) ([greenkeeper[bot]](https://github.com/apps/greenkeeper))
 - Readme: fix `curriedComputed` example [\#37](https://github.com/kellyselden/ember-macro-helpers/pull/37) ([lolmaus](https://github.com/lolmaus))
 
 ## [v0.9.1](https://github.com/kellyselden/ember-macro-helpers/tree/v0.9.1) (2017-01-28)
@@ -238,7 +266,7 @@
 - add writable macro and reads alias [\#15](https://github.com/kellyselden/ember-macro-helpers/pull/15) ([kellyselden](https://github.com/kellyselden))
 - test rename [\#14](https://github.com/kellyselden/ember-macro-helpers/pull/14) ([kellyselden](https://github.com/kellyselden))
 - add raw macro and literal alias [\#13](https://github.com/kellyselden/ember-macro-helpers/pull/13) ([kellyselden](https://github.com/kellyselden))
-- Update ember-macro-test-helpers to the latest version 🚀 [\#12](https://github.com/kellyselden/ember-macro-helpers/pull/12) ([greenkeeper[bot]](https://github.com/integration/greenkeeper))
+- Update ember-macro-test-helpers to the latest version 🚀 [\#12](https://github.com/kellyselden/ember-macro-helpers/pull/12) ([greenkeeper[bot]](https://github.com/apps/greenkeeper))
 
 ## [v0.4.0](https://github.com/kellyselden/ember-macro-helpers/tree/v0.4.0) (2016-12-17)
 [Full Changelog](https://github.com/kellyselden/ember-macro-helpers/compare/v0.3.0...v0.4.0)
@@ -257,7 +285,7 @@
 **Merged pull requests:**
 
 - consolidate with ember-moment [\#5](https://github.com/kellyselden/ember-macro-helpers/pull/5) ([kellyselden](https://github.com/kellyselden))
-- Update dependencies to enable Greenkeeper 🌴 [\#4](https://github.com/kellyselden/ember-macro-helpers/pull/4) ([greenkeeper[bot]](https://github.com/integration/greenkeeper))
+- Update dependencies to enable Greenkeeper 🌴 [\#4](https://github.com/kellyselden/ember-macro-helpers/pull/4) ([greenkeeper[bot]](https://github.com/apps/greenkeeper))
 - ember-cli@2.10.0 [\#3](https://github.com/kellyselden/ember-macro-helpers/pull/3) ([kellyselden](https://github.com/kellyselden))
 
 ## [v0.2.0](https://github.com/kellyselden/ember-macro-helpers/tree/v0.2.0) (2016-11-16)
