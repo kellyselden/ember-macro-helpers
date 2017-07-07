@@ -26,7 +26,7 @@ export default function(array, keys = []) {
   if (i === 0) {
     array = '';
   } else if (i > 0) {
-    array = array.slice(0, i - 1);
+    array = array.substring(0, i - 1);
   }
 
   keys.forEach(key => {
