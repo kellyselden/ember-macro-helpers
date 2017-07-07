@@ -24,6 +24,8 @@ export default function(array, keys = []) {
   }
 
   if (i === 0) {
+    // empty string will be handled later by `getValue`
+    // and will convert to `this`
     array = '';
   } else if (i > 0) {
     array = array.slice(0, i - 1);
