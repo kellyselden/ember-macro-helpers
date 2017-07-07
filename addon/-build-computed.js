@@ -52,7 +52,7 @@ export default function({ collapseKeys, getValue, flattenKeys, isLazy }) {
     let newCallback = buildCallback({ incomingCallback, createArgs });
 
     return computed(...flattenKeys(keys), newCallback);
-  }
+  };
 }
 
 export function buildCurriedComputed(computed) {

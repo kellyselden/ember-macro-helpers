@@ -24,7 +24,7 @@ export default function(array, keys = []) {
   }
 
   if (i === 0) {
-    array = ''
+    array = '';
   } else if (i > 0) {
     array = array.slice(0, i - 1);
   }

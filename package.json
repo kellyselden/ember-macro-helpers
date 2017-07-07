@@ -40,6 +40,7 @@
     "ember-resolver": "^4.0.0",
     "ember-sinon": "0.7.0",
     "ember-source": "~2.14.0",
+    "eslint-config-sane": "^0.1.0",
     "loader.js": "^4.2.3",
     "mocha": "^3.0.0"
   },
