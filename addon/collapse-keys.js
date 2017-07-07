@@ -21,7 +21,7 @@ export function collapseKeysWithMap(keys) {
   return {
     collapsedKeys,
     keyMap
-  }
+  };
 }
 
 export default function(keys) {

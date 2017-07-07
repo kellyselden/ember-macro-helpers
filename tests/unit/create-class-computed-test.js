@@ -165,5 +165,5 @@ test('it cleans up after destroy', function(assert) {
     array.set('1.test2', 2);
 
     assert.equal(callback.callCount, 2);
-  })
+  });
 });

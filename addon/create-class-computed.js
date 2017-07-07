@@ -1,7 +1,7 @@
 import Ember from 'ember';
 import EmberObject, { computed, observer, get, setProperties } from '@ember/object';
 import Component from '@ember/component';
-import { on } from '@ember/object/evented'
+import { on } from '@ember/object/evented';
 // import { getOwner } from '@ember/application';
 import WeakMap from 'ember-weakmap';
 import getValue from './get-value';
@@ -25,7 +25,7 @@ function findOrCreatePropertyInstance(context, propertyClass, key, cp) {
   }
 
   // let owner = getOwner(context);
-  property = propertyClass.create(/*owner.ownerInjection(), */{
+  property = propertyClass.create(/* owner.ownerInjection(), */{
     key,
     context,
     nonStrings: EmberObject.create()
@@ -113,7 +113,9 @@ export default function(observerBools, macroGenerator) {
     let ObserverClass = BaseClass.extend(classProperties, {
       // can't use rewriteComputed directly, maybe a bug
       // https://github.com/emberjs/ember.js/issues/15246
-      onInit: on('init', function() { rewriteComputed.call(this); })
+      onInit: on('init', function() {
+        rewriteComputed.call(this);
+      })
     });
 
     let cp = computed(...flattenKeys(keys), function(key) {

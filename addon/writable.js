@@ -2,7 +2,9 @@ import computed from './computed';
 
 export default function(getter, setterCallback) {
   let newCallback = {
-    get(val) { return val; }
+    get(val) {
+      return val;
+    }
   };
 
   if (setterCallback) {
