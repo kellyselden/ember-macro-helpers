@@ -11,6 +11,8 @@ export default function(property) {
   }
 
   if (arrayIndex === 0) {
+    // empty string will be handled later by `getValue`
+    // and will convert to `this`
     return [''];
   } else if (arrayIndex > 0) {
     return [property.slice(0, arrayIndex - 1)];
