@@ -23,7 +23,7 @@
     "ember-cli-babel": "^6.6.0",
     "ember-cli-string-utils": "^1.1.0",
     "ember-cli-test-info": "^1.0.0",
-    "ember-weakmap": "^2.0.0"
+    "ember-weakmap": "^3.0.0"
   },
   "devDependencies": {
     "ember-cli": "~2.14.2",

@@ -3,7 +3,6 @@ import EmberObject, { computed, observer, get, setProperties } from '@ember/obje
 import Component from '@ember/component';
 import { on } from '@ember/object/evented';
 // import { getOwner } from '@ember/application';
-import WeakMap from 'ember-weakmap';
 import getValue from './get-value';
 import { collapseKeysWithMap } from './collapse-keys';
 import flattenKeys from './flatten-keys';
@@ -12,7 +11,11 @@ import {
   ARRAY_LENGTH
 } from './-constants';
 
-const { defineProperty, meta } = Ember;
+const {
+  WeakMap,
+  defineProperty,
+  meta
+} = Ember;
 
 const PROPERTIES = new WeakMap();
 
