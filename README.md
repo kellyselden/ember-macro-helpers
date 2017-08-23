@@ -14,6 +14,10 @@ Check out the following projects to see this addon in use:
 * https://github.com/stefanpenner/ember-moment
 * https://github.com/cibernox/ember-cpm
 
+### Contents
+  - [API](#api)
+  - [Custom macros](#custom-macros)
+
 ### API
 
 * [`computed`](#computed)
@@ -377,3 +381,16 @@ result: writable(sum('key1', 'key2'), function() {
 ```
 
 Setting `result` here will not remove your macro, but will update `result` with the return value.
+
+### Custom macros
+The addon provides a way of creating your own custom macros. The easiest way is
+to use the blueprint generator:
+
+````sh
+ember generate macro my-custom-macro
+````
+
+This will generate an example macro and its associated test. The comments in
+these files will get you started.
+
+More explanation is given in the [introduction video](https://youtu.be/kIDIa1NBZZI?t=18m40s).
