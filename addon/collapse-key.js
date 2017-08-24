@@ -24,7 +24,7 @@ export default function collapseKey(property) {
     } else {
       let propertyList = [];
       expandProperty(property).forEach(property => {
-        let collapsedProperty = collapseKey(property)[0];
+        let [collapsedProperty] = collapseKey(property);
         if (propertyList.indexOf(collapsedProperty) === -1) {
           propertyList.push(collapsedProperty);
         }
