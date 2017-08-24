@@ -79,3 +79,10 @@ test('it collapses brace expansion with []', function(assert) {
     ['foo.bar', 'foo.baz']
   );
 });
+
+test('it collapses brace expansion with multiple array syntax', function(assert) {
+  assert.deepEqual(
+    collapseKey('foo.{bar.@each.foo,baz.[]}'),
+    ['foo.bar', 'foo.baz']
+  );
+});
