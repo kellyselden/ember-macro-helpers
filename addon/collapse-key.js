@@ -4,9 +4,23 @@ import {
   ARRAY_LENGTH
 } from './-constants';
 
+function collapseAndPruneDuplicates(expandedProperties) {
+  return expandedProperties.map(collapseKey).reduce((properties, collapsedProperties) => {
+    let uniqueProperties = collapsedProperties.filter(collapsedProperty => {
+      return properties.indexOf(collapsedProperty) === -1;
+    });
+    return properties.concat(uniqueProperties);
+  }, []);
+}
+
 export default function collapseKey(property) {
   if (typeof property !== 'string') {
     return [property];
+  }
+
+  let expandedProperties = expandProperty(property);
+  if (expandedProperties.length > 1) {
+    return collapseAndPruneDuplicates(expandedProperties);
   }
 
   let arrayIndex = property.indexOf(ARRAY_EACH);
@@ -19,18 +33,7 @@ export default function collapseKey(property) {
     // and will convert to `this`
     return [''];
   } else if (arrayIndex > 0) {
-    if (property.indexOf('{') === -1) {
-      return [property.slice(0, arrayIndex - 1)];
-    } else {
-      let propertyList = [];
-      expandProperty(property).forEach(property => {
-        let [collapsedProperty] = collapseKey(property);
-        if (propertyList.indexOf(collapsedProperty) === -1) {
-          propertyList.push(collapsedProperty);
-        }
-      });
-      return propertyList;
-    }
+    return [property.slice(0, arrayIndex - 1)];
   }
 
   return expandProperty(property);
