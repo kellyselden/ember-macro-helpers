@@ -4,7 +4,7 @@ import {
   ARRAY_LENGTH
 } from './-constants';
 
-export default function(property) {
+export default function collapseKey(property) {
   if (typeof property !== 'string') {
     return [property];
   }
@@ -19,7 +19,18 @@ export default function(property) {
     // and will convert to `this`
     return [''];
   } else if (arrayIndex > 0) {
-    return [property.slice(0, arrayIndex - 1)];
+    if (property.indexOf('{') === -1) {
+      return [property.slice(0, arrayIndex - 1)];
+    } else {
+      let propertyList = [];
+      expandProperty(property).forEach(property => {
+        let collapsedProperty = collapseKey(property)[0];
+        if (propertyList.indexOf(collapsedProperty) === -1) {
+          propertyList.push(collapsedProperty);
+        }
+      });
+      return propertyList;
+    }
   }
 
   return expandProperty(property);
