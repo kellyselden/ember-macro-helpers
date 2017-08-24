@@ -200,6 +200,18 @@ namedTest('computed', 'function syntax: resolves ArrayProxy []', function(assert
   assert.deepEqual(getCallback.args[1][0].toArray(), ['123']);
 });
 
+namedTest('computed', 'function syntax: resolves expand properties []', function(assert) {
+  compute({
+    computed: computed('{key1.[],key2}', getCallback),
+    properties: {
+      key1: '123',
+      key2: '456'
+    }
+  });
+
+  assert.deepEqual(getCallback.args[1], ['123', '456']);
+});
+
 namedTest('computed', 'function syntax: resolves array @each keys', function(assert) {
   compute({
     computed: computed('key1.@each.key2', getCallback),
@@ -221,6 +233,18 @@ namedTest('computed', 'function syntax: resolves ArrayProxy @each', function(ass
   });
 
   assert.deepEqual(getCallback.args[1][0].toArray(), [{ key1: '123' }]);
+});
+
+namedTest('computed', 'function syntax: resolves expand properties @each', function(assert) {
+  compute({
+    computed: computed('{key1.@each.key3,key2}', getCallback),
+    properties: {
+      key1: '123',
+      key2: '456'
+    }
+  });
+
+  assert.deepEqual(getCallback.args[1], ['123', '456']);
 });
 
 namedTest('computed', 'function syntax: expands properties', function(assert) {
