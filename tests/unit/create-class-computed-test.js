@@ -47,6 +47,25 @@ test('it initially calculates correctly', function(assert) {
   ]);
 });
 
+test('it still works when you leave off optional observers', function(assert) {
+  let macro = createClassComputed(
+    [],
+    test1 => computed(test1, callback)
+  );
+
+  compute({
+    computed: macro('test2'),
+    properties: {
+      test2: 'test3'
+    }
+  });
+
+  assert.deepEqual(callback.args, [
+    [undefined],
+    ['test3']
+  ]);
+});
+
 test('it responds to array changes internally', function(assert) {
   let array = emberA([
     EmberObject.create({ test2: 1 }),
