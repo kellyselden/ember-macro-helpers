@@ -193,8 +193,9 @@ export default createClassComputed(
 
     // the array property is dynamic, and is responsible for the macro being rewritten
     true,
-    
-    // 
+
+    // any static properties after the last dynamic property are optional
+    // you could leave this off if you want
     false
   ],
   // the second param is the callback function where you create your computed property
