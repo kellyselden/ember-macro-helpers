@@ -10,6 +10,8 @@ sudo: false
 branches:
   only:
     - master
+    # npm version tags
+    - /^v\d+\.\d+\.\d+$/
     - /^greenkeeper\/.*$/
 
 cache:
