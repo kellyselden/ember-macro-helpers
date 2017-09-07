@@ -12,7 +12,7 @@ import {
   ARRAY_LENGTH
 } from './-constants';
 
-const { defineProperty } = Ember;
+const { defineProperty, meta } = Ember;
 
 const PROPERTIES = new WeakMap();
 
@@ -55,6 +55,16 @@ const BaseClass = EmberObject.extend({
       this.destroy();
 
       return;
+    }
+
+    // try our best to detect and prevent a double render
+    let _meta = meta(context);
+    // no longer needed in ember 2.12
+    if (_meta.readableLastRendered) {
+      let lastRendered = _meta.readableLastRendered();
+      if (lastRendered && Object.hasOwnProperty.call(lastRendered, key)) {
+        return;
+      }
     }
 
     context.notifyPropertyChange(key);
