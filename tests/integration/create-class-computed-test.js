@@ -17,7 +17,7 @@ module('Integration | create class computed', {
     PROPERTIES = new WeakMap();
 
     filterBy = createClassComputed(
-      [false, true, false],
+      [false, true],
       function(array, key, value) {
         if (!key) {
           PROPERTIES.set(this, array.split('.').reverse()[0]);
