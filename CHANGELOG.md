@@ -1,5 +1,50 @@
 # Change Log
 
+## [v0.17.0](https://github.com/kellyselden/ember-macro-helpers/tree/v0.17.0) (2017-09-08)
+[Full Changelog](https://github.com/kellyselden/ember-macro-helpers/compare/v0.16.3...v0.17.0)
+
+**Merged pull requests:**
+
+- update ember-cli 2.15.1 [\#144](https://github.com/kellyselden/ember-macro-helpers/pull/144) ([kellyselden](https://github.com/kellyselden))
+
+## [v0.16.3](https://github.com/kellyselden/ember-macro-helpers/tree/v0.16.3) (2017-09-07)
+[Full Changelog](https://github.com/kellyselden/ember-macro-helpers/compare/v0.16.2...v0.16.3)
+
+**Merged pull requests:**
+
+- run Travis on tagged builds [\#143](https://github.com/kellyselden/ember-macro-helpers/pull/143) ([kellyselden](https://github.com/kellyselden))
+- add double render failing test [\#142](https://github.com/kellyselden/ember-macro-helpers/pull/142) ([kellyselden](https://github.com/kellyselden))
+- remove optional false [\#141](https://github.com/kellyselden/ember-macro-helpers/pull/141) ([kellyselden](https://github.com/kellyselden))
+
+## [v0.16.2](https://github.com/kellyselden/ember-macro-helpers/tree/v0.16.2) (2017-09-05)
+[Full Changelog](https://github.com/kellyselden/ember-macro-helpers/compare/v0.16.1...v0.16.2)
+
+**Merged pull requests:**
+
+- explain the optional observer keys [\#140](https://github.com/kellyselden/ember-macro-helpers/pull/140) ([kellyselden](https://github.com/kellyselden))
+- Update ember-source to the latest version 🚀 [\#138](https://github.com/kellyselden/ember-macro-helpers/pull/138) ([greenkeeper[bot]](https://github.com/apps/greenkeeper))
+- Update ember-sinon to the latest version 🚀 [\#137](https://github.com/kellyselden/ember-macro-helpers/pull/137) ([greenkeeper[bot]](https://github.com/apps/greenkeeper))
+
+## [v0.16.1](https://github.com/kellyselden/ember-macro-helpers/tree/v0.16.1) (2017-08-25)
+[Full Changelog](https://github.com/kellyselden/ember-macro-helpers/compare/v0.16.0...v0.16.1)
+
+**Closed issues:**
+
+- Feature request: `addon/index.js` for single-line multiple imports [\#131](https://github.com/kellyselden/ember-macro-helpers/issues/131)
+
+**Merged pull requests:**
+
+- add deploy stage [\#136](https://github.com/kellyselden/ember-macro-helpers/pull/136) ([kellyselden](https://github.com/kellyselden))
+- exclude branches [\#135](https://github.com/kellyselden/ember-macro-helpers/pull/135) ([kellyselden](https://github.com/kellyselden))
+- get the collapse and recurse done earlier. [\#134](https://github.com/kellyselden/ember-macro-helpers/pull/134) ([kellyselden](https://github.com/kellyselden))
+- use array destructuring [\#133](https://github.com/kellyselden/ember-macro-helpers/pull/133) ([kellyselden](https://github.com/kellyselden))
+- add multiple array syntax collapseKey test [\#132](https://github.com/kellyselden/ember-macro-helpers/pull/132) ([kellyselden](https://github.com/kellyselden))
+- fix collapse-key for "{foo.@each,bar.\[\]}" [\#130](https://github.com/kellyselden/ember-macro-helpers/pull/130) ([shamcode](https://github.com/shamcode))
+- Add a section in the README on how to make custom macros [\#129](https://github.com/kellyselden/ember-macro-helpers/pull/129) ([YoranBrondsema](https://github.com/YoranBrondsema))
+- ember-cli 2.14.2 [\#128](https://github.com/kellyselden/ember-macro-helpers/pull/128) ([kellyselden](https://github.com/kellyselden))
+- Update ember-weakmap to the latest version 🚀 [\#127](https://github.com/kellyselden/ember-macro-helpers/pull/127) ([greenkeeper[bot]](https://github.com/apps/greenkeeper))
+- Update name of example addon [\#126](https://github.com/kellyselden/ember-macro-helpers/pull/126) ([clekstro](https://github.com/clekstro))
+
 ## [v0.16.0](https://github.com/kellyselden/ember-macro-helpers/tree/v0.16.0) (2017-07-07)
 [Full Changelog](https://github.com/kellyselden/ember-macro-helpers/compare/v0.15.1...v0.16.0)
 
