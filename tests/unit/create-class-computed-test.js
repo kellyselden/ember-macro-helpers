@@ -124,9 +124,9 @@ test('it rewrites when observer changes', function(assert) {
     EmberObject.create({ test2: 1, test6: 2 })
   ]);
 
-  let observerCallback = sinon.spy(
-    (test1, test4) => computed(`${test1}.@each.${test4}`, callback)
-  );
+  let observerCallback = sinon.spy((test1, test4) => {
+    return computed(`${test1}.@each.${test4}`, callback);
+  });
 
   let macro = createClassComputed(
     [false, true],
