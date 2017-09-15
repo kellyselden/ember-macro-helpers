@@ -40,6 +40,7 @@ matrix:
     - env: EMBER_TRY_SCENARIO=ember-canary
   include:
     - stage: Deploy
+      addons: ignore
       cache: ignore
       env: ignore
       before_install: ignore
