@@ -100,17 +100,27 @@ export default function(observerBools, macroGenerator) {
     }
 
     let mappedKeys = [];
+    let originalKeys = [];
 
-    function rewriteComputed(obj, key) {
-      let mappedWithResolvedOberverKeys = mappedKeys.map((macro, i) => {
+    function createComputed(keys, context, key) {
+      let resolvedOberverKeys = keys.map((macro, i) => {
         let shouldObserve = observerBools[i];
         if (shouldObserve) {
-          macro = getValue({ context: this, macro, key });
+          // succeeds with `raw`, fails with everything else
+          try {
+            macro = getValue({ context, macro, key });
+          } catch (err) {
+            macro = undefined;
+          }
         }
         return macro;
       });
 
-      let cp = macroGenerator.apply(this, mappedWithResolvedOberverKeys);
+      return macroGenerator.apply(context, resolvedOberverKeys);
+    }
+
+    function rewriteComputed(obj, key) {
+      let cp = createComputed(mappedKeys, this, key);
       defineProperty(this, 'computed', cp);
     }
 
@@ -124,6 +134,7 @@ export default function(observerBools, macroGenerator) {
 
       let mappedKey = resolveMappedLocation(key, i);
 
+      originalKeys.push(key);
       mappedKeys.push(mappedKey);
       if (shouldObserve) {
         classProperties[`key${i}DidChange`] = observer(mappedKey, rewriteComputed);
@@ -158,6 +169,11 @@ export default function(observerBools, macroGenerator) {
 
       return get(propertyInstance, 'computed');
     }).readOnly();
+
+    // workaround for watching array and object rewriting properties
+    // in class computed scope while composing macros
+    // ex `first(filterBy('arr', 'prop'))`
+    cp._classComputed = createComputed(originalKeys);
 
     return cp;
   };

@@ -8,6 +8,14 @@ function flattenKey(key, flattenedKeys) {
       return;
     }
 
+    // workaround for watching array and object rewriting properties
+    // in class computed scope while composing macros
+    // ex `first(filterBy('arr', 'prop'))`
+    let classComputed = key._classComputed;
+    if (classComputed) {
+      dependentKeys = classComputed._dependentKeys;
+    }
+
     return _flattenKeys(dependentKeys, flattenedKeys);
   }
 
