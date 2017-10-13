@@ -23,7 +23,6 @@ cache:
     - $HOME/.npm
 
 env:
-  - NPM_RUN_NODETEST=true
   # we recommend new addons test the current and previous LTS
   # as well as latest stable release (bonus points to beta/canary)
   - EMBER_TRY_SCENARIO=ember-1.13
@@ -39,6 +38,9 @@ matrix:
   allow_failures:
     - env: EMBER_TRY_SCENARIO=ember-canary
   include:
+    - addons: skip
+      env: nodetest
+      script: npm run nodetest
     - stage: Deploy
       addons: ignore
       cache: ignore
@@ -61,7 +63,4 @@ before_install:
   - npm --version
 
 script:
-  - test "$NPM_RUN_NODETEST" != true || npm run nodetest
-  # Usually, it's ok to finish the test scenario without reverting
-  #  to the addon's original dependency state, skipping "cleanup".
-  - test "$NPM_RUN_NODETEST" = true || node_modules/.bin/ember try:one $EMBER_TRY_SCENARIO --skip-cleanup
+  - node_modules/.bin/ember try:one $EMBER_TRY_SCENARIO --skip-cleanup
