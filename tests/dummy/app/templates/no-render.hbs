@@ -1,0 +1,7 @@
+<div class="items">
+  {{#each items as |item|}}
+    <div class="item">{{item.state}}</div>
+  {{/each}}
+</div>
+
+<button {{action "update"}}></button>
