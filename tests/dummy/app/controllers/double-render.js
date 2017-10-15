@@ -1,5 +1,5 @@
 import Controller from '@ember/controller';
-import EmberObject, { set } from '@ember/object';
+import EmberObject from '@ember/object';
 import { A as emberA } from '@ember/array';
 import { readOnly } from '@ember/object/computed';
 import createClassComputed from 'ember-macro-helpers/create-class-computed';
@@ -17,6 +17,9 @@ export default Controller.extend({
     }),
     EmberObject.create({
       testProp: 'test val 2'
+    }),
+    EmberObject.create({
+      testProp: 'test val 3'
     })
   ]),
   index: 0,
@@ -29,7 +32,7 @@ export default Controller.extend({
 
   actions: {
     update() {
-      set(this, 'index', 1);
+      this.incrementProperty('index');
     }
   }
 });

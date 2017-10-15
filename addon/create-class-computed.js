@@ -3,6 +3,7 @@ import EmberObject, {
   computed,
   observer,
   get,
+  set,
   setProperties,
   defineProperty
 } from '@ember/object';
@@ -18,8 +19,7 @@ import {
 } from './-constants';
 
 const {
-  WeakMap,
-  meta
+  WeakMap
 } = Ember;
 
 const PROPERTIES = new WeakMap();
@@ -56,7 +56,11 @@ function findOrCreatePropertyInstance(context, propertyClass, key, cp) {
 
 const BaseClass = EmberObject.extend({
   computedDidChange: observer('computed', function() {
-    let { context, key } = this;
+    let {
+      context,
+      key,
+      preventDoubleRender
+    } = this;
 
     if (context.isDestroying) {
       // controllers can get into this state
@@ -65,9 +69,7 @@ const BaseClass = EmberObject.extend({
       return;
     }
 
-    // try our best to detect and prevent a double render
-    let _meta = meta(context);
-    if (_meta._watching && Object.hasOwnProperty.call(_meta._watching, key)) {
+    if (preventDoubleRender) {
       return;
     }
 
@@ -146,7 +148,13 @@ export default function(observerBools, macroGenerator) {
         return properties;
       }, {});
 
+      // eslint-disable-next-line ember/no-side-effects
+      set(propertyInstance, 'preventDoubleRender', true);
+
       setProperties(propertyInstance.nonStrings, properties);
+
+      // eslint-disable-next-line ember/no-side-effects
+      set(propertyInstance, 'preventDoubleRender', false);
 
       return get(propertyInstance, 'computed');
     }).readOnly();

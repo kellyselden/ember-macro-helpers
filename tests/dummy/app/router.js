@@ -7,6 +7,8 @@ const Router = EmberRouter.extend({
 });
 
 Router.map(function() {
+  this.route('double-render');
+  this.route('no-rerender');
 });
 
 export default Router;
