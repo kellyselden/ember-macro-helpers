@@ -1,9 +1,7 @@
 import { module } from 'qunit';
-import RSVP from 'rsvp';
+import { resolve } from 'rsvp';
 import startApp from '../helpers/start-app';
 import destroyApp from '../helpers/destroy-app';
-
-const { resolve } = RSVP;
 
 export default function(name, options = {}) {
   module(name, {

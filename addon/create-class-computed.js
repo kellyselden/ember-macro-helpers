@@ -1,5 +1,11 @@
 import Ember from 'ember';
-import EmberObject, { computed, observer, get, setProperties } from '@ember/object';
+import EmberObject, {
+  computed,
+  observer,
+  get,
+  setProperties,
+  defineProperty
+} from '@ember/object';
 import Component from '@ember/component';
 import { on } from '@ember/object/evented';
 // import { getOwner } from '@ember/application';
@@ -13,7 +19,6 @@ import {
 
 const {
   WeakMap,
-  defineProperty,
   meta
 } = Ember;
 
