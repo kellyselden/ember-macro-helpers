@@ -1,6 +1,4 @@
-import Ember from 'ember';
-
-const { expandProperties } = Ember;
+import { expandProperties } from '@ember/object/computed';
 
 export default function(property) {
   let newPropertyList = [];
