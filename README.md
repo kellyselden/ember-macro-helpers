@@ -216,12 +216,12 @@ And then we consume this macro like normal:
 
 ```js
 import Component from '@ember/component';
-import { A } from '@ember/array';
+import { A as emberA } from '@ember/array';
 import EmberObject from '@ember/object';
 import filterBy from 'my-app/macros/filter-by';
 
 export default Component.extend({
-  myArray: A([
+  myArray: emberA([
     EmberObject.create({ myProp: 0 }),
     EmberObject.create({ myProp: 1 })
   ]),
