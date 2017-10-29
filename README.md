@@ -36,10 +36,10 @@ Check out the following projects to see this addon in use:
 It will pass you resolved values:
 
 ```js
-import Ember from 'ember';
+import Component from '@ember/component';
 import computed from 'ember-macro-helpers/computed';
 
-export default Ember.Component.extend({
+export default Component.extend({
   key: 'my value',
 
   result: computed('key', {
@@ -65,14 +65,15 @@ export default Ember.Component.extend({
 You can compose using any of Ember's built-in macros:
 
 ```js
-import Ember from 'ember';
+import Component from '@ember/component';
+import { or } from '@ember/object/computed';
 import computed from 'ember-macro-helpers/computed';
 
-export default Ember.Component.extend({
+export default Component.extend({
   key1: false,
   key2: true,
 
-  result: computed(Ember.computed.or('key1', 'key2'), value => {
+  result: computed(or('key1', 'key2'), value => {
     console.log(value); // true
     // do something else
   })
@@ -82,13 +83,13 @@ export default Ember.Component.extend({
 or you can compose using a macro library like [`ember-awesome-macros`](https://github.com/kellyselden/ember-awesome-macros):
 
 ```js
-import Ember from 'ember';
+import Component from '@ember/component';
 import computed from 'ember-macro-helpers/computed';
 import conditional from 'ember-awesome-macros/conditional';
 import sum from 'ember-awesome-macros/sum';
 import difference from 'ember-awesome-macros/difference';
 
-export default Ember.Component.extend({
+export default Component.extend({
   key1: 345678,
   key2: 785572,
 
@@ -102,10 +103,10 @@ export default Ember.Component.extend({
 It respects enumerable helpers:
 
 ```js
-import Ember from 'ember';
+import Component from '@ember/component';
 import computed from 'ember-macro-helpers/computed';
 
-export default Ember.Component.extend({
+export default Component.extend({
   key1: [{ key2: 1 }, { key2: 2 }],
 
   computed1: computed('key1.[]', value => {
@@ -122,10 +123,10 @@ export default Ember.Component.extend({
 It resolves property expansion for you:
 
 ```js
-import Ember from 'ember';
+import Component from '@ember/component';
 import computed from 'ember-macro-helpers/computed';
 
-export default Ember.Component.extend({
+export default Component.extend({
   key1: { key2: 1, key3: 2 },
 
   result: computed('key1.{key2,key3}', (value1, value2) => {
@@ -159,10 +160,10 @@ export default function(key1, key2) {
 Then you can use it like this:
 
 ```js
-import Ember from 'ember';
+import Component from '@ember/component';
 import add from 'my-app/macros/add';
 
-export default Ember.Component.extend({
+export default Component.extend({
   key1: 12,
   key2: 34,
   key3: 56,
@@ -213,13 +214,15 @@ export default createClassComputed(
 And then we consume this macro like normal:
 
 ```js
-import Ember from 'ember';
+import Component from '@ember/component';
+import { A } from '@ember/array';
+import EmberObject from '@ember/object';
 import filterBy from 'my-app/macros/filter-by';
 
-export default Ember.Component.extend({
-  myArray: Ember.A([
-    Ember.Object.create({ myProp: 0 }),
-    Ember.Object.create({ myProp: 1 })
+export default Component.extend({
+  myArray: A([
+    EmberObject.create({ myProp: 0 }),
+    EmberObject.create({ myProp: 1 })
   ]),
 
   // this could change at any time and our macro would pick it up
@@ -273,10 +276,10 @@ This allows you to escape string literals to be used in macros.
 Normally, a string means it will look up the property on the object context:
 
 ```js
-import Ember from 'ember';
+import Component from '@ember/component';
 import computed from 'ember-macro-helpers/computed';
 
-export default Ember.Component.extend({
+export default Component.extend({
   key: 'value',
 
   result: computed('key', value => {
@@ -289,11 +292,11 @@ export default Ember.Component.extend({
 But if you just want to use the value without making an object property, you can use the `raw` macro:
 
 ```js
-import Ember from 'ember';
+import Component from '@ember/component';
 import computed from 'ember-macro-helpers/computed';
 import raw from 'ember-macro-helpers/raw';
 
-export default Ember.Component.extend({
+export default Component.extend({
   key: 'value',
 
   // Even though we are using a string that is the same name as a property on the object,
@@ -308,11 +311,11 @@ export default Ember.Component.extend({
 The usefulness is more apparent when using complex macros, for example, when using the string [`split`](https://github.com/kellyselden/ember-awesome-macros#stringsplit) macro from `ember-awesome-macros`:
 
 ```js
-import Ember from 'ember';
+import Component from '@ember/component';
 import raw from 'ember-macro-helpers/raw';
 import split from 'ember-awesome-macros/array/split';
 
-export default Ember.Component.extend({
+export default Component.extend({
   key: '1, 2, 3',
 
   result: split('key', raw(', ')) // [1, 2, 3]
