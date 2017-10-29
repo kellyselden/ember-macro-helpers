@@ -87,6 +87,7 @@ import computed from 'ember-macro-helpers/computed';
 import conditional from 'ember-awesome-macros/conditional';
 import sum from 'ember-awesome-macros/sum';
 import difference from 'ember-awesome-macros/difference';
+import gt from 'ember-awesome-macros/gt';
 
 export default Ember.Component.extend({
   key1: 345678,
