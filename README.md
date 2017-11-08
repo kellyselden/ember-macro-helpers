@@ -54,7 +54,7 @@ export default Component.extend({
     }
   }),
 
-  actions {
+  actions: {
     doSomething() {
       this.set('result', 'new value');
     }
