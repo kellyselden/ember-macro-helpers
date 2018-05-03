@@ -67,12 +67,8 @@ const BaseClass = EmberObject.extend({
 
     // try our best to detect and prevent a double render
     let _meta = meta(context);
-    // no longer needed in ember 2.12
-    if (_meta.readableLastRendered) {
-      let lastRendered = _meta.readableLastRendered();
-      if (lastRendered && Object.hasOwnProperty.call(lastRendered, key)) {
-        return;
-      }
+    if (_meta._watching && Object.hasOwnProperty.call(_meta._watching, key)) {
+      return;
     }
 
     context.notifyPropertyChange(key);
