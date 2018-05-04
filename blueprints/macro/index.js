@@ -1,5 +1,6 @@
-/*jshint node:true*/
-var path = require('path');
+'use strict';
+
+const path = require('path');
 
 module.exports = {
   description: 'Generates a computed macro.',
@@ -19,13 +20,13 @@ module.exports = {
     }
   ],
 
-  filesPath: function(options) {
+  filesPath(options) {
     options = options || {};
-    var files = options.useCurried ? 'curried' : 'normal';
+    let files = options.useCurried ? 'curried' : 'normal';
     return path.join(this.path, files);
   },
 
-  locals: function(options) {
+  locals(options) {
     return {
       useSpread: options.useSpread
     };
