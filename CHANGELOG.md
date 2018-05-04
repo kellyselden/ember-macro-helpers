@@ -1,5 +1,35 @@
 # Change Log
 
+## [v0.17.1](https://github.com/kellyselden/ember-macro-helpers/tree/v0.17.1) (2018-05-04)
+[Full Changelog](https://github.com/kellyselden/ember-macro-helpers/compare/v0.17.0...v0.17.1)
+
+**Closed issues:**
+
+- An in-range update of ember-cli-eslint is breaking the build 🚨 [\#166](https://github.com/kellyselden/ember-macro-helpers/issues/166)
+- An in-range update of mocha is breaking the build 🚨 [\#154](https://github.com/kellyselden/ember-macro-helpers/issues/154)
+- An in-range update of ember-source is breaking the build 🚨 [\#153](https://github.com/kellyselden/ember-macro-helpers/issues/153)
+- An in-range update of ember-data is breaking the build 🚨 [\#152](https://github.com/kellyselden/ember-macro-helpers/issues/152)
+
+**Merged pull requests:**
+
+- Add no rerender failing test [\#188](https://github.com/kellyselden/ember-macro-helpers/pull/188) ([kellyselden](https://github.com/kellyselden))
+- fix new double render issue [\#187](https://github.com/kellyselden/ember-macro-helpers/pull/187) ([kellyselden](https://github.com/kellyselden))
+- npm 5 [\#186](https://github.com/kellyselden/ember-macro-helpers/pull/186) ([kellyselden](https://github.com/kellyselden))
+- ember-cli 2.18 [\#184](https://github.com/kellyselden/ember-macro-helpers/pull/184) ([kellyselden](https://github.com/kellyselden))
+- \[BUGFIX\] Missing colon in README code sample [\#165](https://github.com/kellyselden/ember-macro-helpers/pull/165) ([spieker](https://github.com/spieker))
+- Use new modules API on readme examples [\#164](https://github.com/kellyselden/ember-macro-helpers/pull/164) ([esbanarango](https://github.com/esbanarango))
+- Add missing import on readme example [\#163](https://github.com/kellyselden/ember-macro-helpers/pull/163) ([esbanarango](https://github.com/esbanarango))
+- update ember-cli 2.16.2 [\#162](https://github.com/kellyselden/ember-macro-helpers/pull/162) ([kellyselden](https://github.com/kellyselden))
+- Update "ember-decorators" repo URL [\#161](https://github.com/kellyselden/ember-macro-helpers/pull/161) ([oskarrough](https://github.com/oskarrough))
+- better job support for nodetest [\#158](https://github.com/kellyselden/ember-macro-helpers/pull/158) ([kellyselden](https://github.com/kellyselden))
+- chore\(package\): update ember-data to version 2.16.2 [\#155](https://github.com/kellyselden/ember-macro-helpers/pull/155) ([kellyselden](https://github.com/kellyselden))
+- Update ember-cli-blueprint-test-helpers to the latest version 🚀 [\#151](https://github.com/kellyselden/ember-macro-helpers/pull/151) ([greenkeeper[bot]](https://github.com/apps/greenkeeper))
+- Update mocha to the latest version 🚀 [\#150](https://github.com/kellyselden/ember-macro-helpers/pull/150) ([greenkeeper[bot]](https://github.com/apps/greenkeeper))
+- ignore addons in deploy stage [\#148](https://github.com/kellyselden/ember-macro-helpers/pull/148) ([kellyselden](https://github.com/kellyselden))
+- update eslint-config-sane [\#147](https://github.com/kellyselden/ember-macro-helpers/pull/147) ([kellyselden](https://github.com/kellyselden))
+- Revert "Update eslint-config-sane to the latest version 🚀" [\#146](https://github.com/kellyselden/ember-macro-helpers/pull/146) ([kellyselden](https://github.com/kellyselden))
+- Update eslint-config-sane to the latest version 🚀 [\#145](https://github.com/kellyselden/ember-macro-helpers/pull/145) ([greenkeeper[bot]](https://github.com/apps/greenkeeper))
+
 ## [v0.17.0](https://github.com/kellyselden/ember-macro-helpers/tree/v0.17.0) (2017-09-08)
 [Full Changelog](https://github.com/kellyselden/ember-macro-helpers/compare/v0.16.3...v0.17.0)
 
