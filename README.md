@@ -1,4 +1,4 @@
-# ember-macro-helpers
+ember-macro-helpers
 ==============================================================================
 
 [![Greenkeeper badge](https://badges.greenkeeper.io/kellyselden/ember-macro-helpers.svg)](https://greenkeeper.io/)
