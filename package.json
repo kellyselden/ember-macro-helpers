@@ -15,7 +15,7 @@
   "repository": "https://github.com/kellyselden/ember-macro-helpers",
   "scripts": {
     "build": "ember build",
-    "lint:js": "eslint ./*.js addon addon-test-support app blueprints config lib server test-support tests",
+    "lint:js": "eslint ./*.js addon addon-test-support app blueprints config lib node-tests server test-support tests",
     "start": "ember serve",
     "test": "ember test",
     "test:all": "ember try:each",
