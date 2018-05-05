@@ -11,25 +11,6 @@ module.exports = function() {
     return {
       scenarios: [
         {
-          name: 'ember-1.13',
-          bower: {
-            dependencies: {
-              'ember': '~1.13.0',
-              'ember-cli-shims': '0.0.6',
-              'ember-data': '~1.13.0'
-            },
-            resolutions: {
-              'ember': '~1.13.0'
-            }
-          },
-          npm: {
-            devDependencies: {
-              'ember-data': '~1.13.0',
-              'ember-source': null
-            }
-          }
-        },
-        {
           name: 'ember-lts-2.12',
           npm: {
             devDependencies: {
