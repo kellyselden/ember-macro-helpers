@@ -26,6 +26,7 @@ module.exports = {
         'testem.js',
         'blueprints/*/index.js',
         'config/**/*.js',
+        'node-tests/**/*.js',
         'tests/dummy/config/**/*.js'
       ],
       excludedFiles: [
@@ -54,6 +55,13 @@ module.exports = {
       excludedFiles: ['tests/dummy/**/*.js'],
       env: {
         embertest: true
+      }
+    },
+
+    {
+      files: ['node-tests/**/*.js'],
+      env: {
+        mocha: true
       }
     },
 
