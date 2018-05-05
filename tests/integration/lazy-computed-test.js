@@ -12,225 +12,225 @@ const newValue = 'new value test';
 let getCallback;
 let setCallback;
 
-module('Integration | lazy computed', {
-  beforeEach() {
+module('Integration | lazy computed', function(hooks) {
+  hooks.beforeEach(function() {
     getCallback = sinon.stub().returns(getReturnValue);
     setCallback = sinon.stub().returns(setReturnValue);
+  });
+
+  function alias(key) {
+    return computed(key, val => val);
   }
-});
 
-function alias(key) {
-  return computed(key, val => val);
-}
-
-test('works with no key', function(assert) {
-  compute({
-    assert,
-    computed: lazyComputed(getCallback),
-    strictEqual: getReturnValue
-  });
-});
-
-test('works with undefined key', function(assert) {
-  compute({
-    assert,
-    computed: lazyComputed('key1', getCallback),
-    strictEqual: getReturnValue
-  });
-});
-
-test('throws without a func param', function(assert) {
-  let func = () => compute({
-    computed: lazyComputed()
+  test('works with no key', function(assert) {
+    compute({
+      assert,
+      computed: lazyComputed(getCallback),
+      strictEqual: getReturnValue
+    });
   });
 
-  assert.throws(func);
-});
-
-test('function syntax: uses the right context when getting', function(assert) {
-  let { subject } = compute({
-    computed: lazyComputed(getCallback)
+  test('works with undefined key', function(assert) {
+    compute({
+      assert,
+      computed: lazyComputed('key1', getCallback),
+      strictEqual: getReturnValue
+    });
   });
 
-  assert.strictEqual(getCallback.thisValues[0], subject);
-});
+  test('throws without a func param', function(assert) {
+    let func = () => compute({
+      computed: lazyComputed()
+    });
 
-test('function syntax: passes the keys when getting', function(assert) {
-  let { subject } = compute({
-    computed: lazyComputed('key1', alias('key2'), getCallback)
+    assert.throws(func);
   });
 
-  assert.deepEqual(getCallback.args[0], [
-    getValue,
-    { context: subject, key: 'computed', macro: 'key1' },
-    { context: subject, key: 'computed', macro: alias('key2') }
-  ]);
-});
+  test('function syntax: uses the right context when getting', function(assert) {
+    let { subject } = compute({
+      computed: lazyComputed(getCallback)
+    });
 
-test('function syntax: doesn\'t call when setting', function(assert) {
-  let { subject } = compute({
-    computed: lazyComputed(getCallback)
+    assert.strictEqual(getCallback.thisValues[0], subject);
   });
 
-  getCallback.reset();
+  test('function syntax: passes the keys when getting', function(assert) {
+    let { subject } = compute({
+      computed: lazyComputed('key1', alias('key2'), getCallback)
+    });
 
-  subject.set('computed', newValue);
-
-  assert.notOk(getCallback.called);
-});
-
-test('function syntax: preserves set value', function(assert) {
-  let { subject } = compute({
-    computed: lazyComputed(getCallback)
+    assert.deepEqual(getCallback.args[0], [
+      getValue,
+      { context: subject, key: 'computed', macro: 'key1' },
+      { context: subject, key: 'computed', macro: alias('key2') }
+    ]);
   });
 
-  getCallback.reset();
+  test('function syntax: doesn\'t call when setting', function(assert) {
+    let { subject } = compute({
+      computed: lazyComputed(getCallback)
+    });
 
-  subject.set('computed', newValue);
+    getCallback.reset();
 
-  assert.strictEqual(subject.get('computed'), newValue);
-});
+    subject.set('computed', newValue);
 
-test('object syntax: uses the right context when getting', function(assert) {
-  let { subject } = compute({
-    computed: lazyComputed({
-      get: getCallback
-    })
+    assert.notOk(getCallback.called);
   });
 
-  assert.strictEqual(getCallback.thisValues[0], subject);
-});
+  test('function syntax: preserves set value', function(assert) {
+    let { subject } = compute({
+      computed: lazyComputed(getCallback)
+    });
 
-test('object syntax: passes the keys when getting', function(assert) {
-  let { subject } = compute({
-    computed: lazyComputed('key1', alias('key2'), {
-      get: getCallback
-    })
+    getCallback.reset();
+
+    subject.set('computed', newValue);
+
+    assert.strictEqual(subject.get('computed'), newValue);
   });
 
-  assert.deepEqual(getCallback.args[0], [
-    getValue,
-    { context: subject, key: 'computed', macro: 'key1' },
-    { context: subject, key: 'computed', macro: alias('key2') }
-  ]);
-});
+  test('object syntax: uses the right context when getting', function(assert) {
+    let { subject } = compute({
+      computed: lazyComputed({
+        get: getCallback
+      })
+    });
 
-test('object syntax: uses the right context when setting', function(assert) {
-  let { subject } = compute({
-    computed: lazyComputed({
-      get: getCallback,
-      set: setCallback
-    })
+    assert.strictEqual(getCallback.thisValues[0], subject);
   });
 
-  subject.set('computed', newValue);
+  test('object syntax: passes the keys when getting', function(assert) {
+    let { subject } = compute({
+      computed: lazyComputed('key1', alias('key2'), {
+        get: getCallback
+      })
+    });
 
-  assert.strictEqual(setCallback.thisValues[0], subject);
-});
-
-test('object syntax: passes the keys when setting', function(assert) {
-  let { subject } = compute({
-    computed: lazyComputed('key1', alias('key2'), {
-      get: getCallback,
-      set: setCallback
-    })
+    assert.deepEqual(getCallback.args[0], [
+      getValue,
+      { context: subject, key: 'computed', macro: 'key1' },
+      { context: subject, key: 'computed', macro: alias('key2') }
+    ]);
   });
 
-  subject.set('computed', newValue);
+  test('object syntax: uses the right context when setting', function(assert) {
+    let { subject } = compute({
+      computed: lazyComputed({
+        get: getCallback,
+        set: setCallback
+      })
+    });
 
-  assert.deepEqual(setCallback.args, [[
-    newValue,
-    getValue,
-    { context: subject, key: 'computed', macro: 'key1' },
-    { context: subject, key: 'computed', macro: alias('key2') }
-  ]]);
-});
+    subject.set('computed', newValue);
 
-test('object syntax: preserves set value', function(assert) {
-  let { subject } = compute({
-    computed: lazyComputed({
-      get: getCallback,
-      set: setCallback
-    })
+    assert.strictEqual(setCallback.thisValues[0], subject);
   });
 
-  getCallback.reset();
+  test('object syntax: passes the keys when setting', function(assert) {
+    let { subject } = compute({
+      computed: lazyComputed('key1', alias('key2'), {
+        get: getCallback,
+        set: setCallback
+      })
+    });
 
-  subject.set('computed', newValue);
+    subject.set('computed', newValue);
 
-  assert.strictEqual(subject.get('computed'), setReturnValue);
-});
-
-test('function syntax: resolves array [] keys', function(assert) {
-  let { subject } = compute({
-    computed: lazyComputed('key1.[]', getCallback)
+    assert.deepEqual(setCallback.args, [[
+      newValue,
+      getValue,
+      { context: subject, key: 'computed', macro: 'key1' },
+      { context: subject, key: 'computed', macro: alias('key2') }
+    ]]);
   });
 
-  assert.deepEqual(getCallback.args[0], [
-    getValue,
-    { context: subject, key: 'computed', macro: 'key1' }
-  ]);
-});
+  test('object syntax: preserves set value', function(assert) {
+    let { subject } = compute({
+      computed: lazyComputed({
+        get: getCallback,
+        set: setCallback
+      })
+    });
 
-test('function syntax: resolves array @each keys', function(assert) {
-  let { subject } = compute({
-    computed: lazyComputed('key1.@each.key2', getCallback)
+    getCallback.reset();
+
+    subject.set('computed', newValue);
+
+    assert.strictEqual(subject.get('computed'), setReturnValue);
   });
 
-  assert.deepEqual(getCallback.args[0], [
-    getValue,
-    { context: subject, key: 'computed', macro: 'key1' }
-  ]);
-});
+  test('function syntax: resolves array [] keys', function(assert) {
+    let { subject } = compute({
+      computed: lazyComputed('key1.[]', getCallback)
+    });
 
-test('function syntax: expands properties', function(assert) {
-  let { subject } = compute({
-    computed: lazyComputed('{key1,key2}', getCallback)
+    assert.deepEqual(getCallback.args[0], [
+      getValue,
+      { context: subject, key: 'computed', macro: 'key1' }
+    ]);
   });
 
-  assert.deepEqual(getCallback.args[0], [
-    getValue,
-    { context: subject, key: 'computed', macro: 'key1' },
-    { context: subject, key: 'computed', macro: 'key2' }
-  ]);
-});
+  test('function syntax: resolves array @each keys', function(assert) {
+    let { subject } = compute({
+      computed: lazyComputed('key1.@each.key2', getCallback)
+    });
 
-test('object syntax: resolves array [] keys', function(assert) {
-  let { subject } = compute({
-    computed: lazyComputed('key1.[]', {
-      get: getCallback
-    })
+    assert.deepEqual(getCallback.args[0], [
+      getValue,
+      { context: subject, key: 'computed', macro: 'key1' }
+    ]);
   });
 
-  assert.deepEqual(getCallback.args[0], [
-    getValue,
-    { context: subject, key: 'computed', macro: 'key1' }
-  ]);
-});
+  test('function syntax: expands properties', function(assert) {
+    let { subject } = compute({
+      computed: lazyComputed('{key1,key2}', getCallback)
+    });
 
-test('object syntax: resolves array @each keys', function(assert) {
-  let { subject } = compute({
-    computed: lazyComputed('key1.@each.key2', {
-      get: getCallback
-    })
+    assert.deepEqual(getCallback.args[0], [
+      getValue,
+      { context: subject, key: 'computed', macro: 'key1' },
+      { context: subject, key: 'computed', macro: 'key2' }
+    ]);
   });
 
-  assert.deepEqual(getCallback.args[0], [
-    getValue,
-    { context: subject, key: 'computed', macro: 'key1' }
-  ]);
-});
+  test('object syntax: resolves array [] keys', function(assert) {
+    let { subject } = compute({
+      computed: lazyComputed('key1.[]', {
+        get: getCallback
+      })
+    });
 
-test('object syntax: expands properties', function(assert) {
-  let { subject } = compute({
-    computed: lazyComputed('{key1,key2}', {
-      get: getCallback
-    })
+    assert.deepEqual(getCallback.args[0], [
+      getValue,
+      { context: subject, key: 'computed', macro: 'key1' }
+    ]);
   });
 
-  assert.deepEqual(getCallback.args[0], [
-    getValue,
-    { context: subject, key: 'computed', macro: 'key1' },
-    { context: subject, key: 'computed', macro: 'key2' }
-  ]);
+  test('object syntax: resolves array @each keys', function(assert) {
+    let { subject } = compute({
+      computed: lazyComputed('key1.@each.key2', {
+        get: getCallback
+      })
+    });
+
+    assert.deepEqual(getCallback.args[0], [
+      getValue,
+      { context: subject, key: 'computed', macro: 'key1' }
+    ]);
+  });
+
+  test('object syntax: expands properties', function(assert) {
+    let { subject } = compute({
+      computed: lazyComputed('{key1,key2}', {
+        get: getCallback
+      })
+    });
+
+    assert.deepEqual(getCallback.args[0], [
+      getValue,
+      { context: subject, key: 'computed', macro: 'key1' },
+      { context: subject, key: 'computed', macro: 'key2' }
+    ]);
+  });
 });
