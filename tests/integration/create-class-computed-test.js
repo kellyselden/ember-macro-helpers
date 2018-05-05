@@ -14,8 +14,8 @@ const { WeakMap } = Ember;
 let PROPERTIES;
 let filterBy;
 
-module('Integration | create class computed', {
-  beforeEach() {
+module('Integration | create class computed', function(hooks) {
+  hooks.beforeEach(function() {
     PROPERTIES = new WeakMap();
 
     filterBy = createClassComputed(
@@ -31,331 +31,331 @@ module('Integration | create class computed', {
         });
       }
     );
-  }
-});
-
-test('it initially calculates correctly', function(assert) {
-  let array = emberA([
-    EmberObject.create({ test: 'val1' }),
-    EmberObject.create({ test: 'val2' })
-  ]);
-
-  let { subject } = compute({
-    computed: filterBy('array', 'key', 'value'),
-    properties: {
-      array,
-      key: 'test',
-      value: 'val1'
-    }
   });
 
-  assert.equal(subject.get('computed.length'), 1);
-});
+  test('it initially calculates correctly', function(assert) {
+    let array = emberA([
+      EmberObject.create({ test: 'val1' }),
+      EmberObject.create({ test: 'val2' })
+    ]);
 
-test('it responds to array property value changes internally', function(assert) {
-  let array = emberA([
-    EmberObject.create({ test: 'val1' }),
-    EmberObject.create({ test: 'val2' })
-  ]);
+    let { subject } = compute({
+      computed: filterBy('array', 'key', 'value'),
+      properties: {
+        array,
+        key: 'test',
+        value: 'val1'
+      }
+    });
 
-  let { subject } = compute({
-    computed: filterBy('array', 'key', 'value'),
-    properties: {
-      array,
-      key: 'test',
-      value: 'val1'
-    }
+    assert.equal(subject.get('computed.length'), 1);
   });
 
-  array.set('1.test', 'val1');
+  test('it responds to array property value changes internally', function(assert) {
+    let array = emberA([
+      EmberObject.create({ test: 'val1' }),
+      EmberObject.create({ test: 'val2' })
+    ]);
 
-  assert.equal(subject.get('computed.length'), 2);
-});
+    let { subject } = compute({
+      computed: filterBy('array', 'key', 'value'),
+      properties: {
+        array,
+        key: 'test',
+        value: 'val1'
+      }
+    });
 
-test('it responds to array property value changes externally', function(assert) {
-  let array = emberA([
-    EmberObject.create({ test: 'val1' }),
-    EmberObject.create({ test: 'val2' })
-  ]);
+    array.set('1.test', 'val1');
 
-  let { subject } = compute({
-    computed: filterBy('array.@each.test', 'key', 'value'),
-    properties: {
-      array,
-      value: 'val1'
-    }
+    assert.equal(subject.get('computed.length'), 2);
   });
 
-  array.set('1.test', 'val1');
+  test('it responds to array property value changes externally', function(assert) {
+    let array = emberA([
+      EmberObject.create({ test: 'val1' }),
+      EmberObject.create({ test: 'val2' })
+    ]);
 
-  assert.equal(subject.get('computed.length'), 2);
-});
+    let { subject } = compute({
+      computed: filterBy('array.@each.test', 'key', 'value'),
+      properties: {
+        array,
+        value: 'val1'
+      }
+    });
 
-test('it responds to array property value changes using raw array', function(assert) {
-  let array = emberA([
-    EmberObject.create({ test: 'val1' }),
-    EmberObject.create({ test: 'val2' })
-  ]);
+    array.set('1.test', 'val1');
 
-  let { subject } = compute({
-    computed: filterBy(array, raw('test'), raw('val1'))
+    assert.equal(subject.get('computed.length'), 2);
   });
 
-  array.set('1.test', 'val1');
+  test('it responds to array property value changes using raw array', function(assert) {
+    let array = emberA([
+      EmberObject.create({ test: 'val1' }),
+      EmberObject.create({ test: 'val2' })
+    ]);
 
-  assert.equal(subject.get('computed.length'), 2);
-});
+    let { subject } = compute({
+      computed: filterBy(array, raw('test'), raw('val1'))
+    });
 
-test('it responds to property value changes using brace expansion', function(assert) {
-  let array = emberA([
-    EmberObject.create({ test: 'val1' }),
-    EmberObject.create({ test: 'val1' })
-  ]);
+    array.set('1.test', 'val1');
 
-  let { subject } = compute({
-    computed: filterBy('obj.{array,key,value}'),
-    properties: {
-      obj: EmberObject.create({
+    assert.equal(subject.get('computed.length'), 2);
+  });
+
+  test('it responds to property value changes using brace expansion', function(assert) {
+    let array = emberA([
+      EmberObject.create({ test: 'val1' }),
+      EmberObject.create({ test: 'val1' })
+    ]);
+
+    let { subject } = compute({
+      computed: filterBy('obj.{array,key,value}'),
+      properties: {
+        obj: EmberObject.create({
+          array,
+          key: 'test',
+          value: 'val2'
+        })
+      }
+    });
+
+    subject.set('obj.value', 'val1');
+
+    assert.equal(subject.get('computed.length'), 2);
+  });
+
+  test('it responds to array length changes', function(assert) {
+    let array = emberA([
+      EmberObject.create({ test: 'val1' }),
+      EmberObject.create({ test: 'val2' })
+    ]);
+
+    let { subject } = compute({
+      computed: filterBy('array', 'key', 'value'),
+      properties: {
+        array,
+        key: 'test',
+        value: 'val1'
+      }
+    });
+
+    array.pushObject(EmberObject.create({ test: 'val1' }));
+
+    assert.equal(subject.get('computed.length'), 2);
+  });
+
+  test('it responds to property key changes', function(assert) {
+    let array = emberA([
+      EmberObject.create({ test: 'val1' }),
+      EmberObject.create({ test: 'val2' })
+    ]);
+
+    let { subject } = compute({
+      computed: filterBy('array', 'key', 'value'),
+      properties: {
+        array,
+        key: 'test2',
+        value: 'val1'
+      }
+    });
+
+    subject.set('key', 'test');
+
+    assert.equal(subject.get('computed.length'), 1);
+  });
+
+  test('it responds to property value changes', function(assert) {
+    let array = emberA([
+      EmberObject.create({ test: 'val1' }),
+      EmberObject.create({ test: 'val1' })
+    ]);
+
+    let { subject } = compute({
+      computed: filterBy('array', 'key', 'value'),
+      properties: {
         array,
         key: 'test',
         value: 'val2'
-      })
-    }
+      }
+    });
+
+    subject.set('value', 'val1');
+
+    assert.equal(subject.get('computed.length'), 2);
   });
 
-  subject.set('obj.value', 'val1');
+  test('composing: macros still compute inside', function(assert) {
+    let array1 = emberA([
+      EmberObject.create({ test: 'val1' }),
+      EmberObject.create({ test: 'val1' })
+    ]);
+    let array2 = emberA([
+      EmberObject.create({ test: 'val1' }),
+      EmberObject.create({ test: 'val2' })
+    ]);
 
-  assert.equal(subject.get('computed.length'), 2);
-});
+    let { subject } = compute({
+      computed: filterBy(computed('innerKey', innerKey => innerKey ? array1 : array2), 'key', 'value'),
+      properties: {
+        innerKey: true,
+        key: 'test',
+        value: 'val1'
+      }
+    });
 
-test('it responds to array length changes', function(assert) {
-  let array = emberA([
-    EmberObject.create({ test: 'val1' }),
-    EmberObject.create({ test: 'val2' })
-  ]);
+    assert.equal(subject.get('computed.length'), 2);
 
-  let { subject } = compute({
-    computed: filterBy('array', 'key', 'value'),
-    properties: {
-      array,
-      key: 'test',
-      value: 'val1'
-    }
+    subject.set('innerKey', false);
+
+    assert.equal(subject.get('computed.length'), 1);
   });
 
-  array.pushObject(EmberObject.create({ test: 'val1' }));
+  test('composing: it responds to array property value changes', function(assert) {
+    let array = emberA([
+      EmberObject.create({ test: 'val1' }),
+      EmberObject.create({ test: 'val2' })
+    ]);
 
-  assert.equal(subject.get('computed.length'), 2);
-});
+    let { subject } = compute({
+      computed: filterBy(computed(() => array), 'key', 'value'),
+      properties: {
+        key: 'test',
+        value: 'val1'
+      }
+    });
 
-test('it responds to property key changes', function(assert) {
-  let array = emberA([
-    EmberObject.create({ test: 'val1' }),
-    EmberObject.create({ test: 'val2' })
-  ]);
+    assert.equal(subject.get('computed.length'), 1);
 
-  let { subject } = compute({
-    computed: filterBy('array', 'key', 'value'),
-    properties: {
-      array,
-      key: 'test2',
-      value: 'val1'
-    }
+    array.set('1.test', 'val1');
+
+    assert.equal(subject.get('computed.length'), 2);
   });
 
-  subject.set('key', 'test');
+  test('composing: it responds to property key changes', function(assert) {
+    let array = emberA([
+      EmberObject.create({ test: 'val1' }),
+      EmberObject.create({ test: 'val2' })
+    ]);
 
-  assert.equal(subject.get('computed.length'), 1);
-});
+    let { subject } = compute({
+      computed: filterBy(computed(() => array), 'key', 'value'),
+      properties: {
+        array,
+        key: 'test2',
+        value: 'val1'
+      }
+    });
 
-test('it responds to property value changes', function(assert) {
-  let array = emberA([
-    EmberObject.create({ test: 'val1' }),
-    EmberObject.create({ test: 'val1' })
-  ]);
+    assert.equal(subject.get('computed.length'), 0);
 
-  let { subject } = compute({
-    computed: filterBy('array', 'key', 'value'),
-    properties: {
-      array,
-      key: 'test',
-      value: 'val2'
-    }
+    subject.set('key', 'test');
+
+    assert.equal(subject.get('computed.length'), 1);
   });
 
-  subject.set('value', 'val1');
+  test('composing: it responds to property value changes', function(assert) {
+    let array = emberA([
+      EmberObject.create({ test: 'val1' }),
+      EmberObject.create({ test: 'val1' })
+    ]);
 
-  assert.equal(subject.get('computed.length'), 2);
-});
+    let { subject } = compute({
+      computed: filterBy(computed(() => array), 'key', 'value'),
+      properties: {
+        array,
+        key: 'test',
+        value: 'val2'
+      }
+    });
 
-test('composing: macros still compute inside', function(assert) {
-  let array1 = emberA([
-    EmberObject.create({ test: 'val1' }),
-    EmberObject.create({ test: 'val1' })
-  ]);
-  let array2 = emberA([
-    EmberObject.create({ test: 'val1' }),
-    EmberObject.create({ test: 'val2' })
-  ]);
+    assert.equal(subject.get('computed.length'), 0);
 
-  let { subject } = compute({
-    computed: filterBy(computed('innerKey', innerKey => innerKey ? array1 : array2), 'key', 'value'),
-    properties: {
-      innerKey: true,
-      key: 'test',
-      value: 'val1'
-    }
+    subject.set('value', 'val1');
+
+    assert.equal(subject.get('computed.length'), 2);
   });
 
-  assert.equal(subject.get('computed.length'), 2);
+  test('composing: macros still compute outside', function(assert) {
+    let array1 = emberA([
+      EmberObject.create({ test: 'val1' }),
+      EmberObject.create({ test: 'val1' })
+    ]);
+    let array2 = emberA([
+      EmberObject.create({ test: 'val1' }),
+      EmberObject.create({ test: 'val2' })
+    ]);
 
-  subject.set('innerKey', false);
+    let { subject } = compute({
+      computed: computed(filterBy('array', 'key', 'value'), array => array),
+      properties: {
+        array: array1,
+        key: 'test',
+        value: 'val1'
+      }
+    });
 
-  assert.equal(subject.get('computed.length'), 1);
-});
+    assert.equal(subject.get('computed.length'), 2);
 
-test('composing: it responds to array property value changes', function(assert) {
-  let array = emberA([
-    EmberObject.create({ test: 'val1' }),
-    EmberObject.create({ test: 'val2' })
-  ]);
+    subject.set('array', array2);
 
-  let { subject } = compute({
-    computed: filterBy(computed(() => array), 'key', 'value'),
-    properties: {
-      key: 'test',
-      value: 'val1'
-    }
+    assert.equal(subject.get('computed.length'), 1);
   });
 
-  assert.equal(subject.get('computed.length'), 1);
+  test('composing: both macros are class computed', function(assert) {
+    let array = emberA([
+      EmberObject.create({ id: 1, test1: 'val1', test2: 'val1' }),
+      EmberObject.create({ id: 2, test1: 'val2', test2: 'val1' }),
+      EmberObject.create({ id: 3, test1: 'val2', test2: 'val2' })
+    ]);
 
-  array.set('1.test', 'val1');
+    let { subject } = compute({
+      computed: filterBy(filterBy('array', 'key1', 'value1'), 'key2', 'value2'),
+      properties: {
+        array,
+        key1: 'test1',
+        key2: 'test2',
+        value1: 'val1',
+        value2: 'val1'
+      }
+    });
 
-  assert.equal(subject.get('computed.length'), 2);
-});
+    assert.deepEqual(subject.get('computed').mapBy('id'), [1]);
 
-test('composing: it responds to property key changes', function(assert) {
-  let array = emberA([
-    EmberObject.create({ test: 'val1' }),
-    EmberObject.create({ test: 'val2' })
-  ]);
+    subject.set('value1', 'val2');
 
-  let { subject } = compute({
-    computed: filterBy(computed(() => array), 'key', 'value'),
-    properties: {
-      array,
-      key: 'test2',
-      value: 'val1'
-    }
+    assert.deepEqual(subject.get('computed').mapBy('id'), [2]);
+
+    subject.set('value2', 'val2');
+
+    assert.deepEqual(subject.get('computed').mapBy('id'), [3]);
+
+    array.pushObject(EmberObject.create({ id: 4, test1: 'val2', test2: 'val2' }));
+
+    assert.deepEqual(subject.get('computed').mapBy('id'), [3, 4]);
   });
 
-  assert.equal(subject.get('computed.length'), 0);
+  test('it cleans up after destroy', function(assert) {
+    let array = emberA([
+      EmberObject.create({ test: 'val1' }),
+      EmberObject.create({ test: 'val2' })
+    ]);
 
-  subject.set('key', 'test');
+    let { subject } = compute({
+      computed: filterBy('array', 'key', 'value'),
+      properties: {
+        array,
+        key: 'test',
+        value: 'val1'
+      }
+    });
 
-  assert.equal(subject.get('computed.length'), 1);
-});
+    destroy(subject, () => {
+      array.pushObject(EmberObject.create({ test: 'val1' }));
 
-test('composing: it responds to property value changes', function(assert) {
-  let array = emberA([
-    EmberObject.create({ test: 'val1' }),
-    EmberObject.create({ test: 'val1' })
-  ]);
-
-  let { subject } = compute({
-    computed: filterBy(computed(() => array), 'key', 'value'),
-    properties: {
-      array,
-      key: 'test',
-      value: 'val2'
-    }
-  });
-
-  assert.equal(subject.get('computed.length'), 0);
-
-  subject.set('value', 'val1');
-
-  assert.equal(subject.get('computed.length'), 2);
-});
-
-test('composing: macros still compute outside', function(assert) {
-  let array1 = emberA([
-    EmberObject.create({ test: 'val1' }),
-    EmberObject.create({ test: 'val1' })
-  ]);
-  let array2 = emberA([
-    EmberObject.create({ test: 'val1' }),
-    EmberObject.create({ test: 'val2' })
-  ]);
-
-  let { subject } = compute({
-    computed: computed(filterBy('array', 'key', 'value'), array => array),
-    properties: {
-      array: array1,
-      key: 'test',
-      value: 'val1'
-    }
-  });
-
-  assert.equal(subject.get('computed.length'), 2);
-
-  subject.set('array', array2);
-
-  assert.equal(subject.get('computed.length'), 1);
-});
-
-test('composing: both macros are class computed', function(assert) {
-  let array = emberA([
-    EmberObject.create({ id: 1, test1: 'val1', test2: 'val1' }),
-    EmberObject.create({ id: 2, test1: 'val2', test2: 'val1' }),
-    EmberObject.create({ id: 3, test1: 'val2', test2: 'val2' })
-  ]);
-
-  let { subject } = compute({
-    computed: filterBy(filterBy('array', 'key1', 'value1'), 'key2', 'value2'),
-    properties: {
-      array,
-      key1: 'test1',
-      key2: 'test2',
-      value1: 'val1',
-      value2: 'val1'
-    }
-  });
-
-  assert.deepEqual(subject.get('computed').mapBy('id'), [1]);
-
-  subject.set('value1', 'val2');
-
-  assert.deepEqual(subject.get('computed').mapBy('id'), [2]);
-
-  subject.set('value2', 'val2');
-
-  assert.deepEqual(subject.get('computed').mapBy('id'), [3]);
-
-  array.pushObject(EmberObject.create({ id: 4, test1: 'val2', test2: 'val2' }));
-
-  assert.deepEqual(subject.get('computed').mapBy('id'), [3, 4]);
-});
-
-test('it cleans up after destroy', function(assert) {
-  let array = emberA([
-    EmberObject.create({ test: 'val1' }),
-    EmberObject.create({ test: 'val2' })
-  ]);
-
-  let { subject } = compute({
-    computed: filterBy('array', 'key', 'value'),
-    properties: {
-      array,
-      key: 'test',
-      value: 'val1'
-    }
-  });
-
-  destroy(subject, () => {
-    array.pushObject(EmberObject.create({ test: 'val1' }));
-
-    assert.ok(true);
+      assert.ok(true);
+    });
   });
 });

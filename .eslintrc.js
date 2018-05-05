@@ -49,15 +49,6 @@ module.exports = {
       })
     },
 
-    // test files
-    {
-      files: ['tests/**/*.js'],
-      excludedFiles: ['tests/dummy/**/*.js'],
-      env: {
-        embertest: true
-      }
-    },
-
     {
       files: ['node-tests/**/*.js'],
       env: {

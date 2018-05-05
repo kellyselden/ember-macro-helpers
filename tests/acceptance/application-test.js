@@ -1,44 +1,35 @@
-import { test } from 'qunit';
-import moduleForAcceptance from '../../tests/helpers/module-for-acceptance';
+import { click, find, visit } from '@ember/test-helpers';
+import { module, test } from 'qunit';
+import { setupApplicationTest } from 'ember-qunit';
 
-moduleForAcceptance('Acceptance | application');
+module('Acceptance | application', function(hooks) {
+  setupApplicationTest(hooks);
 
-test('double render failing test', function(assert) {
-  visit('/double-render');
+  test('double render failing test', async function(assert) {
+    await visit('/double-render');
 
-  andThen(function() {
-    assert.equal(find('.computed').text(), 'test val 1');
+    assert.equal(find('.computed').textContent, 'test val 1');
+
+    await click('button');
+
+    assert.equal(find('.computed').textContent, 'test val 2');
+
+    await click('button');
+
+    assert.equal(find('.computed').textContent, 'test val 3');
   });
 
-  click('button');
+  test('no rerender failing test', async function(assert) {
+    await visit('/no-rerender');
 
-  andThen(function() {
-    assert.equal(find('.computed').text(), 'test val 2');
-  });
+    assert.equal(find('.items').textContent, 1);
 
-  click('button');
+    await click('button');
 
-  andThen(function() {
-    assert.equal(find('.computed').text(), 'test val 3');
-  });
-});
+    assert.equal(find('.items').textContent, 0);
 
-test('no rerender failing test', function(assert) {
-  visit('/no-rerender');
+    await click('button');
 
-  andThen(function() {
-    assert.equal(find('.items').text(), 1);
-  });
-
-  click('button');
-
-  andThen(function() {
-    assert.equal(find('.items').text(), 0);
-  });
-
-  click('button');
-
-  andThen(function() {
-    assert.equal(find('.items').text(), 1);
+    assert.equal(find('.items').textContent, 1);
   });
 });
