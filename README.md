@@ -26,6 +26,12 @@ ember install ember-macro-helpers
 Usage
 ------------------------------------------------------------------------------
 
+```
+import nameOfMacro from 'ember-macro-helpers/name-of-macro';
+// or
+import { nameOfMacro } from 'ember-macro-helpers';
+```
+
 ### Contents
   - [API](#api)
   - [Custom macros](#custom-macros)
