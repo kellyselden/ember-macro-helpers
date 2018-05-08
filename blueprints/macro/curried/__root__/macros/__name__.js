@@ -1,4 +1,4 @@
-import curriedComputed from 'ember-macro-helpers/curried-computed';
+import { curriedComputed } from 'ember-macro-helpers';
 
 export default curriedComputed((<% if (useSpread) { %>...values<% } else { %>val1, val2/*, valN... */<% } %>) => {
   // This is where your normal computed code will go.
