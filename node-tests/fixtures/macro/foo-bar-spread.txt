@@ -1,4 +1,4 @@
-import computed from 'ember-macro-helpers/computed';
+import { computed } from 'ember-macro-helpers';
 
 export default function(...keys) {
   // This is where you can inspect the incoming keys for errors.
