@@ -2,7 +2,7 @@ import computed from 'ember-macro-helpers/computed';
 import computedUnsafe from 'ember-macro-helpers/computed-unsafe';
 import { module } from 'qunit';
 import sinon from 'sinon';
-import compute from 'ember-macro-test-helpers/compute';
+import { compute } from 'ember-macro-test-helpers';
 import namedTest from '../helpers/named-test';
 import ArrayProxy from '@ember/array/proxy';
 import { A as emberA } from '@ember/array';

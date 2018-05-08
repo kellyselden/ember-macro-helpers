@@ -1,6 +1,6 @@
 import fooBar from 'my-app/macros/foo-bar';
 import { module, test } from 'qunit';
-import compute from 'ember-macro-test-helpers/compute';
+import { compute } from 'ember-macro-test-helpers';
 
 module('Unit | Macro | foo bar', function(hooks) {
 

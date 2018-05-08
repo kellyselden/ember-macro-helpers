@@ -1,6 +1,6 @@
 import <%= camelizedModuleName %> from '<%= dasherizedModulePrefix %>/macros/<%= dasherizedModuleName %>';
 import { module, test } from 'qunit';
-import compute from 'ember-macro-test-helpers/compute';
+import { compute } from 'ember-macro-test-helpers';
 
 module('<%= friendlyTestName %>', function(hooks) {
 

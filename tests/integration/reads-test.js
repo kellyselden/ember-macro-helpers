@@ -3,7 +3,7 @@ import raw from 'ember-macro-helpers/raw';
 import computed from 'ember-macro-helpers/computed';
 import { module, test } from 'qunit';
 import sinon from 'sinon';
-import compute from 'ember-macro-test-helpers/compute';
+import { compute } from 'ember-macro-test-helpers';
 
 const getReturnValue = 'get return value test';
 const setReturnValue = 'set return value test';

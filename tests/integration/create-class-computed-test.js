@@ -6,7 +6,7 @@ import raw from 'ember-macro-helpers/raw';
 import { module, test } from 'qunit';
 import EmberObject from '@ember/object';
 import { A as emberA } from '@ember/array';
-import compute from 'ember-macro-test-helpers/compute';
+import { compute } from 'ember-macro-test-helpers';
 import destroy from '../helpers/destroy';
 
 const { WeakMap } = Ember;
