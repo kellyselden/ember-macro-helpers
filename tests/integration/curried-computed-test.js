@@ -1,6 +1,6 @@
 import curriedComputed from 'ember-macro-helpers/curried-computed';
 import { module, test } from 'qunit';
-import compute from 'ember-macro-test-helpers/compute';
+import { compute } from 'ember-macro-test-helpers';
 
 let computed;
 

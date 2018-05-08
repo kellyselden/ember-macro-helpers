@@ -1,6 +1,6 @@
 import literal from 'ember-macro-helpers/literal';
 import { module, test } from 'qunit';
-import compute from 'ember-macro-test-helpers/compute';
+import { compute } from 'ember-macro-test-helpers';
 
 module('Integration | literal', function() {
   test('it returns value verbatim', function(assert) {
