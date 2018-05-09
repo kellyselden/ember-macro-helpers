@@ -1,5 +1,53 @@
 # Change Log
 
+## [v0.20.0](https://github.com/kellyselden/ember-macro-helpers/tree/v0.20.0) (2018-05-08)
+[Full Changelog](https://github.com/kellyselden/ember-macro-helpers/compare/v0.19.0...v0.20.0)
+
+**Merged pull requests:**
+
+- use compute re-export [\#200](https://github.com/kellyselden/ember-macro-helpers/pull/200) ([kellyselden](https://github.com/kellyselden))
+- use re-exports in blueprints [\#199](https://github.com/kellyselden/ember-macro-helpers/pull/199) ([kellyselden](https://github.com/kellyselden))
+- use new test syntax in blueprint [\#198](https://github.com/kellyselden/ember-macro-helpers/pull/198) ([kellyselden](https://github.com/kellyselden))
+
+## [v0.19.0](https://github.com/kellyselden/ember-macro-helpers/tree/v0.19.0) (2018-05-07)
+[Full Changelog](https://github.com/kellyselden/ember-macro-helpers/compare/v0.18.0...v0.19.0)
+
+**Closed issues:**
+
+- Consider exporting a collected object [\#56](https://github.com/kellyselden/ember-macro-helpers/issues/56)
+
+**Merged pull requests:**
+
+- Add multi imports and import tests [\#196](https://github.com/kellyselden/ember-macro-helpers/pull/196) ([mriska](https://github.com/mriska))
+
+## [v0.18.0](https://github.com/kellyselden/ember-macro-helpers/tree/v0.18.0) (2018-05-05)
+[Full Changelog](https://github.com/kellyselden/ember-macro-helpers/compare/v0.17.1...v0.18.0)
+
+**Closed issues:**
+
+- An in-range update of ember-load-initializers is breaking the build 🚨 [\#183](https://github.com/kellyselden/ember-macro-helpers/issues/183)
+- An in-range update of loader.js is breaking the build 🚨 [\#182](https://github.com/kellyselden/ember-macro-helpers/issues/182)
+- An in-range update of ember-weakmap is breaking the build 🚨 [\#181](https://github.com/kellyselden/ember-macro-helpers/issues/181)
+- An in-range update of ember-resolver is breaking the build 🚨 [\#179](https://github.com/kellyselden/ember-macro-helpers/issues/179)
+- double render [\#176](https://github.com/kellyselden/ember-macro-helpers/issues/176)
+- An in-range update of mocha is breaking the build 🚨 [\#175](https://github.com/kellyselden/ember-macro-helpers/issues/175)
+- An in-range update of ember-data is breaking the build 🚨 [\#172](https://github.com/kellyselden/ember-macro-helpers/issues/172)
+- An in-range update of ember-cli-shims is breaking the build 🚨 [\#171](https://github.com/kellyselden/ember-macro-helpers/issues/171)
+- An in-range update of ember-cli-dependency-checker is breaking the build 🚨 [\#170](https://github.com/kellyselden/ember-macro-helpers/issues/170)
+- An in-range update of ember-cli-qunit is breaking the build 🚨 [\#168](https://github.com/kellyselden/ember-macro-helpers/issues/168)
+- An in-range update of ember-cli-babel is breaking the build 🚨 [\#167](https://github.com/kellyselden/ember-macro-helpers/issues/167)
+- Computed properties not triggering re-render [\#159](https://github.com/kellyselden/ember-macro-helpers/issues/159)
+
+**Merged pull requests:**
+
+- use new test syntax [\#195](https://github.com/kellyselden/ember-macro-helpers/pull/195) ([kellyselden](https://github.com/kellyselden))
+- drop ember 1 support [\#194](https://github.com/kellyselden/ember-macro-helpers/pull/194) ([kellyselden](https://github.com/kellyselden))
+- remove ember-cli-shims [\#193](https://github.com/kellyselden/ember-macro-helpers/pull/193) ([kellyselden](https://github.com/kellyselden))
+- add node-tests to lint [\#192](https://github.com/kellyselden/ember-macro-helpers/pull/192) ([kellyselden](https://github.com/kellyselden))
+- update deps [\#191](https://github.com/kellyselden/ember-macro-helpers/pull/191) ([kellyselden](https://github.com/kellyselden))
+- update ember-cli 3.0 [\#190](https://github.com/kellyselden/ember-macro-helpers/pull/190) ([kellyselden](https://github.com/kellyselden))
+- update ember-cli [\#189](https://github.com/kellyselden/ember-macro-helpers/pull/189) ([kellyselden](https://github.com/kellyselden))
+
 ## [v0.17.1](https://github.com/kellyselden/ember-macro-helpers/tree/v0.17.1) (2018-05-04)
 [Full Changelog](https://github.com/kellyselden/ember-macro-helpers/compare/v0.17.0...v0.17.1)
 
