@@ -1,5 +1,8 @@
 # Change Log
 
+## [v1.0.0](https://github.com/kellyselden/ember-macro-helpers/tree/v1.0.0) (2018-05-09)
+[Full Changelog](https://github.com/kellyselden/ember-macro-helpers/compare/v0.20.0...v1.0.0)
+
 ## [v0.20.0](https://github.com/kellyselden/ember-macro-helpers/tree/v0.20.0) (2018-05-08)
 [Full Changelog](https://github.com/kellyselden/ember-macro-helpers/compare/v0.19.0...v0.20.0)
 
