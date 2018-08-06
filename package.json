@@ -1,6 +1,6 @@
 {
   "name": "ember-macro-helpers",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "Ember macro helpers for making your own fancy macros!",
   "keywords": [
     "ember-addon",
