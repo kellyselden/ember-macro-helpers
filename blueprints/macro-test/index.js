@@ -1,7 +1,7 @@
 'use strict';
 
 const testInfo = require('ember-cli-test-info');
-const stringUtils = require('ember-cli-string-utils');
+const { dasherize } = require('ember-cli-string-utils');
 
 module.exports = {
   description: 'Generates a computed macro unit test.',
@@ -9,7 +9,7 @@ module.exports = {
   locals(options) {
     return {
       friendlyTestName: testInfo.name(options.entity.name, 'Unit', 'Macro'),
-      dasherizedModulePrefix: stringUtils.dasherize(options.project.config().modulePrefix)
+      dasherizedModulePrefix: dasherize(options.project.config().modulePrefix)
     };
   },
 
