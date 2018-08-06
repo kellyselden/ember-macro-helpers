@@ -1,5 +1,12 @@
 # Change Log
 
+## [v2.0.1](https://github.com/kellyselden/ember-macro-helpers/tree/v2.0.1) (2018-08-06)
+[Full Changelog](https://github.com/kellyselden/ember-macro-helpers/compare/v2.0.0...v2.0.1)
+
+**Merged pull requests:**
+
+- some node 6 refactors [\#213](https://github.com/kellyselden/ember-macro-helpers/pull/213) ([kellyselden](https://github.com/kellyselden))
+
 ## [v2.0.0](https://github.com/kellyselden/ember-macro-helpers/tree/v2.0.0) (2018-08-06)
 [Full Changelog](https://github.com/kellyselden/ember-macro-helpers/compare/v1.0.0...v2.0.0)
 
