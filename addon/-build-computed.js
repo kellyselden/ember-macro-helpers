@@ -58,7 +58,7 @@ export default function({ collapseKeys, getValue, flattenKeys, isLazy }) {
 export function buildCurriedComputed(computed) {
   return function(callback) {
     return function() {
-      return computed(...arguments, callback).readOnly();
+      return computed(...arguments, callback);
     };
   };
 }
