@@ -1,5 +1,22 @@
 # Change Log
 
+## [v2.0.0](https://github.com/kellyselden/ember-macro-helpers/tree/v2.0.0) (2018-08-06)
+[Full Changelog](https://github.com/kellyselden/ember-macro-helpers/compare/v1.0.0...v2.0.0)
+
+**Closed issues:**
+
+- ember-macro-helpers/expand-property.js: @ember/object/computed does not have a expandProperties import [\#203](https://github.com/kellyselden/ember-macro-helpers/issues/203)
+- Action Required: Fix Renovate Configuration [\#201](https://github.com/kellyselden/ember-macro-helpers/issues/201)
+
+**Merged pull requests:**
+
+- curried computeds are allowed to be writable [\#212](https://github.com/kellyselden/ember-macro-helpers/pull/212) ([kellyselden](https://github.com/kellyselden))
+- Update dependency qunit-dom to ^0.7.0 [\#211](https://github.com/kellyselden/ember-macro-helpers/pull/211) ([renovate[bot]](https://github.com/apps/renovate))
+- ember-cli-update [\#210](https://github.com/kellyselden/ember-macro-helpers/pull/210) ([kellyselden](https://github.com/kellyselden))
+- Update dependency ember-cli-htmlbars to v3 [\#208](https://github.com/kellyselden/ember-macro-helpers/pull/208) ([renovate[bot]](https://github.com/apps/renovate))
+- Update dependency ember-cli-dependency-checker to v3 [\#206](https://github.com/kellyselden/ember-macro-helpers/pull/206) ([renovate[bot]](https://github.com/apps/renovate))
+- Update dependency ember-source to ~3.3.0 [\#202](https://github.com/kellyselden/ember-macro-helpers/pull/202) ([renovate[bot]](https://github.com/apps/renovate))
+
 ## [v1.0.0](https://github.com/kellyselden/ember-macro-helpers/tree/v1.0.0) (2018-05-09)
 [Full Changelog](https://github.com/kellyselden/ember-macro-helpers/compare/v0.20.0...v1.0.0)
 
@@ -66,6 +83,7 @@
 - Add no rerender failing test [\#188](https://github.com/kellyselden/ember-macro-helpers/pull/188) ([kellyselden](https://github.com/kellyselden))
 - fix new double render issue [\#187](https://github.com/kellyselden/ember-macro-helpers/pull/187) ([kellyselden](https://github.com/kellyselden))
 - npm 5 [\#186](https://github.com/kellyselden/ember-macro-helpers/pull/186) ([kellyselden](https://github.com/kellyselden))
+- try npm 6 [\#185](https://github.com/kellyselden/ember-macro-helpers/pull/185) ([kellyselden](https://github.com/kellyselden))
 - ember-cli 2.18 [\#184](https://github.com/kellyselden/ember-macro-helpers/pull/184) ([kellyselden](https://github.com/kellyselden))
 - \[BUGFIX\] Missing colon in README code sample [\#165](https://github.com/kellyselden/ember-macro-helpers/pull/165) ([spieker](https://github.com/spieker))
 - Use new modules API on readme examples [\#164](https://github.com/kellyselden/ember-macro-helpers/pull/164) ([esbanarango](https://github.com/esbanarango))
