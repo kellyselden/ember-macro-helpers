@@ -20,12 +20,4 @@ module('Integration | curried computed', function(hooks) {
       strictEqual: 3
     });
   });
-
-  test('it creates a read-only computed', function(assert) {
-    compute({
-      assert,
-      computed: computed(),
-      assertReadOnly: true
-    });
-  });
 });
