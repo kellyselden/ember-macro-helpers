@@ -20,15 +20,12 @@ module.exports = {
     }
   ],
 
-  filesPath(options) {
-    options = options || {};
-    let files = options.useCurried ? 'curried' : 'normal';
+  filesPath({ useCurried } = {}) {
+    let files = useCurried ? 'curried' : 'normal';
     return path.join(this.path, files);
   },
 
   locals(options) {
-    return {
-      useSpread: options.useSpread
-    };
+    return options;
   }
 };
