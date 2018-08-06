@@ -56,7 +56,7 @@ matrix:
         provider: npm
         email: kellyselden@gmail.com
         api_key:
-          secure: SrFuCVd6N+7rrWSfc/lqcaG4qJ8VTq0HhPSjhaPtFdrB7oK1YeEDDL7x9JJYj6RuUR8usT/ydo/P21UOND8/CpxXUjSTJk9pfnB3VhmTPxUUB3sTnCh5lURTH4UScjX7shNZhl2N9ClEaJqet90GDnmxXCZN7tdqZ3y03cqzLrgZEbXe94LUXbxVBOJz5xjMs4yeOAjzeg6M1hTIpMM4DQFtEpx6pWVgr16PwUFAGmzpdMYX1xRXvb1GXKT8qQaBSR1MLXY2qe+oQnYWQ3XF9pzP9HnurLzS4PEkp+s9JPjkrqUwnbvvNjQrAXjHifazZhvlcmOgH4MA/yCF9wn/IKiNlH5k7dBnh/Syw+sSlyRDrEKYF29E0xS4cDA5KBToUPQ30HezdvwLNPfY1agIQLrExSdrGN6mA50ZFDuMXztY1v6/GQCe/nbHjEmDeYxlYnkNUjpvINAWYja/iKCeKD3ZFPABGxdHF+UteSzONJ+OGZiR/bIZZ5s21Nzmlldap9mMLocSXvSivPYpZ8NZEaMGGFf6A5SWYhvqMyqnuVktyms/IN3B9kL5qJrO+7JhoaFowX6CxvA+dccoTNFE+k2JIZKYT2B4to7c7jtf+Y3SH5wMDVabpsbIiHaEuj69ROrrxBG2wa45wjXacmHPowyfC+zFSWik7lZisfBuRoA=
+          secure: S7FYQ8Oc2+la4dTaD/3SBz8yMC5a6LbMg5WlhYjO9LERkl87AgI4mOR/KSuERGuXsFLdYmBHn6RsK/LOMH450FJzUTxNNSskut+TbFDxYhm8DwGb1mWKgLe1SgHp/D/qpPIcX4bn5nxOywe+E4ZqKWG10jLRw1Vz1pM6n6KlGpER3q+6xaO1fg4weCemJftAG6ZaixFPQitQVTh2U5cBU7qrTxPz1WN18jS1i2sxOtKfPC5e1jSz/oqOJL+Hgd5VJgcRD/KdPLhmIz1W9O0a8P/q4UnMvsmBB1BVrV5X3+hD4E9SwGTMxB2x1d0WA1XgnEJ9Zitjrk1ugL6VQUiZ8Vhmt5sSE+ehpMfrxeK+ix/2L6I+rb+87YS3Hz3zUfThhqwkcihgNalRc+wuji4LK+VKLNPfCBnaAdjM0irW8rofXY40JVvErrIbVdrZzbFJSSzB6o689jyabFVtzu86sVWoQRzwt7xT54lrYVr9dhnAM2w+EKrXHqXj/Hdduqjn4v7VLbBu3gYP0j0NwPBeONe9kae1aSjZIM3pGiyQ2sq644+Cbcj5DorJRZ41JSsh6fLo6hPhsE6G2yAhmKKU+3iXoCx2HUIL7TsDldQfZKw3jfkoEHGwRexLV+3v/rqqJ6dKED+nTR8WVDVY3xrzKnw0sOWi2aiqM/NujDZFBQE=
         on:
           tags: true
           repo: kellyselden/ember-macro-helpers
