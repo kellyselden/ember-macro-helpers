@@ -29,7 +29,7 @@
   },
   "devDependencies": {
     "ember-cli": "~3.3.0",
-    "ember-cli-blueprint-test-helpers": "^0.18.0",
+    "ember-cli-blueprint-test-helpers": "^0.19.0",
     "ember-cli-dependency-checker": "^3.0.0",
     "ember-cli-eslint": "^4.2.1",
     "ember-cli-htmlbars": "^3.0.0",
