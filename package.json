@@ -37,7 +37,7 @@
     "ember-cli-qunit": "^4.3.2",
     "ember-data": "^3.1.1",
     "ember-disable-prototype-extensions": "^1.1.2",
-    "ember-load-initializers": "^1.1.0",
+    "ember-load-initializers": "^2.0.0",
     "ember-macro-test-helpers": "^3.5.0",
     "ember-maybe-import-regenerator": "^0.1.6",
     "ember-resolver": "^5.0.0",
