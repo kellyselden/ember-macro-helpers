@@ -11,15 +11,5 @@ module.exports = {
       friendlyTestName: testInfo.name(options.entity.name, 'Unit', 'Macro'),
       dasherizedModulePrefix: dasherize(options.project.config().modulePrefix)
     };
-  },
-
-  afterInstall() {
-    // >= 2.11
-    // return this.addAddonToProject('ember-macro-test-helpers');
-    // https://github.com/ember-cli/ember-cli/issues/6318
-    return this.addAddonsToProject({
-      packages: ['ember-macro-test-helpers'],
-      blueprintOptions: { saveDev: true }
-    });
   }
 };
