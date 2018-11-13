@@ -35,6 +35,7 @@ import { nameOfMacro } from 'ember-macro-helpers';
 ### Contents
   - [API](#api)
   - [Custom macros](#custom-macros)
+  - [Test helpers](#test-helpers)
 
 ### API
 
@@ -414,6 +415,30 @@ This will generate an example macro and its associated test. The comments in
 these files will get you started.
 
 More explanation is given in the [introduction video](https://youtu.be/kIDIa1NBZZI?t=18m40s).
+
+### Test helpers
+This comes with a `compute` helper. Here is a sample usage:
+
+```js
+import myMacro from 'my-app/macros/my-macro';
+import compute from 'ember-macro-helpers/test-support';
+
+// ...
+
+test('it works', function(assert) {
+  compute({
+    assert,
+    computed: myMacro('key1', 'key2'),
+    properties: {
+      key1: 1,
+      key2: 2
+    },
+    strictEqual: 3
+  });
+});
+```
+
+View all the possible ways to use [here](https://github.com/kellyselden/ember-macro-helpers/blob/master/tests/integration/compute-test.js).
 
 
 Contributing
