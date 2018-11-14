@@ -1,5 +1,31 @@
 # Change Log
 
+## [v2.1.0](https://github.com/kellyselden/ember-macro-helpers/tree/v2.1.0) (2018-11-14)
+[Full Changelog](https://github.com/kellyselden/ember-macro-helpers/compare/v2.0.1...v2.1.0)
+
+**Closed issues:**
+
+- When I add ember-macro-helpers to my addon, I get lots of strange errors in my app using it [\#214](https://github.com/kellyselden/ember-macro-helpers/issues/214)
+
+**Merged pull requests:**
+
+- port ember-macro-test-helpers [\#233](https://github.com/kellyselden/ember-macro-helpers/pull/233) ([kellyselden](https://github.com/kellyselden))
+- Update dependency ember-qunit to v4 [\#232](https://github.com/kellyselden/ember-macro-helpers/pull/232) ([renovate[bot]](https://github.com/apps/renovate))
+- Update dependency @ember/optional-features to ^0.7.0 [\#231](https://github.com/kellyselden/ember-macro-helpers/pull/231) ([renovate[bot]](https://github.com/apps/renovate))
+- ember-cli 3.5 [\#230](https://github.com/kellyselden/ember-macro-helpers/pull/230) ([kellyselden](https://github.com/kellyselden))
+- Update dependency ember-sinon to v3 [\#229](https://github.com/kellyselden/ember-macro-helpers/pull/229) ([renovate[bot]](https://github.com/apps/renovate))
+- Update dependency ember-cli-eslint to v5 [\#228](https://github.com/kellyselden/ember-macro-helpers/pull/228) ([renovate[bot]](https://github.com/apps/renovate))
+- Update dependency ember-load-initializers to v2 [\#227](https://github.com/kellyselden/ember-macro-helpers/pull/227) ([renovate[bot]](https://github.com/apps/renovate))
+- Update dependency eslint-plugin-node to v8 [\#226](https://github.com/kellyselden/ember-macro-helpers/pull/226) ([renovate[bot]](https://github.com/apps/renovate))
+- Update dependency ember-cli-inject-live-reload to v2 [\#225](https://github.com/kellyselden/ember-macro-helpers/pull/225) ([renovate[bot]](https://github.com/apps/renovate))
+- Update dependency ember-source to ~3.5.0 [\#224](https://github.com/kellyselden/ember-macro-helpers/pull/224) ([renovate[bot]](https://github.com/apps/renovate))
+- Update dependency ember-cli-blueprint-test-helpers to ^0.19.0 [\#223](https://github.com/kellyselden/ember-macro-helpers/pull/223) ([renovate[bot]](https://github.com/apps/renovate))
+- Update dependency ember-cli-babel to v7 [\#222](https://github.com/kellyselden/ember-macro-helpers/pull/222) ([renovate[bot]](https://github.com/apps/renovate))
+- Update dependency qunit-dom to ^0.8.0 [\#220](https://github.com/kellyselden/ember-macro-helpers/pull/220) ([renovate[bot]](https://github.com/apps/renovate))
+- Update dependency ember-source to ~3.4.0 [\#215](https://github.com/kellyselden/ember-macro-helpers/pull/215) ([renovate[bot]](https://github.com/apps/renovate))
+- Update dependency ember-resolver to v5 [\#207](https://github.com/kellyselden/ember-macro-helpers/pull/207) ([renovate[bot]](https://github.com/apps/renovate))
+- Update dependency eslint-plugin-node to v7 [\#205](https://github.com/kellyselden/ember-macro-helpers/pull/205) ([renovate[bot]](https://github.com/apps/renovate))
+
 ## [v2.0.1](https://github.com/kellyselden/ember-macro-helpers/tree/v2.0.1) (2018-08-06)
 [Full Changelog](https://github.com/kellyselden/ember-macro-helpers/compare/v2.0.0...v2.0.1)
 
