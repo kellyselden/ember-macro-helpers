@@ -55,6 +55,7 @@ function findOrCreatePropertyInstance(context, propertyClass, key, cp) {
 }
 
 const BaseClass = EmberObject.extend({
+  // eslint-disable-next-line ember/no-observers
   computedDidChange: observer('computed', function() {
     let {
       context,
@@ -126,6 +127,7 @@ export default function(observerBools, macroGenerator) {
 
       mappedKeys.push(mappedKey);
       if (shouldObserve) {
+        // eslint-disable-next-line ember/no-observers
         classProperties[`key${i}DidChange`] = observer(mappedKey, rewriteComputed);
       }
     });
@@ -151,6 +153,7 @@ export default function(observerBools, macroGenerator) {
       // eslint-disable-next-line ember/no-side-effects
       set(propertyInstance, 'preventDoubleRender', true);
 
+      // eslint-disable-next-line ember/no-side-effects
       setProperties(propertyInstance.nonStrings, properties);
 
       // eslint-disable-next-line ember/no-side-effects
