@@ -15,6 +15,14 @@ Check out the following projects to see this addon in use:
 * https://github.com/stefanpenner/ember-moment
 * https://github.com/cibernox/ember-cpm
 
+
+Compatibility
+------------------------------------------------------------------------------
+
+* Ember.js v2.18 or above
+* Ember CLI v2.13 or above
+
+
 Installation
 ------------------------------------------------------------------------------
 
