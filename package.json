@@ -23,7 +23,7 @@
     "nodetest": "mocha node-tests --recursive"
   },
   "dependencies": {
-    "ember-cli-babel": "^7.1.2",
+    "ember-cli-babel": "^6.18.0",
     "ember-cli-string-utils": "^1.1.0",
     "ember-cli-test-info": "^1.0.0",
     "ember-weakmap": "^3.0.0"
