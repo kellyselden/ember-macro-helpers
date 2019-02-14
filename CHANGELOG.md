@@ -1,5 +1,21 @@
 # Change Log
 
+## [v3.0.0](https://github.com/kellyselden/ember-macro-helpers/tree/v3.0.0) (2019-02-13)
+[Full Changelog](https://github.com/kellyselden/ember-macro-helpers/compare/v2.2.0...v3.0.0)
+
+## [v2.2.0](https://github.com/kellyselden/ember-macro-helpers/tree/v2.2.0) (2019-02-13)
+[Full Changelog](https://github.com/kellyselden/ember-macro-helpers/compare/v2.1.0...v2.2.0)
+
+**Merged pull requests:**
+
+- Revert "revert babel 7" [\#243](https://github.com/kellyselden/ember-macro-helpers/pull/243) ([kellyselden](https://github.com/kellyselden))
+- revert babel 7 [\#242](https://github.com/kellyselden/ember-macro-helpers/pull/242) ([kellyselden](https://github.com/kellyselden))
+- ember-cli 3.7 [\#241](https://github.com/kellyselden/ember-macro-helpers/pull/241) ([kellyselden](https://github.com/kellyselden))
+- Update dependency ember-source to ~3.7.0 [\#239](https://github.com/kellyselden/ember-macro-helpers/pull/239) ([renovate[bot]](https://github.com/apps/renovate))
+- update eslint-plugin-ember v6 [\#238](https://github.com/kellyselden/ember-macro-helpers/pull/238) ([kellyselden](https://github.com/kellyselden))
+- update ember-cli 3.6 [\#237](https://github.com/kellyselden/ember-macro-helpers/pull/237) ([kellyselden](https://github.com/kellyselden))
+- Update dependency ember-source to ~3.6.0 [\#235](https://github.com/kellyselden/ember-macro-helpers/pull/235) ([renovate[bot]](https://github.com/apps/renovate))
+
 ## [v2.1.0](https://github.com/kellyselden/ember-macro-helpers/tree/v2.1.0) (2018-11-14)
 [Full Changelog](https://github.com/kellyselden/ember-macro-helpers/compare/v2.0.1...v2.1.0)
 
