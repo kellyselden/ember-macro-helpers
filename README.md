@@ -449,6 +449,12 @@ test('it works', function(assert) {
 View all the possible ways to use [here](https://github.com/kellyselden/ember-macro-helpers/blob/master/tests/integration/compute-test.js).
 
 
+Contributing
+------------------------------------------------------------------------------
+
+See the [Contributing](CONTRIBUTING.md) guide for details.
+
+
 License
 ------------------------------------------------------------------------------
 
