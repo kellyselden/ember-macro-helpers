@@ -32,4 +32,14 @@ module('Acceptance | application', function(hooks) {
 
     assert.dom('.items').hasText('1');
   });
+
+  test('class computed array macro inside a normal array macro, handles pushes', async function(assert) {
+    await visit('/compose-class-computed');
+
+    assert.equal(find('.computed').textContent, '1');
+
+    await click('button');
+
+    assert.equal(find('.computed').textContent, '3');
+  });
 });

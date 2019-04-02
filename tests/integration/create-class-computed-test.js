@@ -21,7 +21,7 @@ module('Integration | create class computed', function(hooks) {
     filterBy = createClassComputed(
       [false, true],
       function(array, key, value) {
-        if (!key) {
+        if (!key && this) {
           PROPERTIES.set(this, array.split('.').reverse()[0]);
         }
         return computed(normalizeArrayKey(array, [key]), value, function(array, value) {
