@@ -1,10 +1,12 @@
 import { get } from '@ember/object';
 import { isBlank } from '@ember/utils';
 import isComputed from './is-computed';
+import { getComputedData } from './-build-computed';
 
 export default function({ context, macro, key } = {}) {
   if (isComputed(macro)) {
-    return macro._getter.call(context, key);
+    let { getter } = getComputedData(macro);
+    return getter.call(context, key);
   }
 
   if (typeof macro !== 'string') {

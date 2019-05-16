@@ -17,6 +17,7 @@ import {
   ARRAY_EACH,
   ARRAY_LENGTH
 } from './-constants';
+import { setComputedData } from './-build-computed';
 
 const {
   WeakMap
@@ -140,7 +141,8 @@ export default function(observerBools, macroGenerator) {
       })
     });
 
-    let cp = computed(...flattenKeys(keys), function(key) {
+    let dependentKeys = flattenKeys(keys);
+    function getter(key) {
       let propertyInstance = findOrCreatePropertyInstance(this, ObserverClass, key, cp);
 
       let properties = collapsedKeys.reduce((properties, macro, i) => {
@@ -160,8 +162,10 @@ export default function(observerBools, macroGenerator) {
       set(propertyInstance, 'preventDoubleRender', false);
 
       return get(propertyInstance, 'computed');
-    }).readOnly();
+    }
 
+    let cp = computed(...dependentKeys, getter).readOnly();
+    setComputedData(cp, { dependentKeys, getter });
     return cp;
   };
 }

@@ -1,4 +1,4 @@
-import { computed } from '@ember/object';
+import computed from 'ember-macro-helpers/computed';
 import isComputed from 'ember-macro-helpers/is-computed';
 import { module, test } from 'qunit';
 

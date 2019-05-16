@@ -1,5 +1,5 @@
-import ComputedProperty from '@ember/object/computed';
+import { getComputedData } from './-build-computed';
 
 export default function(key) {
-  return key instanceof ComputedProperty;
+  return Boolean(getComputedData(key));
 }

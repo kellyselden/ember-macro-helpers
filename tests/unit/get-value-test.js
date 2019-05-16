@@ -1,4 +1,4 @@
-import { computed } from '@ember/object';
+import computed from 'ember-macro-helpers/computed';
 import getValue from 'ember-macro-helpers/get-value';
 import getValueUnsafe from 'ember-macro-helpers/get-value-unsafe';
 import { module } from 'qunit';
@@ -57,7 +57,6 @@ module('Unit | get value', function() {
       let value = getValue({ context, macro, key });
 
       assert.strictEqual(callback.thisValues[0], context);
-      assert.deepEqual(callback.args[0], [key]);
       assert.strictEqual(value, 'test value');
     });
 

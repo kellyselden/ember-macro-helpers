@@ -51,7 +51,10 @@ export default function({ collapseKeys, getValue, flattenKeys, isLazy }) {
 
     let newCallback = buildCallback({ incomingCallback, createArgs });
 
-    return computed(...flattenKeys(keys), newCallback);
+    let dependentKeys = flattenKeys(keys);
+    let cp = computed(...dependentKeys, newCallback);
+    setComputedData(cp, { dependentKeys, getter: newCallback });
+    return cp;
   };
 }
 
@@ -61,4 +64,14 @@ export function buildCurriedComputed(computed) {
       return computed(...arguments, callback);
     };
   };
+}
+
+const DEPENDENT_KEYS = new WeakMap();
+
+export function setComputedData(cp, data) {
+  DEPENDENT_KEYS.set(cp, data);
+}
+
+export function getComputedData(maybeCp) {
+  return DEPENDENT_KEYS.get(maybeCp);
 }

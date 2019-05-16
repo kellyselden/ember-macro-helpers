@@ -1,13 +1,9 @@
 import isComputed from './is-computed';
+import { getComputedData } from './-build-computed';
 
 function flattenKey(key, flattenedKeys) {
   if (isComputed(key)) {
-    let dependentKeys = key._dependentKeys;
-    if (dependentKeys === undefined) {
-      // when there are no keys (raw)
-      return;
-    }
-
+    let { dependentKeys } = getComputedData(key);
     return _flattenKeys(dependentKeys, flattenedKeys);
   }
 
