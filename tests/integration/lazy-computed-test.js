@@ -55,15 +55,20 @@ module('Integration | lazy computed', function(hooks) {
   });
 
   test('function syntax: passes the keys when getting', function(assert) {
+    let key2Alias = alias('key2');
     let { subject } = compute({
-      computed: lazyComputed('key1', alias('key2'), getCallback)
+      computed: lazyComputed('key1', key2Alias, getCallback)
     });
 
-    assert.deepEqual(getCallback.args[0], [
-      getValue,
-      { context: subject, key: 'computed', macro: 'key1' },
-      { context: subject, key: 'computed', macro: alias('key2') }
-    ]);
+    let args = getCallback.args[0];
+    assert.equal(args.length, 3);
+    assert.equal(args[0], getValue);
+    assert.equal(args[1].context, subject);
+    assert.equal(args[1].key, 'computed');
+    assert.equal(args[1].macro, 'key1');
+    assert.equal(args[2].context, subject);
+    assert.equal(args[2].key, 'computed');
+    assert.equal(args[2].macro, key2Alias);
   });
 
   test('function syntax: doesn\'t call when setting', function(assert) {
@@ -101,17 +106,22 @@ module('Integration | lazy computed', function(hooks) {
   });
 
   test('object syntax: passes the keys when getting', function(assert) {
+    let key2Alias = alias('key2');
     let { subject } = compute({
-      computed: lazyComputed('key1', alias('key2'), {
+      computed: lazyComputed('key1', key2Alias, {
         get: getCallback
       })
     });
 
-    assert.deepEqual(getCallback.args[0], [
-      getValue,
-      { context: subject, key: 'computed', macro: 'key1' },
-      { context: subject, key: 'computed', macro: alias('key2') }
-    ]);
+    let args = getCallback.args[0];
+    assert.equal(args.length, 3);
+    assert.equal(args[0], getValue);
+    assert.equal(args[1].context, subject);
+    assert.equal(args[1].key, 'computed');
+    assert.equal(args[1].macro, 'key1');
+    assert.equal(args[2].context, subject);
+    assert.equal(args[2].key, 'computed');
+    assert.equal(args[2].macro, key2Alias);
   });
 
   test('object syntax: uses the right context when setting', function(assert) {
@@ -128,8 +138,9 @@ module('Integration | lazy computed', function(hooks) {
   });
 
   test('object syntax: passes the keys when setting', function(assert) {
+    let key2Alias = alias('key2');
     let { subject } = compute({
-      computed: lazyComputed('key1', alias('key2'), {
+      computed: lazyComputed('key1', key2Alias, {
         get: getCallback,
         set: setCallback
       })
@@ -137,12 +148,16 @@ module('Integration | lazy computed', function(hooks) {
 
     subject.set('computed', newValue);
 
-    assert.deepEqual(setCallback.args, [[
-      newValue,
-      getValue,
-      { context: subject, key: 'computed', macro: 'key1' },
-      { context: subject, key: 'computed', macro: alias('key2') }
-    ]]);
+    let args = setCallback.args[0];
+    assert.equal(args.length, 4);
+    assert.equal(args[0], newValue);
+    assert.equal(args[1], getValue);
+    assert.equal(args[2].context, subject);
+    assert.equal(args[2].key, 'computed');
+    assert.equal(args[2].macro, 'key1');
+    assert.equal(args[3].context, subject);
+    assert.equal(args[3].key, 'computed');
+    assert.equal(args[3].macro, key2Alias);
   });
 
   test('object syntax: preserves set value', function(assert) {
