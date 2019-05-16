@@ -1,14 +1,9 @@
-import isComputed from './is-computed';
+import computedStore from './-computed-store';
 
 function flattenKey(key, flattenedKeys) {
-  if (isComputed(key)) {
-    let dependentKeys = key._dependentKeys;
-    if (dependentKeys === undefined) {
-      // when there are no keys (raw)
-      return;
-    }
-
-    return _flattenKeys(dependentKeys, flattenedKeys);
+  let cp = computedStore.get(key);
+  if (cp) {
+    return _flattenKeys(cp.dependentKeys, flattenedKeys);
   }
 
   if (typeof key !== 'string') {
