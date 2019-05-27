@@ -1,7 +1,9 @@
 'use strict';
 
 const path = require('path');
-const { readFileSync } = require('fs');
+const fs = require('fs');
+const { promisify } = require('util');
+const readFile = promisify(fs.readFile);
 const { dasherize } = require('ember-cli-string-utils');
 const {
   setupTestHooks,
@@ -19,18 +21,18 @@ module.exports = function(
 ) {
   let fixturesPath = path.resolve('node-tests/fixtures', blueprint);
 
-  function readFile(fileName) {
-    return readFileSync(path.join(fixturesPath, fileName), 'utf8');
+  async function _readFile(fileName) {
+    return await readFile(path.join(fixturesPath, fileName), 'utf8');
   }
 
   function test(fileName, ...args) {
-    it([blueprint, macro, ...args].join(' '), function() {
+    it([blueprint, macro, ...args].join(' '), async function() {
       args = [blueprint, dasherize(macro), ...args];
 
-      return emberNew().then(() => {
-        return emberGenerateDestroy(args, file => {
-          expect(file(filePath)).to.equal(readFile(fileName));
-        });
+      await emberNew();
+
+      await emberGenerateDestroy(args, async file => {
+        expect(file(filePath)).to.equal(await _readFile(fileName));
       });
     });
   }
