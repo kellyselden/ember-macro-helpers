@@ -31,7 +31,10 @@ module('Unit | Initializer | override-built-in-macros', function(hooks) {
   test('it wraps Ember.computed', async function(assert) {
     let _computed = Ember.computed;
 
-    await this.application.boot();
+    // remove after ember 2.18 dropped
+    Ember.run(async() => {
+      await this.application.boot();
+    });
 
     assert.notEqual(Ember.computed, _computed);
   });
@@ -41,7 +44,10 @@ module('Unit | Initializer | override-built-in-macros', function(hooks) {
 
     assert.notOk(computedStore.has(cp));
 
-    await this.application.boot();
+    // remove after ember 2.18 dropped
+    Ember.run(async() => {
+      await this.application.boot();
+    });
 
     cp = Ember.computed(() => {});
 
