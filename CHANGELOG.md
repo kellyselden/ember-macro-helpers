@@ -1,5 +1,31 @@
 # Change Log
 
+## [v4.0.0](https://github.com/kellyselden/ember-macro-helpers/tree/v4.0.0) (2019-05-27)
+[Full Changelog](https://github.com/kellyselden/ember-macro-helpers/compare/v3.1.0...v4.0.0)
+
+**Merged pull requests:**
+
+- async/await [\#262](https://github.com/kellyselden/ember-macro-helpers/pull/262) ([kellyselden](https://github.com/kellyselden))
+- ember-cli-update [\#261](https://github.com/kellyselden/ember-macro-helpers/pull/261) ([kellyselden](https://github.com/kellyselden))
+- Update dependency ember-sinon to v4 [\#259](https://github.com/kellyselden/ember-macro-helpers/pull/259) ([renovate[bot]](https://github.com/apps/renovate))
+- Update dependency ember-source-channel-url to v2 [\#257](https://github.com/kellyselden/ember-macro-helpers/pull/257) ([renovate[bot]](https://github.com/apps/renovate))
+- Lock file maintenance [\#254](https://github.com/kellyselden/ember-macro-helpers/pull/254) ([renovate[bot]](https://github.com/apps/renovate))
+- Update dependency ember-try to v1 [\#217](https://github.com/kellyselden/ember-macro-helpers/pull/217) ([renovate[bot]](https://github.com/apps/renovate))
+
+## [v3.1.0](https://github.com/kellyselden/ember-macro-helpers/tree/v3.1.0) (2019-05-27)
+[Full Changelog](https://github.com/kellyselden/ember-macro-helpers/compare/v3.0.0...v3.1.0)
+
+**Merged pull requests:**
+
+- Fix for Ember 3.10 [\#260](https://github.com/kellyselden/ember-macro-helpers/pull/260) ([kellyselden](https://github.com/kellyselden))
+- Update dependency ember-source to ~3.9.0 [\#251](https://github.com/kellyselden/ember-macro-helpers/pull/251) ([renovate[bot]](https://github.com/apps/renovate))
+- Lock file maintenance [\#250](https://github.com/kellyselden/ember-macro-helpers/pull/250) ([renovate[bot]](https://github.com/apps/renovate))
+- ember-cli-update [\#249](https://github.com/kellyselden/ember-macro-helpers/pull/249) ([kellyselden](https://github.com/kellyselden))
+- Update dependency renovate-config-standard to v2 [\#248](https://github.com/kellyselden/ember-macro-helpers/pull/248) ([renovate[bot]](https://github.com/apps/renovate))
+- Update dependency ember-source to ~3.8.0 [\#246](https://github.com/kellyselden/ember-macro-helpers/pull/246) ([renovate[bot]](https://github.com/apps/renovate))
+- Update dependency mocha to v6 [\#245](https://github.com/kellyselden/ember-macro-helpers/pull/245) ([renovate[bot]](https://github.com/apps/renovate))
+- Update dependency eslint-config-sane to ^0.7.0 [\#244](https://github.com/kellyselden/ember-macro-helpers/pull/244) ([renovate[bot]](https://github.com/apps/renovate))
+
 ## [v3.0.0](https://github.com/kellyselden/ember-macro-helpers/tree/v3.0.0) (2019-02-13)
 [Full Changelog](https://github.com/kellyselden/ember-macro-helpers/compare/v2.2.0...v3.0.0)
 
