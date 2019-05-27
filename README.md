@@ -4,7 +4,6 @@ ember-macro-helpers
 [![Greenkeeper badge](https://badges.greenkeeper.io/kellyselden/ember-macro-helpers.svg)](https://greenkeeper.io/)
 [![npm version](https://badge.fury.io/js/ember-macro-helpers.svg)](https://badge.fury.io/js/ember-macro-helpers)
 [![Build Status](https://travis-ci.org/kellyselden/ember-macro-helpers.svg?branch=master)](https://travis-ci.org/kellyselden/ember-macro-helpers)
-[![Ember Version](https://img.shields.io/badge/ember-2.16%2B-brightgreen.svg)](https://www.emberjs.com/)
 
 Ember macro helpers for making your own fancy macros!
 
@@ -19,7 +18,7 @@ Check out the following projects to see this addon in use:
 Compatibility
 ------------------------------------------------------------------------------
 
-* Ember.js v2.18 or above
+* Ember.js v3.4 or above
 * Ember CLI v2.13 or above
 * Node.js v8 or above
 
