@@ -1,4 +1,3 @@
-import Ember from 'ember';
 import createClassComputed from 'ember-macro-helpers/create-class-computed';
 import normalizeArrayKey from 'ember-macro-helpers/normalize-array-key';
 import computed from 'ember-macro-helpers/computed';
@@ -8,8 +7,6 @@ import EmberObject from '@ember/object';
 import { A as emberA } from '@ember/array';
 import { compute } from 'ember-macro-helpers/test-support';
 import destroy from '../helpers/destroy';
-
-const { WeakMap } = Ember;
 
 let PROPERTIES;
 let filterBy;

@@ -1,4 +1,3 @@
-import Ember from 'ember';
 import EmberObject, {
   computed,
   observer,
@@ -17,10 +16,6 @@ import {
   ARRAY_EACH,
   ARRAY_LENGTH
 } from './-constants';
-
-const {
-  WeakMap
-} = Ember;
 
 const PROPERTIES = new WeakMap();
 
