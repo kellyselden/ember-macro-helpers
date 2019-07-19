@@ -1,6 +1,5 @@
 # unconventional js
 /blueprints/*/*/
-/vendor/
 
 # compiled output
 /dist/

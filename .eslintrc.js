@@ -8,9 +8,8 @@ module.exports = {
     'ember'
   ],
   extends: [
-    'eslint:recommended',
-    'plugin:ember/recommended',
-    'sane'
+    'sane',
+    'plugin:ember/recommended'
   ],
   env: {
     browser: true
@@ -62,6 +61,27 @@ module.exports = {
       rules: {
         camelcase: 0
       }
+    },
+
+    {
+      files: ['vendor/**/*.js'],
+      parserOptions: {
+        ecmaVersion: 5,
+        sourceType: 'script'
+      },
+      env: {
+        amd: true
+      },
+      globals: {
+        Ember: 'readonly'
+      },
+      rules: Object.keys({
+        ...require('eslint-config-sane').rules,
+        ...require('eslint-plugin-ember').configs.recommended.rules
+      }).reduce((rules, rule) => {
+        rules[rule] = 0;
+        return rules;
+      }, {})
     }
   ]
 };
