@@ -8,6 +8,7 @@ describe(
   'fooBar',
   'app/macros/foo-bar.js',
   function(test) {
+    // eslint-disable-next-line mocha/no-pending-tests
     test('foo-bar.txt');
     test('foo-bar-spread.txt', '--use-spread');
     test('foo-bar-curried.txt', '--use-curried');

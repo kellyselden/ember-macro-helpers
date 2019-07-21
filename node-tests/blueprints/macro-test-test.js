@@ -8,6 +8,7 @@ describe(
   'fooBar',
   'tests/unit/macros/foo-bar-test.js',
   function(test) {
+    // eslint-disable-next-line mocha/no-pending-tests
     test('foo-bar-test.txt');
   }
 );

@@ -53,7 +53,9 @@ module.exports = {
       files: ['node-tests/**/*.js'],
       env: {
         mocha: true
-      }
+      },
+      plugins: ['mocha'],
+      rules: require('eslint-plugin-mocha').configs.recommended.rules
     },
 
     {

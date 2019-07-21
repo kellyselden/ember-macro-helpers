@@ -38,8 +38,10 @@ module.exports = function(
   }
 
   describe(describeTitle, function() {
+    // eslint-disable-next-line mocha/no-setup-in-describe
     setupTestHooks(this);
 
+    // eslint-disable-next-line mocha/no-setup-in-describe
     callback(test);
   });
 };
