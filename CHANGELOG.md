@@ -1,5 +1,47 @@
 # Change Log
 
+## [v4.2.2](https://github.com/kellyselden/ember-macro-helpers/tree/v4.2.2) (2019-07-22)
+[Full Changelog](https://github.com/kellyselden/ember-macro-helpers/compare/v4.2.1...v4.2.2)
+
+**Merged pull requests:**
+
+- Fixes engines in package.json to allow Node ^8.3 || \>= 10 [\#278](https://github.com/kellyselden/ember-macro-helpers/pull/278) ([gorner](https://github.com/gorner))
+- add eslint-plugin-mocha [\#277](https://github.com/kellyselden/ember-macro-helpers/pull/277) ([kellyselden](https://github.com/kellyselden))
+- Revert "add eslint-plugin-json-files" [\#276](https://github.com/kellyselden/ember-macro-helpers/pull/276) ([kellyselden](https://github.com/kellyselden))
+- Update dependency eslint-plugin-json-files to v0.6.2 [\#274](https://github.com/kellyselden/ember-macro-helpers/pull/274) ([renovate[bot]](https://github.com/apps/renovate))
+
+## [v4.2.1](https://github.com/kellyselden/ember-macro-helpers/tree/v4.2.1) (2019-07-19)
+[Full Changelog](https://github.com/kellyselden/ember-macro-helpers/compare/v4.2.0...v4.2.1)
+
+**Closed issues:**
+
+- Broken in IE11 as of version 4.1.0 [\#271](https://github.com/kellyselden/ember-macro-helpers/issues/271)
+- Lazy Computed with get/set [\#209](https://github.com/kellyselden/ember-macro-helpers/issues/209)
+
+**Merged pull requests:**
+
+- Vendor ie11 [\#273](https://github.com/kellyselden/ember-macro-helpers/pull/273) ([kellyselden](https://github.com/kellyselden))
+- ember-cli-update [\#272](https://github.com/kellyselden/ember-macro-helpers/pull/272) ([kellyselden](https://github.com/kellyselden))
+- Lock file maintenance [\#266](https://github.com/kellyselden/ember-macro-helpers/pull/266) ([renovate[bot]](https://github.com/apps/renovate))
+
+## [v4.2.0](https://github.com/kellyselden/ember-macro-helpers/tree/v4.2.0) (2019-07-15)
+[Full Changelog](https://github.com/kellyselden/ember-macro-helpers/compare/v4.1.0...v4.2.0)
+
+**Merged pull requests:**
+
+- remove ember-weakmap [\#269](https://github.com/kellyselden/ember-macro-helpers/pull/269) ([kellyselden](https://github.com/kellyselden))
+- Update dependency eslint-config-sane to ^0.8.0 [\#267](https://github.com/kellyselden/ember-macro-helpers/pull/267) ([renovate[bot]](https://github.com/apps/renovate))
+
+## [v4.1.0](https://github.com/kellyselden/ember-macro-helpers/tree/v4.1.0) (2019-07-15)
+[Full Changelog](https://github.com/kellyselden/ember-macro-helpers/compare/v4.0.0...v4.1.0)
+
+**Merged pull requests:**
+
+- fix built-in macros support [\#268](https://github.com/kellyselden/ember-macro-helpers/pull/268) ([kellyselden](https://github.com/kellyselden))
+- Update dependency ember-source to ~3.11.0 [\#265](https://github.com/kellyselden/ember-macro-helpers/pull/265) ([renovate[bot]](https://github.com/apps/renovate))
+- Update dependency qunit-dom to ^0.9.0 [\#264](https://github.com/kellyselden/ember-macro-helpers/pull/264) ([renovate[bot]](https://github.com/apps/renovate))
+- Lock file maintenance [\#263](https://github.com/kellyselden/ember-macro-helpers/pull/263) ([renovate[bot]](https://github.com/apps/renovate))
+
 ## [v4.0.0](https://github.com/kellyselden/ember-macro-helpers/tree/v4.0.0) (2019-05-27)
 [Full Changelog](https://github.com/kellyselden/ember-macro-helpers/compare/v3.1.0...v4.0.0)
 
