@@ -57,7 +57,7 @@
     "renovate-config-standard": "^2.0.0"
   },
   "engines": {
-    "node": "8.3 || >= 10.*"
+    "node": "^8.3 || >= 10.*"
   },
   "ember-addon": {
     "configPath": "tests/dummy/config"
