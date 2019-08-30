@@ -9,7 +9,7 @@ export default function(getter, setterCallback) {
       }
       return val;
     },
-    set(key, val) {
+    set(val) {
       return this._val = val;
     }
   };
