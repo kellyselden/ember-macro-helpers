@@ -16,6 +16,9 @@ module.exports = {
     browser: true
   },
   rules: {
+    'ember/no-arrow-function-computed-properties': ['error', {
+      onlyThisContexts: true
+    }]
   },
   overrides: [
     // node files

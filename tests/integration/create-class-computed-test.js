@@ -21,6 +21,7 @@ module('Integration | create class computed', function(hooks) {
         if (!key) {
           PROPERTIES.set(this, array.split('.').reverse()[0]);
         }
+        // eslint-disable-next-line ember/require-return-from-computed
         return computed(normalizeArrayKey(array, [key]), value, function(array, value) {
           if (array) {
             return emberA(emberA(array).filterBy(key || PROPERTIES.get(this), value));
