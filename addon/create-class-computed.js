@@ -51,25 +51,29 @@ function findOrCreatePropertyInstance(context, propertyClass, key, cp) {
 
 const BaseClass = EmberObject.extend({
   // eslint-disable-next-line ember/no-observers
-  computedDidChange: observer('computed', function() {
-    let {
-      context,
-      key,
-      preventDoubleRender
-    } = this;
+  computedDidChange: observer({
+    dependentKeys: ['computed'],
+    fn() {
+      let {
+        context,
+        key,
+        preventDoubleRender
+      } = this;
 
-    if (context.isDestroying) {
-      // controllers can get into this state
-      this.destroy();
+      if (context.isDestroying) {
+        // controllers can get into this state
+        this.destroy();
 
-      return;
-    }
+        return;
+      }
 
-    if (preventDoubleRender) {
-      return;
-    }
+      if (preventDoubleRender) {
+        return;
+      }
 
-    context.notifyPropertyChange(key);
+      context.notifyPropertyChange(key);
+    },
+    sync: true
   })
 });
 
@@ -123,7 +127,11 @@ export default function(observerBools, macroGenerator) {
       mappedKeys.push(mappedKey);
       if (shouldObserve) {
         // eslint-disable-next-line ember/no-observers
-        classProperties[`key${i}DidChange`] = observer(mappedKey, rewriteComputed);
+        classProperties[`key${i}DidChange`] = observer({
+          dependentKeys: [mappedKey],
+          fn: rewriteComputed,
+          sync: true
+        });
       }
     });
 
